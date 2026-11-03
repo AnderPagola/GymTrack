@@ -59,7 +59,8 @@ public class VentanaPrincipal extends JFrame {
 //		progreso.addActionListener(null);
 //		perfil.addActionListener(null);
 	}
-	// QUE PASOOOOOOOOOO
+	// QUE PASOOOOOOOOOOdsddsd
+	// HOLAAAAAAAAAAAAAAAA
 	public void formatoBoton(JButton boton) {
 		boton.setFont(new Font("Arial", Font.BOLD, 30));
 		boton.setBackground(Color.CYAN);
