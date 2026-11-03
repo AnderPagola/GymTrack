@@ -12,8 +12,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import Rutinas.VentanaRutinas;
-
 public class VentanaPrincipal extends JFrame {
 	
 	private JButton rutinas = new JButton("Mis rutinas");
