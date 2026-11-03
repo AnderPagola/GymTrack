@@ -104,9 +104,4 @@ public class VentanaPrincipal extends JFrame {
 //	    boton.setContentAreaFilled(true);
 	    boton.setFocusPainted(false);
 	}
-	
-	public void abrirRutinas() {
-		
-	}
-
 }
