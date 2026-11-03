@@ -17,7 +17,7 @@ import javax.swing.SwingConstants;
 
 import estadisticas.VentanaEstadisticas;
 import misEntrenamiento.MisEntrenamientos;
-import rutinas.VentanaRutinas;
+//import rutinas.VentanaRutinas;
 
 public class VentanaPrincipal extends JFrame {
 	
