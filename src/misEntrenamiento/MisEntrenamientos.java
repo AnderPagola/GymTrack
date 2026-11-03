@@ -29,6 +29,7 @@ public class MisEntrenamientos extends JFrame {
 		JPanel panelnorth= new JPanel();
 		panelnorth.setBorder(BorderFactory.createTitledBorder("Calendario"));
 		panelnorth.setBackground(Color.red);
+		//a
 		
 		JPanel panelcentro=new JPanel();
 		panelcentro.setBackground(Color.black);
