@@ -2,6 +2,8 @@ package principal;
 
 import java.awt.BorderLayout;
 import misEntrenamiento.MisEntrenamientos;
+import progreso.VentanaSeguimiento;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -13,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import estadisticas.VentanaEstadisticas;
 import misEntrenamiento.MisEntrenamientos;
 import rutinas.VentanaRutinas;
 
@@ -77,6 +80,11 @@ public class VentanaPrincipal extends JFrame {
 		});
 		historial.addActionListener(e-> {
 			MisEntrenamientos v2=new MisEntrenamientos();
+			this.dispose();
+			v2.setVisible(true);
+		});
+		stats.addActionListener(e-> {
+			VentanaEstadisticas v2=new VentanaEstadisticas();
 			this.dispose();
 			v2.setVisible(true);
 		});
