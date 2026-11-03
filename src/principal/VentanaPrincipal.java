@@ -1,6 +1,7 @@
 package principal;
 
 import java.awt.BorderLayout;
+import misEntrenamiento.MisEntrenamientos;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -12,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import misEntrenamiento.MisEntrenamientos;
 import rutinas.VentanaRutinas;
 
 public class VentanaPrincipal extends JFrame {
@@ -54,14 +56,15 @@ public class VentanaPrincipal extends JFrame {
 		panelPrincipal.add(rutinas);
 		panelPrincipal.add(progreso);
 		panelPrincipal.add(perfil);
+		rutinas.addActionListener(e-> {
+			
+		});
 		
 //		rutinas.addActionListener(abrirRutinas());
 //		progreso.addActionListener(null);
 //		perfil.addActionListener(null);
 	}
-	// QUE PASOOOOOOOOOOdsddsd
-	// HOLAAAAAAAAAAAAAAAA
-	//WAZAAAAAAAAAAAAAAAAa
+	
 	public void formatoBoton(JButton boton) {
 		boton.setFont(new Font("Arial", Font.BOLD, 30));
 		boton.setBackground(Color.CYAN);
