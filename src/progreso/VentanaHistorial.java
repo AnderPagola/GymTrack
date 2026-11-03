@@ -1,10 +1,12 @@
 package progreso;
 
 import java.awt.BorderLayout;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
@@ -46,6 +48,38 @@ public class VentanaHistorial extends JFrame{
 		
 		//Creamos la tabla utilizando el modelo
 		tablaEntrenamientos = new JTable(modeloTabla);
+		
+		//HASTA AQUI HE HECHO EL COMMIT
+		
+		//Añadimos barra para poder desplazar la ventana
+		JScrollPane desplazamiento = new JScrollPane(tablaEntrenamientos);
+		
+		panelPrincipal.add(desplazamiento, BorderLayout.CENTER);
+		
+		//Cargamos los entrenamientos
+		cargarEntrenamientos();
+		
+		add(panelPrincipal);
+		
+		
+	}
+
+	private void cargarEntrenamientos() {
+		// TODO Auto-generated method stub
+		ArrayList<RegistroEntrenamiento> lista = VentanaRegistro.getGestor().obtenerEntrenamientos();
+		
+		for(RegistroEntrenamiento registro : lista) {
+			Object[] fila = {
+					registro.getEjercicio(),
+					registro.getPeso(),
+					registro.getSeries(),
+					registro.getRepeticiones(),
+					registro.getFecha()
+			};
+			
+			modeloTabla.addColumn(fila);
+		}
+		
 		
 	}
 }

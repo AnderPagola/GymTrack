@@ -98,6 +98,12 @@ public class VentanaRegistro extends JFrame{
 		
 		add(panelPrincipal);
 		
+		
+		
+	}
+	
+	public static GestorEntrenamientos getGestor() {
+	    return gestor;
 	}
 	
 	
@@ -132,6 +138,7 @@ public class VentanaRegistro extends JFrame{
 		}catch (java.time.format.DateTimeParseException e) {
 			System.out.println("La fecha debe tener el formato AAAA-MM-DD y no pasarse de sus limites");
 		}
+		
 	}
 	
 	
