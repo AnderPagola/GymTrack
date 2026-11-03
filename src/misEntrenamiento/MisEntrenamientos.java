@@ -38,15 +38,24 @@ public class MisEntrenamientos extends JFrame {
 		JPanel panelcolumnas=new JPanel();
 		panelcolumnas.setLayout(new GridLayout(1,7,5,5));
 		JPanel panelcolumnas2=new JPanel();
-		panelcolumnas.setLayout(new GridLayout(1,7,5,5));
+		panelcolumnas.setLayout(new GridLayout(1,14,5,5));
 		String[] columnas= {"L","M","M","J","V","S","D"};
 		int[] dias= {12,13,14,15,16,17,18};
 		for(String c:columnas) {
-			panelcolumnas.add(new JLabel(c));
+			
+			panelcolumnas.add(new JLabel(c,SwingConstants.CENTER));
 		}
 		for(int i: dias) {
-			panelcolumnas2.add(new JButton(String.valueOf(i)));
+			JButton bot=new JButton(String.valueOf(i));
+			bot.setPreferredSize(new Dimension(50,40));
+			panelcolumnas2.add(bot);
+			JLabel lblvacio=new JLabel();//Hueco para dejar entre boton y boton, no consigo modificando el grid
+			lblvacio.setPreferredSize(new Dimension(25,20));
+			panelcolumnas2.add(lblvacio);
 		}
+		
+		
+		
 		panelnorth.add(panelcolumnas, BorderLayout.NORTH);
 		panelnorth.add(panelcolumnas2,BorderLayout.CENTER);
 		

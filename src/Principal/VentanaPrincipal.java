@@ -1,11 +1,10 @@
-package Principal;
+package principal;
 
 import java.awt.BorderLayout;
 import misEntrenamiento.MisEntrenamientos;
 import objetivos.VentanaObjetivos;
 import progreso.VentanaSeguimiento;
-import rutinas.Rutina;
-
+import rutinas.VentanaRutinas;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -77,7 +76,7 @@ public class VentanaPrincipal extends JFrame {
 			v2.setVisible(true);
 		});
 		rutinas.addActionListener(e-> {
-			Rutina v2=new Rutina();
+			VentanaRutinas v2=new VentanaRutinas();
 			this.dispose();
 			v2.setVisible(true);
 		});
