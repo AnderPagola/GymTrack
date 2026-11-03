@@ -1,6 +1,7 @@
-package Principal;
+package principal;
 
 import java.awt.BorderLayout;
+import misEntrenamiento.MisEntrenamientos;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -12,13 +13,17 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import Rutinas.VentanaRutinas;
+import misEntrenamiento.MisEntrenamientos;
+import rutinas.VentanaRutinas;
 
 public class VentanaPrincipal extends JFrame {
 	
-	private JButton rutinas = new JButton("Mis rutinas");
 	private JButton progreso = new JButton("Progreso");
-	private JButton perfil = new JButton("Perfil");
+	private JButton rutinas = new JButton("Mis rutinas");
+	private JButton historial = new JButton("Historial");
+	private JButton stats = new JButton("Estadísticas");
+	private JButton objetivos = new JButton("Objetivos");
+	
 	
 	public VentanaPrincipal() {
 		setSize(400,600);
@@ -29,7 +34,7 @@ public class VentanaPrincipal extends JFrame {
 		setLayout(new BorderLayout());
 		
 		JPanel panelPrincipal = new JPanel();
-		panelPrincipal.setLayout(new GridLayout(3,1,5,5));
+		panelPrincipal.setLayout(new GridLayout(5,1,5,5));
 		//Mis rutinas, Progreso, Perfil
 		panelPrincipal.setBackground(Color.ORANGE);
 		add(panelPrincipal, BorderLayout.CENTER);
@@ -47,21 +52,26 @@ public class VentanaPrincipal extends JFrame {
 		add(panelNorte, BorderLayout.NORTH);
 		
 		//Botones
-		formatoBoton(rutinas);
 		formatoBoton(progreso);
-		formatoBoton(perfil);
+		formatoBoton(rutinas);
+		formatoBoton(historial);
+		formatoBoton(stats);
+		formatoBoton(objetivos);
 
-		panelPrincipal.add(rutinas);
 		panelPrincipal.add(progreso);
-		panelPrincipal.add(perfil);
+
+		panelPrincipal.add(progreso);
+		panelPrincipal.add(rutinas);
+		panelPrincipal.add(historial);
+		panelPrincipal.add(stats);
+		panelPrincipal.add(objetivos);
+
 		
 //		rutinas.addActionListener(abrirRutinas());
 //		progreso.addActionListener(null);
 //		perfil.addActionListener(null);
 	}
-	// QUE PASOOOOOOOOOOdsddsd
-	// HOLAAAAAAAAAAAAAAAA
-	//WAZAAAAAAAAAAAAAAAAa
+	
 	public void formatoBoton(JButton boton) {
 		boton.setFont(new Font("Arial", Font.BOLD, 30));
 		boton.setBackground(Color.CYAN);

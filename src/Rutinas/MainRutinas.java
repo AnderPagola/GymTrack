@@ -1,4 +1,4 @@
-package Rutinas;
+package rutinas;
 
 import javax.swing.SwingUtilities;
 

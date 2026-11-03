@@ -1,4 +1,4 @@
-package Rutinas;
+package rutinas;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -49,8 +49,8 @@ public class VentanaRutinas extends JFrame {
 		JPanel panelSur = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 		panelSur.add(añadir);
 
-		
 		add(panelSur, BorderLayout.SOUTH);
+		//Macar
 		
 	}
 
