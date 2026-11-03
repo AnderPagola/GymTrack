@@ -53,6 +53,11 @@ public class VentanaSeguimiento extends JFrame {
         
 
         JButton botonHistorial = new JButton("Consultar Historial");
+        botonHistorial.addActionListener(e -> {
+        	VentanaHistorial ventana = new VentanaHistorial();
+        	ventana.setVisible(true);
+        });
+        
 
         JButton botonProgreso = new JButton("Consultar Progreso");
 

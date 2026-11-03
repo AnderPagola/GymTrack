@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class GestorEntrenamientos {
 	
 	//Creamos la lista donde guardaremos los registros
-	private ArrayList<RegistroEntrenamiento> entrenamientos = new ArrayList<>();
+	private ArrayList<RegistroEntrenamiento> entrenamientos;
 	
 	public GestorEntrenamientos() {
 		entrenamientos = new ArrayList<>();

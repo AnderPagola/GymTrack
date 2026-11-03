@@ -102,9 +102,7 @@ public class VentanaRegistro extends JFrame{
 		
 	}
 	
-	public static GestorEntrenamientos getGestor() {
-	    return gestor;
-	}
+	
 	
 	
 	private void guardarEntrenamiento() {
@@ -149,6 +147,10 @@ public class VentanaRegistro extends JFrame{
 		});
 	}
 	
+	
+	public static GestorEntrenamientos getGestor() {
+	    return gestor;
+	}
 	
 	
 }

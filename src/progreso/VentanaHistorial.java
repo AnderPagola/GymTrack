@@ -49,7 +49,6 @@ public class VentanaHistorial extends JFrame{
 		//Creamos la tabla utilizando el modelo
 		tablaEntrenamientos = new JTable(modeloTabla);
 		
-		//HASTA AQUI HE HECHO EL COMMIT
 		
 		//Añadimos barra para poder desplazar la ventana
 		JScrollPane desplazamiento = new JScrollPane(tablaEntrenamientos);
@@ -77,7 +76,7 @@ public class VentanaHistorial extends JFrame{
 					registro.getFecha()
 			};
 			
-			modeloTabla.addColumn(fila);
+			modeloTabla.addRow(fila);
 		}
 		
 		
