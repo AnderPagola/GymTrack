@@ -60,7 +60,7 @@ public class VentanaPrincipal extends JFrame {
 
 		panelPrincipal.add(progreso);
 
-		panelPrincipal.add(perfil);
+		panelPrincipal.add(progreso);
 		panelPrincipal.add(rutinas);
 		panelPrincipal.add(historial);
 		panelPrincipal.add(stats);
