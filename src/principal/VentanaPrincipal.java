@@ -2,7 +2,9 @@ package principal;
 
 import java.awt.BorderLayout;
 import misEntrenamiento.MisEntrenamientos;
+import objetivos.VentanaObjetivos;
 import progreso.VentanaSeguimiento;
+import rutinas.VentanaRutinas;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -88,8 +90,8 @@ public class VentanaPrincipal extends JFrame {
 			this.dispose();
 			v2.setVisible(true);
 		});
-		stats.addActionListener(e-> {
-			VentanaEstadisticas v2=new VentanaEstadisticas();
+		objetivos.addActionListener(e-> {
+			VentanaObjetivos v2=new VentanaObjetivos();
 			this.dispose();
 			v2.setVisible(true);
 		});
