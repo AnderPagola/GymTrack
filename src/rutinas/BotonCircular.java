@@ -1,4 +1,4 @@
-package Rutinas;
+package rutinas;
 
 import java.awt.Color;
 import java.awt.Font;

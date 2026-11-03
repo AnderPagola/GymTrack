@@ -1,4 +1,4 @@
-package Rutinas;
+package rutinas;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

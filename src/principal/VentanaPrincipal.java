@@ -1,4 +1,4 @@
-package Principal;
+package principal;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -12,7 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import Rutinas.VentanaRutinas;
+import rutinas.VentanaRutinas;
 
 public class VentanaPrincipal extends JFrame {
 	
