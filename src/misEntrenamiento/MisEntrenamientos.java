@@ -50,7 +50,6 @@ public class MisEntrenamientos extends JFrame {
 		panelnorth.add(panelcolumnas, BorderLayout.NORTH);
 		panelnorth.add(panelcolumnas2,BorderLayout.CENTER);
 		
-	
 		
 		
 		JPanel panelcentro=new JPanel();
