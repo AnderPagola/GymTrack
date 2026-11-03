@@ -2,12 +2,14 @@ package progreso;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.Label;
 
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -69,6 +71,19 @@ public class VentanaRegistro extends JFrame{
 		
 		panelPrincipal.add(panelFormulario, BorderLayout.CENTER);
 		
+		
+		//HASTA AQUI HE HECHO COMMIT
+		
+		//Panel de botones
+		JPanel panelBotones = new JPanel(new FlowLayout());
+		
+		JButton botonGuardar = new JButton("Guardar entrenamiento");
+		JButton botonCancelar = new JButton("Cancelar");
+		
+		panelBotones.add(botonGuardar);
+		panelBotones.add(botonCancelar);
+		
+		panelPrincipal.add(panelBotones, BorderLayout.SOUTH);
 	
 	}
 	
