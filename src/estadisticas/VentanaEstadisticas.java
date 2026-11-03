@@ -90,7 +90,9 @@ public class VentanaEstadisticas extends JFrame {
 		panelGeneral.setLayout(new BorderLayout());
 		add(panelGeneral, BorderLayout.CENTER);
 		
-		panelContenido.add(label);
+		panelContenido.setLayout(new BorderLayout());
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		panelContenido.add(label, BorderLayout.NORTH);
 		panelGeneral.add(panelContenido, BorderLayout.CENTER);
 		
 		String[] stats = {
