@@ -28,6 +28,8 @@ public class VentanaRegistro extends JFrame{
 	private JTextField campoRepes;
 	private JTextField campoFecha;
 	
+	//Gestor que administra los entrenamientos
+	private static GestorEntrenamientos gestor = new GestorEntrenamientos();
 	
 	public VentanaRegistro() {
 		
@@ -115,6 +117,15 @@ public class VentanaRegistro extends JFrame{
 				System.out.println("Comprueba que todos los campos sean correctos.");
 				return;
 			}
+			System.out.println("Entrenamiento registrado correctamente");
+			
+			//Creamos un objeto con los datos introducidos
+			RegistroEntrenamiento nuevoRegistro = new RegistroEntrenamiento(ejercicio, peso, series, repeticiones, fecha);
+			
+			//Añadimos el entrenamiento al gestor
+			gestor.agregarEntrenamiento(nuevoRegistro);
+			
+			//Mostramos mensaje de confirmacion
 			System.out.println("Entrenamiento registrado correctamente");
 			
 		}catch (NumberFormatException e) {
