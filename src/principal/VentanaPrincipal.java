@@ -2,6 +2,10 @@ package principal;
 
 import java.awt.BorderLayout;
 import misEntrenamiento.MisEntrenamientos;
+import objetivos.VentanaObjetivos;
+import progreso.VentanaSeguimiento;
+import rutinas.VentanaRutinas;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -13,6 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import estadisticas.VentanaEstadisticas;
 import misEntrenamiento.MisEntrenamientos;
 //import rutinas.VentanaRutinas;
 
@@ -58,18 +63,38 @@ public class VentanaPrincipal extends JFrame {
 		formatoBoton(stats);
 		formatoBoton(objetivos);
 
-		panelPrincipal.add(progreso);
 
 		panelPrincipal.add(progreso);
 		panelPrincipal.add(rutinas);
 		panelPrincipal.add(historial);
 		panelPrincipal.add(stats);
 		panelPrincipal.add(objetivos);
-
 		
-//		rutinas.addActionListener(abrirRutinas());
-//		progreso.addActionListener(null);
-//		perfil.addActionListener(null);
+		progreso.addActionListener(e-> {
+			VentanaSeguimiento v2=new VentanaSeguimiento();
+			this.dispose();
+			v2.setVisible(true);
+		});
+		rutinas.addActionListener(e-> {
+			VentanaRutinas v2=new VentanaRutinas();
+			this.dispose();
+			v2.setVisible(true);
+		});
+		historial.addActionListener(e-> {
+			MisEntrenamientos v2=new MisEntrenamientos();
+			this.dispose();
+			v2.setVisible(true);
+		});
+		stats.addActionListener(e-> {
+			VentanaEstadisticas v2=new VentanaEstadisticas();
+			this.dispose();
+			v2.setVisible(true);
+		});
+		objetivos.addActionListener(e-> {
+			VentanaObjetivos v2=new VentanaObjetivos();
+			this.dispose();
+			v2.setVisible(true);
+		});
 	}
 	
 	public void formatoBoton(JButton boton) {

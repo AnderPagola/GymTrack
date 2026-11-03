@@ -2,13 +2,16 @@ package misEntrenamiento;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 
 public class MisEntrenamientos extends JFrame {
@@ -27,8 +30,26 @@ public class MisEntrenamientos extends JFrame {
 		setVisible(true);
 		 	
 		JPanel panelnorth= new JPanel();
-		panelnorth.setBorder(BorderFactory.createTitledBorder("Calendario"));
-		panelnorth.setBackground(Color.red);
+		panelnorth.setBorder(BorderFactory.createTitledBorder("Mis Entrenamientos"));
+		panelnorth.setBackground(Color.gray);
+		panelnorth.setPreferredSize(new Dimension(0,200));
+		panelnorth.setLayout(new BorderLayout());
+		
+		JPanel panelcolumnas=new JPanel();
+		panelcolumnas.setLayout(new GridLayout(1,7,5,5));
+		JPanel panelcolumnas2=new JPanel();
+		panelcolumnas.setLayout(new GridLayout(1,7,5,5));
+		String[] columnas= {"L","M","M","J","V","S","D"};
+		int[] dias= {12,13,14,15,16,17,18};
+		for(String c:columnas) {
+			panelcolumnas.add(new JLabel(c));
+		}
+		for(int i: dias) {
+			panelcolumnas2.add(new JButton(String.valueOf(i)));
+		}
+		panelnorth.add(panelcolumnas, BorderLayout.NORTH);
+		panelnorth.add(panelcolumnas2,BorderLayout.CENTER);
+		
 		
 		
 		JPanel panelcentro=new JPanel();
@@ -57,6 +78,6 @@ public class MisEntrenamientos extends JFrame {
 //		boton.setOpaque(true);
 //	    boton.setContentAreaFilled(true);
 	    boton.setFocusPainted(false);
-	    //Ander
+	    
 	}
 }
