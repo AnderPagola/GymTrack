@@ -49,6 +49,7 @@ public class VentanaRutinas extends JFrame {
 		JPanel panelSur = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 		panelSur.add(añadir);
 
+		
 		add(panelSur, BorderLayout.SOUTH);
 		
 	}
