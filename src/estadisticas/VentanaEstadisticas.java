@@ -129,5 +129,9 @@ public class VentanaEstadisticas extends JFrame {
 		
 		
 	}
+	
+	public void VolumenSemana() {
+		
+	}
 
 }
