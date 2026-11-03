@@ -50,6 +50,7 @@ public class VentanaRutinas extends JFrame {
 		panelSur.add(añadir);
 
 		add(panelSur, BorderLayout.SOUTH);
+		
 	}
 
 }
