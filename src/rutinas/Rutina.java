@@ -158,7 +158,7 @@ public class Rutina extends JFrame {
 	}
 
 
-
+	
 	private JButton crearBotonRutina(String titulo, String texto) {
 		JButton boton = new JButton(titulo + " - " + texto);
 		boton.setFont(new Font("Arial", Font.PLAIN, 16));
@@ -174,9 +174,83 @@ public class Rutina extends JFrame {
 
 	//PANEL DE EJERCICIOS
 	private void crearPanelEjercicios() {
-		// TODO Auto-generated method stub
+        panelEjercicios = new JPanel(new BorderLayout(10, 10));
+        panelEjercicios.setBackground(BLANCO);
+        panelEjercicios.setBorder(
+            BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(
+                    new Color(220, 220, 220)
+                ),
+                BorderFactory.createEmptyBorder(15, 15, 15, 15)
+            )
+        );
+
+        // Título
+        JLabel titulo = new JLabel("Ejercicios");
+        titulo.setFont(new Font("Arial", Font.BOLD, 20));
+
+        panelEjercicios.add(titulo, BorderLayout.NORTH);
+
+        // Lista
+        modeloEjercicios = new DefaultListModel<>();
+        listaEjercicios = new JList<>(modeloEjercicios);
+
+        listaEjercicios.setFont(new Font("Arial", Font.PLAIN, 16));
+        listaEjercicios.setSelectionMode(
+            ListSelectionModel.SINGLE_SELECTION
+        );
+
+        JScrollPane scroll = new JScrollPane(listaEjercicios);
+
+        panelEjercicios.add(scroll, BorderLayout.CENTER);
+
+        // Botones
+        JPanel botones = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        botones.setBackground(BLANCO);
+
+        JButton anadir = new JButton("Añadir");
+        JButton editar = new JButton("Editar");
+        JButton eliminar = new JButton("Eliminar");
+
+        botones.add(anadir);
+        botones.add(editar);
+        botones.add(eliminar);
+
+        panelEjercicios.add(botones, BorderLayout.SOUTH);
+
+        // Acciones
+        anadir.addActionListener(e -> anadirEjercicio());
+
+        editar.addActionListener(e -> editarEjercicio());
+
+        eliminar.addActionListener(e -> eliminarEjercicio());
+
+        actualizarEjercicios();
 		
 	}
+	
+	private Object anadirEjercicio() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	private Object eliminarEjercicio() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+	private Object editarEjercicio() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+	
+
 
 
 	//NAVEGACION INFERIOR
