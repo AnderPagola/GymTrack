@@ -117,7 +117,6 @@ public class VentanaRegistro extends JFrame{
 				System.out.println("Comprueba que todos los campos sean correctos.");
 				return;
 			}
-			System.out.println("Entrenamiento registrado correctamente");
 			
 			//Creamos un objeto con los datos introducidos
 			RegistroEntrenamiento nuevoRegistro = new RegistroEntrenamiento(ejercicio, peso, series, repeticiones, fecha);
