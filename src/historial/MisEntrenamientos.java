@@ -11,6 +11,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
@@ -65,6 +66,33 @@ public class MisEntrenamientos extends JFrame {
 		botonantes.addActionListener(e->{
 			    diaI -= 7;
 			    actualizarSemana();
+			    if(diaI<=1) {
+					JOptionPane.showMessageDialog(
+						    this,
+						    "No puedes retroceder más",
+						    "Error",
+						    JOptionPane.ERROR_MESSAGE
+						);//Mensaje creado con IA
+				}else {
+					actualizarSemana();
+				}
+		});
+		botondespues.addActionListener(e->{
+			diaI+=7;
+			if(diaI>=22) {
+				JOptionPane.showMessageDialog(
+					    this,
+					    "No puedes avanzar más",
+					    "Error",
+					    JOptionPane.ERROR_MESSAGE
+					);//Mensaje creado con IA
+			}else {
+				actualizarSemana();
+			}
+		});
+		botonactual.addActionListener(e->{
+			diaI=8;
+			actualizarSemana();
 		});
 		JPanel panelsur2=new JPanel();
 		panelsur2.setLayout(new GridLayout(1,3,20,20));
