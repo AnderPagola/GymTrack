@@ -108,11 +108,68 @@ public class Rutina extends JFrame {
         panelPrincipal.add(contenido, BorderLayout.CENTER);
 		
 	}
+    
+    //HACER COMMIT A PARTIR DE AQUI
     //PANEL DE RUTINAS
 	private void crearPanelRutinas() {
-		// TODO Auto-generated method stub
 		
+        panelRutinas = new JPanel(new GridLayout(2, 1, 0, 10));
+        panelRutinas.setBackground(FONDO);
+
+        JButton pierna = crearBotonRutina(
+            "PIERNA Y ABDOMEN",
+            "Seleccionar rutina"
+        );
+
+        JButton torso = crearBotonRutina(
+            "TORSO Y BRAZOS",
+            "Seleccionar rutina"
+        );
+
+        pierna.addActionListener(e -> {
+            rutinaSeleccionada = "Pierna y abdomen";
+            actualizarEjercicios();
+        });
+
+        torso.addActionListener(e -> {
+            rutinaSeleccionada = "Torso y brazos";
+            actualizarEjercicios();
+        });
+
+        panelRutinas.add(pierna);
+        panelRutinas.add(torso);
 	}
+
+	//ACTUALIZAR LA LISTA
+	private void actualizarEjercicios() {
+        modeloEjercicios.clear();
+
+        ArrayList<String> ejercicios;
+
+        if (rutinaSeleccionada.equals("Pierna y abdomen")) {
+            ejercicios = ejerciciosPierna;
+        } else {
+            ejercicios = ejerciciosTorso;
+        }
+
+        for (String ejercicio : ejercicios) {
+            modeloEjercicios.addElement(ejercicio);
+        }
+	}
+
+
+
+	private JButton crearBotonRutina(String titulo, String texto) {
+		JButton boton = new JButton(titulo + " - " + texto);
+		boton.setFont(new Font("Arial", Font.PLAIN, 16));
+		boton.setBackground(BLANCO);
+		boton.setFocusPainted(false);
+		boton.setBorder(
+		BorderFactory.createLineBorder(new Color(220, 220, 220))
+		);
+		return boton;
+	}
+
 
 
 	//PANEL DE EJERCICIOS
