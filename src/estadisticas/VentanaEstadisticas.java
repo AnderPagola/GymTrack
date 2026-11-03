@@ -16,7 +16,7 @@ import javax.swing.SwingConstants;
 import misEntrenamiento.MisEntrenamientos;
 import objetivos.VentanaObjetivos;
 import progreso.VentanaSeguimiento;
-import rutinas.VentanaRutinas;
+import rutinas.Rutina;
 
 public class VentanaEstadisticas extends JFrame {
 	
@@ -70,7 +70,7 @@ public class VentanaEstadisticas extends JFrame {
 			v2.setVisible(true);
 		});
 		rutina.addActionListener(e -> {
-			VentanaRutinas v2=new VentanaRutinas();
+			Rutina v2=new Rutina();
 			this.dispose();
 			v2.setVisible(true);
 		});
