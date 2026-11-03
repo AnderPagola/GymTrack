@@ -31,5 +31,21 @@ public class VentanaHistorial extends JFrame{
 		panelPrincipal.add(titulo, BorderLayout.NORTH);
 	
 		
+		//Configuramos las columnas de la tabla
+		String[] columnas = {"Ejercicio", "Peso (kg)", "Series", "Repeticiones", "Fecha"};
+		
+		//Creamos el modelo de la tabla
+		modeloTabla = new DefaultTableModel(columnas, 0) {
+			
+			//Evitar que el usuario modifique los datos directamente.
+			//Hecho con ChatGPT
+			public boolean isCellEditable(int fila, int columna) {
+				return false;
+			}
+		};
+		
+		//Creamos la tabla utilizando el modelo
+		tablaEntrenamientos = new JTable(modeloTabla);
+		
 	}
 }
