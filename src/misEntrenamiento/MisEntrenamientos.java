@@ -57,5 +57,6 @@ public class MisEntrenamientos extends JFrame {
 //		boton.setOpaque(true);
 //	    boton.setContentAreaFilled(true);
 	    boton.setFocusPainted(false);
+	    //Ander
 	}
 }
