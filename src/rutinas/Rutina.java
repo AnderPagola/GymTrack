@@ -42,6 +42,91 @@ public class Rutina extends JFrame {
         ejerciciosTorso.add("Press banca");
         ejerciciosTorso.add("Jalón al pecho");
         ejerciciosTorso.add("Curl de bíceps");
+        
+        // Panel principal
+        panelPrincipal = new JPanel(new BorderLayout());
+        panelPrincipal.setBackground(FONDO);
 
+        // Crear las diferentes partes
+        crearCabecera();
+        crearContenido();
+        crearNavegacion();
+
+        setContentPane(panelPrincipal);
+        setVisible(true);
     }
+
+
+
+	// CABECERA
+    private void crearCabecera() {
+
+        JPanel cabecera = new JPanel(new BorderLayout());
+        cabecera.setBackground(BLANCO);
+        cabecera.setBorder(
+            BorderFactory.createEmptyBorder(15, 25, 15, 25)
+        );
+
+        JLabel titulo = new JLabel("Mis Rutinas");
+        titulo.setFont(new Font("Arial", Font.BOLD, 25));
+
+        JButton configuracion = new JButton("O");
+        configuracion.setFont(new Font("Arial", Font.PLAIN, 20));
+
+        cabecera.add(titulo, BorderLayout.WEST);
+        cabecera.add(configuracion, BorderLayout.EAST);
+
+        panelPrincipal.add(cabecera, BorderLayout.NORTH);
+    }
+    
+    //CONTENIDO PRINCIPAL
+    private void crearContenido() {
+        JPanel contenido = new JPanel();
+
+        contenido.setLayout(
+            new BoxLayout(contenido, BoxLayout.Y_AXIS)
+        );
+
+        contenido.setBackground(FONDO);
+
+        contenido.setBorder(
+            BorderFactory.createEmptyBorder(15, 20, 15, 20)
+        );
+
+        crearPanelRutinas();
+        crearPanelEjercicios();
+
+        panelRutinas.setPreferredSize(new Dimension(400, 150));
+        panelRutinas.setMaximumSize(new Dimension(Integer.MAX_VALUE, 150));
+
+        panelEjercicios.setPreferredSize(new Dimension(400, 350));
+
+        contenido.add(panelRutinas);
+        contenido.add(Box.createVerticalStrut(20));
+        contenido.add(panelEjercicios);
+
+        panelPrincipal.add(contenido, BorderLayout.CENTER);
+		
+	}
+    //PANEL DE RUTINAS
+	private void crearPanelRutinas() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	//PANEL DE EJERCICIOS
+	private void crearPanelEjercicios() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	//NAVEGACION INFERIOR
+	private void crearNavegacion() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
+
