@@ -13,16 +13,25 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
+
+import estadisticas.VentanaEstadisticas;
+import objetivos.VentanaObjetivos;
+import progreso.VentanaSeguimiento;
+import rutinas.Rutina;
 
 public class MisEntrenamientos extends JFrame {
-	private JButton botonentrenar =new JButton("Entrenar");
+	private JButton botonhistorial =new JButton("Entrenar");
 	private JButton botonRutinas=new JButton("Mis rutinas");
 	private JButton botonprogreso=new JButton("Progreso");
 	private JButton botonperfil=new JButton("Perfil");
 	private int diaI=8;
-	private ArrayList<JButton>botonesDias=new ArrayList<JButton>();
+	private JTable tablaCalendario;
+	private DefaultTableModel modeloTabla;
 	
 	public MisEntrenamientos() {
 		// TODO Auto-generated constructor stub
@@ -37,36 +46,46 @@ public class MisEntrenamientos extends JFrame {
 		JPanel panelnorth= new JPanel();
 		panelnorth.setBorder(BorderFactory.createTitledBorder("Mis Entrenamientos"));
 		panelnorth.setBackground(Color.gray);
-		panelnorth.setPreferredSize(new Dimension(0,200));
+		panelnorth.setPreferredSize(new Dimension(0,120));
 		panelnorth.setLayout(new BorderLayout());
 		
-		JPanel panelcolumnas=new JPanel();
-		panelcolumnas.setLayout(new GridLayout(1,7,5,5));
-		JPanel panelcolumnas2=new JPanel();
-		panelcolumnas.setLayout(new GridLayout(1,14,5,5));
-		String[] columnas= {"L","M","M","J","V","S","D"};
-		
-		for(String c:columnas) {
-			
-			panelcolumnas.add(new JLabel(c,SwingConstants.CENTER));
-		}
-		for(int i=1;i<diaI;i++) {
-			JButton bot=new JButton(String.valueOf(i+7));
-			bot.setPreferredSize(new Dimension(50,40));
-			panelcolumnas2.add(bot);
-			botonesDias.add(bot);
-			JLabel lblvacio=new JLabel();//Hueco para dejar entre boton y boton, no consigo modificando el grid
-			lblvacio.setPreferredSize(new Dimension(25,20));
-			panelcolumnas2.add(lblvacio);
-		}
+		String[] columnas = {"L", "M", "M", "J", "V", "S", "D"};
+
+		Object[][] datos = {
+		    {
+		        String.valueOf(diaI),
+		        String.valueOf(diaI + 1),
+		        String.valueOf(diaI + 2),
+		        String.valueOf(diaI + 3),
+		        String.valueOf(diaI + 4),
+		        String.valueOf(diaI + 5),
+		        String.valueOf(diaI + 6)
+		    }
+		};
+//**PARTE DE LA TABLA AYUDADA CON IA
+		modeloTabla = new DefaultTableModel(datos, columnas) {
+		    @Override
+		    public boolean isCellEditable(int row, int column) {
+		        return false;
+		    }
+		};
+
+		tablaCalendario = new JTable(modeloTabla);
+
+		tablaCalendario.setRowHeight(40);
+		tablaCalendario.setFont(new Font("Arial", Font.BOLD, 16));
+		tablaCalendario.getTableHeader().setFont(new Font("Arial", Font.BOLD, 16));
+
+		JScrollPane scroll = new JScrollPane(tablaCalendario);
+
+		panelnorth.add(scroll, BorderLayout.CENTER);
 		JButton botonantes=new JButton("Semana pasada");
 		JButton botonactual=new JButton("Semana actual");
 		JButton botondespues=new JButton("Semana siguente");
 		
 		botonantes.addActionListener(e->{
 			    diaI -= 7;
-			    actualizarSemana();
-			    if(diaI<=1) {
+			    if(diaI<1) {
 					JOptionPane.showMessageDialog(
 						    this,
 						    "No puedes retroceder más",
@@ -76,16 +95,18 @@ public class MisEntrenamientos extends JFrame {
 				}else {
 					actualizarSemana();
 				}
+			    actualizarSemana();
+			    
 		});
 		botondespues.addActionListener(e->{
 			diaI+=7;
-			if(diaI>=22) {
+			if(diaI>22) {
 				JOptionPane.showMessageDialog(
 					    this,
 					    "No puedes avanzar más",
 					    "Error",
 					    JOptionPane.ERROR_MESSAGE
-					);//Mensaje creado con IA
+					);
 			}else {
 				actualizarSemana();
 			}
@@ -100,26 +121,41 @@ public class MisEntrenamientos extends JFrame {
 		panelsur2.add(botonactual);
 		panelsur2.add(botondespues);
 		panelnorth.add(panelsur2,BorderLayout.SOUTH);
-
-		
-		
-		panelnorth.add(panelcolumnas, BorderLayout.NORTH);
-		panelnorth.add(panelcolumnas2,BorderLayout.CENTER);
-		
-		
+	
 		
 		JPanel panelcentro=new JPanel();
 		panelcentro.setBackground(Color.black);
 		JPanel panelsouth=new JPanel();
 		panelsouth.setLayout(new GridLayout(1,4,20,20));
 		formatoBoton(botonRutinas);
-		formatoBoton(botonentrenar);
+		formatoBoton(botonhistorial);
 		formatoBoton(botonperfil);
 		formatoBoton(botonprogreso);
-		panelsouth.add(botonentrenar);
+		panelsouth.add(botonhistorial);
 		panelsouth.add(botonRutinas);
 		panelsouth.add(botonprogreso);
 		panelsouth.add(botonperfil);
+		
+		botonprogreso.addActionListener(e-> {
+			VentanaSeguimiento v2=new VentanaSeguimiento();
+			this.dispose();
+			v2.setVisible(true);
+		});
+		botonRutinas.addActionListener(e-> {
+			Rutina v2=new Rutina();
+			this.dispose();
+			v2.setVisible(true);
+		});
+		botonhistorial.addActionListener(e-> {
+			MisEntrenamientos v2=new MisEntrenamientos();
+			this.dispose();
+			v2.setVisible(true);
+		});
+		botonperfil.addActionListener(e-> {
+			VentanaObjetivos v2=new VentanaObjetivos();
+			this.dispose();
+			v2.setVisible(true);
+		});
 		
 		add(panelnorth, BorderLayout.NORTH);
 		add(panelcentro, BorderLayout.CENTER);
@@ -137,8 +173,13 @@ public class MisEntrenamientos extends JFrame {
 	    
 	}
 	private void actualizarSemana() {
-	    for (int i = 0; i < botonesDias.size(); i++) {
-	        botonesDias.get(i).setText(String.valueOf(diaI + i));
+
+	    for(int i = 0; i < 7; i++) {
+	        modeloTabla.setValueAt(
+	            String.valueOf(diaI + i),
+	            0,
+	            i
+	        );
 	    }
 	}
 }
