@@ -18,6 +18,7 @@ public class MisEntrenamientos extends JFrame {
 	private JButton botonperfil=new JButton("Perfil");
 	public MisEntrenamientos() {
 		// TODO Auto-generated constructor stub
+		
 		setTitle("Historial y evolucion");
 		setSize(600,600);
 		setLocationRelativeTo(null);
@@ -28,6 +29,7 @@ public class MisEntrenamientos extends JFrame {
 		JPanel panelnorth= new JPanel();
 		panelnorth.setBorder(BorderFactory.createTitledBorder("Calendario"));
 		panelnorth.setBackground(Color.red);
+		//a
 		
 		JPanel panelcentro=new JPanel();
 		panelcentro.setBackground(Color.black);
