@@ -1,7 +1,7 @@
 package principal;
 
 import java.awt.BorderLayout;
-import misEntrenamiento.MisEntrenamientos;
+
 import objetivos.VentanaObjetivos;
 import progreso.VentanaSeguimiento;
 import rutinas.Rutina;
@@ -18,8 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import estadisticas.VentanaEstadisticas;
-import misEntrenamiento.MisEntrenamientos;
-//import rutinas.VentanaRutinas;
+import historial.MisEntrenamientos;
 
 public class VentanaPrincipal extends JFrame {
 	

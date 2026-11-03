@@ -13,7 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import misEntrenamiento.MisEntrenamientos;
+import historial.MisEntrenamientos;
 import objetivos.VentanaObjetivos;
 import progreso.VentanaSeguimiento;
 import rutinas.Rutina;
