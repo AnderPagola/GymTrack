@@ -58,18 +58,33 @@ public class VentanaPrincipal extends JFrame {
 		formatoBoton(stats);
 		formatoBoton(objetivos);
 
-		panelPrincipal.add(progreso);
 
 		panelPrincipal.add(progreso);
 		panelPrincipal.add(rutinas);
 		panelPrincipal.add(historial);
 		panelPrincipal.add(stats);
 		panelPrincipal.add(objetivos);
-
 		
-//		rutinas.addActionListener(abrirRutinas());
-//		progreso.addActionListener(null);
-//		perfil.addActionListener(null);
+		progreso.addActionListener(e-> {
+			VentanaSeguimiento v2=new VentanaSeguimiento();
+			this.dispose();
+			v2.setVisible(true);
+		});
+		rutinas.addActionListener(e-> {
+			VentanaRutinas v2=new VentanaRutinas();
+			this.dispose();
+			v2.setVisible(true);
+		});
+		historial.addActionListener(e-> {
+			MisEntrenamientos v2=new MisEntrenamientos();
+			this.dispose();
+			v2.setVisible(true);
+		});
+		stats.addActionListener(e-> {
+			VentanaEstadisticas v2=new VentanaEstadisticas();
+			this.dispose();
+			v2.setVisible(true);
+		});
 	}
 	
 	public void formatoBoton(JButton boton) {
