@@ -17,10 +17,12 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 import estadisticas.VentanaEstadisticas;
 import objetivos.VentanaObjetivos;
+import perfil.VentanaPerfil;
 import progreso.VentanaSeguimiento;
 import rutinas.Rutina;
 
@@ -74,7 +76,19 @@ public class MisEntrenamientos extends JFrame {
 
 		tablaCalendario.setRowHeight(40);
 		tablaCalendario.setFont(new Font("Arial", Font.BOLD, 16));
-		tablaCalendario.getTableHeader().setFont(new Font("Arial", Font.BOLD, 16));
+
+		DefaultTableCellRenderer centrado = new DefaultTableCellRenderer();
+		centrado.setHorizontalAlignment(SwingConstants.CENTER);
+
+		for (int i = 0; i < tablaCalendario.getColumnCount(); i++) {
+		    tablaCalendario.getColumnModel()
+		                   .getColumn(i)
+		                   .setCellRenderer(centrado);
+		}
+
+		((DefaultTableCellRenderer) tablaCalendario.getTableHeader()
+		        .getDefaultRenderer())
+		        .setHorizontalAlignment(SwingConstants.CENTER);
 
 		JScrollPane scroll = new JScrollPane(tablaCalendario);
 
@@ -95,7 +109,6 @@ public class MisEntrenamientos extends JFrame {
 				}else {
 					actualizarSemana();
 				}
-			    actualizarSemana();
 			    
 		});
 		botondespues.addActionListener(e->{
@@ -152,7 +165,7 @@ public class MisEntrenamientos extends JFrame {
 			v2.setVisible(true);
 		});
 		botonperfil.addActionListener(e-> {
-			VentanaObjetivos v2=new VentanaObjetivos();
+			VentanaPerfil v2=new VentanaPerfil();
 			this.dispose();
 			v2.setVisible(true);
 		});
