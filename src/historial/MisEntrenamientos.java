@@ -20,6 +20,9 @@ public class MisEntrenamientos extends JFrame {
 	private JButton botonRutinas=new JButton("Mis rutinas");
 	private JButton botonprogreso=new JButton("Progreso");
 	private JButton botonperfil=new JButton("Perfil");
+	private int diaI=8;
+	private ArrayList<JButton>botonesDias=new ArrayList<JButton>();
+	
 	public MisEntrenamientos() {
 		// TODO Auto-generated constructor stub
 		
@@ -41,7 +44,7 @@ public class MisEntrenamientos extends JFrame {
 		JPanel panelcolumnas2=new JPanel();
 		panelcolumnas.setLayout(new GridLayout(1,14,5,5));
 		String[] columnas= {"L","M","M","J","V","S","D"};
-		int diaI=8;
+		
 		for(String c:columnas) {
 			
 			panelcolumnas.add(new JLabel(c,SwingConstants.CENTER));
@@ -50,6 +53,7 @@ public class MisEntrenamientos extends JFrame {
 			JButton bot=new JButton(String.valueOf(i+7));
 			bot.setPreferredSize(new Dimension(50,40));
 			panelcolumnas2.add(bot);
+			botonesDias.add(bot);
 			JLabel lblvacio=new JLabel();//Hueco para dejar entre boton y boton, no consigo modificando el grid
 			lblvacio.setPreferredSize(new Dimension(25,20));
 			panelcolumnas2.add(lblvacio);
@@ -59,7 +63,8 @@ public class MisEntrenamientos extends JFrame {
 		JButton botondespues=new JButton("Semana siguente");
 		
 		botonantes.addActionListener(e->{
-			
+			    diaI -= 7;
+			    actualizarSemana();
 		});
 		JPanel panelsur2=new JPanel();
 		panelsur2.setLayout(new GridLayout(1,3,20,20));
@@ -102,5 +107,10 @@ public class MisEntrenamientos extends JFrame {
 //	    boton.setContentAreaFilled(true);
 	    boton.setFocusPainted(false);
 	    
+	}
+	private void actualizarSemana() {
+	    for (int i = 0; i < botonesDias.size(); i++) {
+	        botonesDias.get(i).setText(String.valueOf(diaI + i));
+	    }
 	}
 }
