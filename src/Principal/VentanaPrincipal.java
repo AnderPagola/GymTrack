@@ -5,7 +5,7 @@ import misEntrenamiento.MisEntrenamientos;
 import objetivos.VentanaObjetivos;
 import progreso.VentanaSeguimiento;
 import rutinas.Rutina;
-import rutinas.VentanaRutinas;
+
 
 import java.awt.Color;
 import java.awt.Dimension;
