@@ -61,7 +61,7 @@ public class VentanaPrincipal extends JFrame {
 	}
 	// QUE PASOOOOOOOOOOdsddsd
 	// HOLAAAAAAAAAAAAAAAA
-	//WAZAAAAAAAAAAAAAAAA
+	//WAZAAAAAAAAAAAAAAAAa
 	public void formatoBoton(JButton boton) {
 		boton.setFont(new Font("Arial", Font.BOLD, 30));
 		boton.setBackground(Color.CYAN);
