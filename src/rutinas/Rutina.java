@@ -109,7 +109,6 @@ public class Rutina extends JFrame {
 		
 	}
     
-    //HACER COMMIT A PARTIR DE AQUI
     //PANEL DE RUTINAS
 	private void crearPanelRutinas() {
 		
@@ -229,28 +228,54 @@ public class Rutina extends JFrame {
 		
 	}
 	
-	private Object anadirEjercicio() {
-		// TODO Auto-generated method stub
-		return null;
+	 //AÑADIR EJERCICIO                 FUNCION HECHA CON IA(CHATGPT)
+	private void anadirEjercicio() {
+        String nombre = JOptionPane.showInputDialog(
+                this,
+                "Introduce el nombre del ejercicio:"
+            );
+
+            if (nombre != null && !nombre.trim().isEmpty()) {
+
+                obtenerEjercicios().add(nombre.trim());
+
+                actualizarEjercicios();
+            }
+	}
+
+	//DEVOLVER LA LISTA DE LOS EJERCICIOS SELECCIONADOS
+	   private ArrayList<String> obtenerEjercicios() {
+
+	        if (rutinaSeleccionada.equals("Pierna y abdomen")) {
+	            return ejerciciosPierna;
+	        } else {
+	            return ejerciciosTorso;
+	        }
+	    }
+
+	//ELIMINAR EJERCICIO
+	private void eliminarEjercicio() {
+	      int posicion = listaEjercicios.getSelectedIndex();
+
+	        if (posicion == -1) {
+	            JOptionPane.showMessageDialog(
+	                this,
+	                "Selecciona un ejercicio primero."
+	            );
+	            return;
+	        }
+
+	        obtenerEjercicios().remove(posicion);
+
+	        actualizarEjercicios();
 	}
 
 
-	private Object eliminarEjercicio() {
+	//EDITAR EJERCICIO
+	private void editarEjercicio() {
 		// TODO Auto-generated method stub
-		return null;
+		
 	}
-
-
-
-	private Object editarEjercicio() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-
-	
-
 
 
 	//NAVEGACION INFERIOR
