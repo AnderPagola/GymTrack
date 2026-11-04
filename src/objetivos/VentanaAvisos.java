@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import estadisticas.VentanaEstadisticas;
 import historial.Historial;
 import principal.VentanaPrincipal;
 import progreso.VentanaSeguimiento;
@@ -122,7 +123,7 @@ public class VentanaAvisos extends JFrame {
         
         btnEstadisticas.addActionListener(e -> {
             dispose();
-            new Historial();
+            new VentanaEstadisticas();
         });
         
         btnObjetivo.addActionListener(e -> {
