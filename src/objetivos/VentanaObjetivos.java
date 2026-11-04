@@ -131,7 +131,7 @@ public class VentanaObjetivos extends JFrame {
 
         // PANEL INFERIOR
 
-        JPanel panelInferior = new JPanel();
+        JPanel panelInferior = new JPanel(new GridLayout(1,5));
 
         JButton btnProgreso = new JButton("Progreso");
         JButton btnRutinas = new JButton("Mis rutinas");

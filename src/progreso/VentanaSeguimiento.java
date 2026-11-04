@@ -79,6 +79,8 @@ public class VentanaSeguimiento extends JFrame {
         panelPrincipal.add(panelBotones, BorderLayout.CENTER);
         
         //Botones para accedes a otros apartados
+        JPanel panelBotones2 = new JPanel(new GridLayout(1,5));
+        
         JButton progreso = new JButton("Progreso");
         JButton rutinas = new JButton("Rutinas");
         JButton historial = new JButton("Historial");
@@ -113,8 +115,6 @@ public class VentanaSeguimiento extends JFrame {
 			v2.setVisible(true);
 		});
 		
-		//Crear el panel del menú
-		JPanel panelBotones2 = new JPanel();
 
 		//Añadir los botones al panel
 		panelBotones2.add(progreso);
