@@ -8,7 +8,10 @@ import java.awt.GridLayout;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -36,6 +39,7 @@ public class Historial extends JFrame {
 	private JTable tablaCalendario;
 	private DefaultTableModel modeloTabla;
 	private JTextArea trabajoDia=new JTextArea();
+	
 	
 	public Historial() {
 		// TODO Auto-generated constructor stub
@@ -144,11 +148,12 @@ public class Historial extends JFrame {
 	
 		
 		JPanel panelcentro=new JPanel();
+		panelcentro.setBackground(Color.white);
 		
 		trabajoDia.setEditable(false);
 		trabajoDia.setFont(new Font("Arial",Font.PLAIN,16));
 		panelcentro.setLayout(new BorderLayout());
-		panelcentro.add(trabajoDia,BorderLayout.CENTER);
+		panelcentro.add(trabajoDia,BorderLayout.NORTH);
 		tablaCalendario.setRowSelectionAllowed(true);
 		tablaCalendario.setColumnSelectionAllowed(true);
 		tablaCalendario.setCellSelectionEnabled(true);
@@ -229,7 +234,9 @@ public class Historial extends JFrame {
 	                "✕ Prensa\n" +
 	                "✓ Extensiones\n\n" +
 	                "✕ Mejor que última entrenamiento"
+	            	
 	            );
+	           
 	            break;
 
 	        case 1: 
@@ -238,7 +245,9 @@ public class Historial extends JFrame {
 	                "✕ Press banca\n" +
 	                "✓ Press inclinado\n" +
 	                "✓ Aperturas"
+	            		
 	            );
+
 	            break;
 
 	        case 2: // Miércoles
