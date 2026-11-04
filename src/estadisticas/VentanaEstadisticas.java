@@ -149,7 +149,15 @@ public class VentanaEstadisticas extends JFrame {
 	
 	//Contenido de cada elección
 	private void VolumenSemana() {
+		JPanel panel = new JPanel();
+		panel.setLayout(new GridLayout(3,1,5,5));
 		
+		JLabel titulo = new JLabel("VOLUMEN DE LA SEMANA");
+		titulo.setHorizontalAlignment(SwingConstants.CENTER);
+		titulo.setFont(new Font("Arial", Font.BOLD, 30));
+		
+		JLabel volumen = new JLabel("Volumen total: 12.500kg");
+		volumen.setHorizontalAlignment(SwingConstants.CENTER);
 	}
 	
 	private void TiempoEntrenamiento() {
