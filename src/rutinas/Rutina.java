@@ -273,14 +273,55 @@ public class Rutina extends JFrame {
 
 	//EDITAR EJERCICIO
 	private void editarEjercicio() {
-		// TODO Auto-generated method stub
+        int posicion = listaEjercicios.getSelectedIndex();
+
+        if (posicion == -1) {
+            JOptionPane.showMessageDialog(
+                this,
+                "Selecciona un ejercicio primero."
+            );
+            return;
+        }
+
+        String nombreAnterior = listaEjercicios.getSelectedValue();
+
+        String nombreNuevo = JOptionPane.showInputDialog(
+            this,
+            "Nuevo nombre:",
+            nombreAnterior
+        );
+
+        if (nombreNuevo != null && !nombreNuevo.trim().isEmpty()) {
+
+            obtenerEjercicios().set(posicion, nombreNuevo.trim());
+
+            actualizarEjercicios();
+        }
 		
 	}
 
 
 	//NAVEGACION INFERIOR
 	private void crearNavegacion() {
-		// TODO Auto-generated method stub
+	       JPanel navegacion = new JPanel(new GridLayout(1, 4));
+	        navegacion.setBackground(BLANCO);
+	        navegacion.setBorder(
+	            BorderFactory.createEmptyBorder(10, 10, 10, 10)
+	        );
+
+	        JButton entrenar = new JButton("Entrenar");
+	        JButton rutinas = new JButton("Mis Rutinas");
+	        JButton progreso = new JButton("Progreso");
+	        JButton perfil = new JButton("Perfil");
+
+	        rutinas.setForeground(AZUL);
+
+	        navegacion.add(entrenar);
+	        navegacion.add(rutinas);
+	        navegacion.add(progreso);
+	        navegacion.add(perfil);
+
+	        panelPrincipal.add(navegacion, BorderLayout.SOUTH);
 		
 	}
 
