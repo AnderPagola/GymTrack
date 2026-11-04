@@ -15,6 +15,7 @@ public class VentanaObjetivos extends JFrame {
     private JButton btnActualizarFuerza;
     private JButton btnActualizarVolumen;
     private JButton btnActualizarPeso;
+    private JButton btnAvisos;
 
     private JButton btnMenuPrincipal;
 
@@ -127,15 +128,11 @@ public class VentanaObjetivos extends JFrame {
         JPanel panelInferior = new JPanel();
 
         btnMenuPrincipal = new JButton("Menú Principal");
-        JButton btnEntrenar = new JButton("Entrenar");
-        JButton btnRutinas = new JButton("Rutinas");
-        JButton btnProgreso = new JButton("Progreso");
+        btnAvisos = new JButton("Avisos");
 
         panelInferior.add(btnMenuPrincipal);
-        panelInferior.add(btnEntrenar);
-        panelInferior.add(btnRutinas);
-        panelInferior.add(btnProgreso);
-
+        panelInferior.add(btnAvisos);
+        
         add(panelInferior, BorderLayout.SOUTH);
 
         // ACTION LISTENERS VACÍOS
@@ -143,6 +140,7 @@ public class VentanaObjetivos extends JFrame {
         btnActualizarFuerza.addActionListener(e -> {
 
         });
+        
 
         btnActualizarVolumen.addActionListener(e -> {
 
@@ -153,6 +151,12 @@ public class VentanaObjetivos extends JFrame {
         });
 
         btnMenuPrincipal.addActionListener(e -> {
+
+        });
+        
+        btnAvisos.addActionListener(e -> {
+        	dispose();
+            new VentanaAvisos();
 
         });
 
