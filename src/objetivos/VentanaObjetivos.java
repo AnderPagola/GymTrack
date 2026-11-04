@@ -10,7 +10,10 @@ import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JTextField;
 
+import historial.Historial;
 import principal.VentanaPrincipal;
+import progreso.VentanaSeguimiento;
+import rutinas.Rutina;
 
 public class VentanaObjetivos extends JFrame {
 
@@ -133,21 +136,34 @@ public class VentanaObjetivos extends JFrame {
         JButton btnRutinas = new JButton("Mis rutinas");
         JButton btnHistorial = new JButton("Historial");
         JButton btnEstadisticas = new JButton("Estadísticas");
-        JButton btnMenu = new JButton("Menú");
+        JButton btnObjetivos = new JButton("Objetivos");
+        btnObjetivos.setEnabled(false);
+        
 
-        panelInferior.add(btnMenu);
+        
         panelInferior.add(btnProgreso);
         panelInferior.add(btnRutinas);
         panelInferior.add(btnHistorial);
         panelInferior.add(btnEstadisticas);
+        panelInferior.add(btnObjetivos);
 
         add(panelInferior, BorderLayout.SOUTH);
 
         // EVENTOS
 
-        btnMenu.addActionListener(e -> {
+        btnProgreso.addActionListener(e -> {
             dispose();
-            new VentanaPrincipal();
+            new VentanaSeguimiento();
+        });
+        
+        btnRutinas.addActionListener(e -> {
+            dispose();
+            new Rutina();
+        });
+        
+        btnHistorial.addActionListener(e -> {
+            dispose();
+            new Historial();
         });
 
         btnAvisos.addActionListener(e -> {

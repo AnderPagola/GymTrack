@@ -52,13 +52,12 @@ public class VentanaAvisos extends JFrame {
 
         JPanel panelInferior = new JPanel();
 
-        JButton btnMenu = new JButton("Menú");
+    
         JButton btnProgreso = new JButton("Progreso");
         JButton btnRutinas = new JButton("Mis rutinas");
         JButton btnHistorial = new JButton("Historial");
         JButton btnEstadisticas = new JButton("Estadísticas");
 
-        panelInferior.add(btnMenu);
         panelInferior.add(btnProgreso);
         panelInferior.add(btnRutinas);
         panelInferior.add(btnHistorial);
@@ -100,10 +99,7 @@ public class VentanaAvisos extends JFrame {
             }
         });
 
-        btnMenu.addActionListener(e -> {
-            dispose();
-            new VentanaPrincipal();
-        });
+        
 
         setVisible(true);
     }
