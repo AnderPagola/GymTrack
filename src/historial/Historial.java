@@ -236,32 +236,41 @@ public class Historial extends JFrame {
 	            trabajoDia.setText(
 	                "Entrenamiento Pecho\n\n" +
 	                "✓ Press banca\n" +
-	                "✓ Aperturas\n" +
-	                "✓ Fondos"
+	                "✓ Press inclinado\n" +
+	                "✓ Aperturas"
 	            );
 	            break;
 
 	        case 2: // Miércoles
 	            trabajoDia.setText(
-	                "Entrenamiento Espalda"
+	            		"Entrenamiento Espalda\n\n"+
+	            		"✓ Dominadas\n" +
+	            		"✓ Remo superior\n" +
+	    	            "✓ Remo en polea"
 	            );
 	            break;
 
 	        case 3: 
 	            trabajoDia.setText(
-	                "Entrenamiento Hombro"
+	                "Entrenamiento Hombro\n\n"+
+	                	"Press frances\n"+
+	                		"Laterales"
 	            );
 	            break;
 
 	        case 4: 
 	            trabajoDia.setText(
-	                "Entrenamiento Brazos"
+	                "Entrenamiento Brazos\n\n"+
+	                "Curl predicador\n"+
+	                		"Curl Martillo\n"+
+	                "Frances\n"+
+	                		"Extensiones en polea"
 	            );
 	            break;
 
 	        case 5: 
 	            trabajoDia.setText(
-	                "Cardio"
+	                "Cardio\n\n"+"Correr"
 	            );
 	            break;
 
