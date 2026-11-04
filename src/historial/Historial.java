@@ -211,8 +211,6 @@ public class Historial extends JFrame {
 		add(panelsouth, BorderLayout.SOUTH);
 		
 		
-		
-		
 	}
 	private void actualizarSemana() {
 
