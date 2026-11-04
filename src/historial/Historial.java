@@ -160,9 +160,7 @@ public class Historial extends JFrame {
 		               .addListSelectionListener(e -> {
 
 		    if (!e.getValueIsAdjusting()) {
-
 		        int columna = tablaCalendario.getSelectedColumn();
-
 		        if (columna != -1) {
 		            mostrarEntrenamiento(columna);
 		        }
@@ -223,21 +221,21 @@ public class Historial extends JFrame {
 	}private void mostrarEntrenamiento(int columna3) {
 
 	    switch (columna3) {
-
+//En la ventana no sale el tick, no carga el simbolo
 	        case 0: 
 	            trabajoDia.setText(
 	                "Entrenamiento Pierna\n\n" +
-	                "✓ Sentadillas\n" +
-	                "✓ Prensa\n" +
+	                "✕ Sentadillas\n" +
+	                "✕ Prensa\n" +
 	                "✓ Extensiones\n\n" +
-	                "✓ Mejor que última sesión"
+	                "✕ Mejor que última entrenamiento"
 	            );
 	            break;
 
 	        case 1: 
 	            trabajoDia.setText(
 	                "Entrenamiento Pecho\n\n" +
-	                "✓ Press banca\n" +
+	                "✕ Press banca\n" +
 	                "✓ Press inclinado\n" +
 	                "✓ Aperturas"
 	            );
@@ -255,8 +253,9 @@ public class Historial extends JFrame {
 	        case 3: 
 	            trabajoDia.setText(
 	                "Entrenamiento Hombro\n\n"+
-	                	"Press frances\n"+
-	                		"Laterales"
+	                	"✓ Press frances\n"+
+	                		"✓ Laterales\n"+
+	                	"✓ Mejor que el ultimo entrenamiento"
 	            );
 	            break;
 
@@ -272,7 +271,7 @@ public class Historial extends JFrame {
 
 	        case 5: 
 	            trabajoDia.setText(
-	                "Cardio\n\n"+"Correr"
+	                "Cardio\n\n"+"✓Correr\n"+"✓Andar en cuesta"
 	            );
 	            break;
 
