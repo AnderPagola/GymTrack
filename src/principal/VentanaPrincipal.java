@@ -1,94 +1,11 @@
 package principal;
 
+
+import objetivos.VentanaObjetivos;
+import progreso.VentanaSeguimiento;
+import rutinas.Rutina;
+
 import java.awt.BorderLayout;
-<<<<<<< HEAD
-import misEntrenamiento.MisEntrenamientos;
-import objetivos.VentanaObjetivos;
-import progreso.VentanaSeguimiento;
-import rutinas.Rutina;
-
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.GridLayout;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.SwingConstants;
-
-import estadisticas.VentanaEstadisticas;
-import misEntrenamiento.MisEntrenamientos;
-//import rutinas.VentanaRutinas;
-
-public class VentanaPrincipal extends JFrame {
-	
-	private JButton progreso = new JButton("Progreso");
-	private JButton rutinas = new JButton("Mis rutinas");
-	private JButton historial = new JButton("Historial");
-	private JButton stats = new JButton("Estadísticas");
-	private JButton objetivos = new JButton("Objetivos");
-	
-	
-	public VentanaPrincipal() {
-		setSize(400,600);
-		setTitle("GymTrack");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setLocationRelativeTo(null);
-		setVisible(true);
-		setLayout(new BorderLayout());
-		
-		JPanel panelPrincipal = new JPanel();
-		panelPrincipal.setLayout(new GridLayout(5,1,5,5));
-		//Mis rutinas, Progreso, Perfil
-		panelPrincipal.setBackground(Color.ORANGE);
-		add(panelPrincipal, BorderLayout.CENTER);
-		
-		JPanel panelNorte = new JPanel();
-		panelNorte.setBackground(Color.BLACK);
-		panelNorte.setLayout(new GridLayout(1,1));
-		panelNorte.setPreferredSize(new Dimension(400,100));
-		JLabel texto = new JLabel("GymTrack");
-		panelNorte.add(texto);
-		texto.setHorizontalAlignment(SwingConstants.CENTER);
-		texto.setVerticalAlignment(SwingConstants.CENTER);
-		texto.setFont(new Font("Arial", Font.BOLD, 50));
-		texto.setForeground(Color.WHITE);
-		add(panelNorte, BorderLayout.NORTH);
-		
-		//Botones
-		formatoBoton(progreso);
-		formatoBoton(rutinas);
-		formatoBoton(historial);
-		formatoBoton(stats);
-		formatoBoton(objetivos);
-
-
-		panelPrincipal.add(progreso);
-		panelPrincipal.add(rutinas);
-		panelPrincipal.add(historial);
-		panelPrincipal.add(stats);
-		panelPrincipal.add(objetivos);
-		
-		progreso.addActionListener(e-> {
-			VentanaSeguimiento v2=new VentanaSeguimiento();
-			this.dispose();
-			v2.setVisible(true);
-		});
-		rutinas.addActionListener(e-> {
-			Rutina v2=new Rutina();
-			this.dispose();
-			v2.setVisible(true);
-		});
-		historial.addActionListener(e-> {
-			MisEntrenamientos v2=new MisEntrenamientos();
-=======
-
-import objetivos.VentanaObjetivos;
-import progreso.VentanaSeguimiento;
-import rutinas.Rutina;
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -164,7 +81,7 @@ public class VentanaPrincipal extends JFrame {
 		});
 		historial.addActionListener(e-> {
 			Historial v2=new Historial();
->>>>>>> branch 'main' of https://github.com/AnderPagola/GymTrack.git
+
 			this.dispose();
 			v2.setVisible(true);
 		});
