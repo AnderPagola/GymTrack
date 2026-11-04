@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JTextField;
 
+import estadisticas.VentanaEstadisticas;
 import historial.Historial;
 import principal.VentanaPrincipal;
 import progreso.VentanaSeguimiento;
@@ -164,6 +165,11 @@ public class VentanaObjetivos extends JFrame {
         btnHistorial.addActionListener(e -> {
             dispose();
             new Historial();
+        });
+        
+        btnEstadisticas.addActionListener(e -> {
+            dispose();
+            new VentanaEstadisticas();
         });
 
         btnAvisos.addActionListener(e -> {

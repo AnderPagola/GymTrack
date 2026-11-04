@@ -28,6 +28,7 @@ public class VentanaSeguimiento extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
+        setVisible(true);
 
         // Panel principal
         JPanel panelPrincipal = new JPanel();
