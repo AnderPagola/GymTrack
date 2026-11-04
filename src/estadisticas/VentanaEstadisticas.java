@@ -266,6 +266,49 @@ public class VentanaEstadisticas extends JFrame {
 		
 		panelSemanas.add(boxSemanas);
 		panelSemanas.add(horasSemana);
+		
+		//4
+		JPanel panelMedia = new JPanel();
+		panelMedia.setBorder(BorderFactory.createTitledBorder("Media por entrenamiento"));
+		panelMedia.setLayout(new GridLayout(1,2,5,5));
+		
+		JLabel media = new JLabel("1 hora y 20 minutos");
+		media.setFont(new Font("Arial", Font.BOLD, 25));
+		
+		JLabel texto = new JLabel("Tiempo medio por entrenamiento");
+		texto.setHorizontalAlignment(SwingConstants.LEFT);
+		texto.setVerticalAlignment(SwingConstants.CENTER);
+
+		panelMedia.add(texto);
+		panelMedia.add(media);
+		
+		//5
+		JPanel panelDescanso = new JPanel();
+		panelDescanso.setBorder(BorderFactory.createTitledBorder("Media de descanso"));
+		JLabel descanso = new JLabel("2 minutos y 40 segundos");
+		descanso.setFont(new Font("Arial", Font.BOLD, 25));
+		panelDescanso.add(descanso);
+		
+		//
+		panel.add(scrollTabla);
+		panel.add(panelTotal);
+		panel.add(panelSemanas);
+		panel.add(panelMedia);
+		panel.add(panelDescanso);
+
+		// SCROLLPANE PRINCIPAL
+
+		JScrollPane scroll = new JScrollPane(panel);
+
+		scroll.setVerticalScrollBarPolicy(
+		    JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED
+		);
+
+		scroll.setHorizontalScrollBarPolicy(
+		    JScrollPane.HORIZONTAL_SCROLLBAR_NEVER
+		);
+
+		panelContenido.add(scroll, BorderLayout.CENTER);
 	}
 	
 	private void SeriesReps() {
