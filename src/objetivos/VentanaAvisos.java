@@ -17,8 +17,6 @@ public class VentanaAvisos extends JFrame {
     private JButton btnDormir;
     private JButton btnRecord;
 
-    private JButton btnMenuPrincipal;
-
     public VentanaAvisos() {
 
         setTitle("Avisos y Recordatorios");
@@ -28,11 +26,9 @@ public class VentanaAvisos extends JFrame {
 
         setLayout(new BorderLayout());
 
-        // Título
         JLabel lblTitulo = new JLabel("AVISOS Y RECORDATORIOS", JLabel.CENTER);
         add(lblTitulo, BorderLayout.NORTH);
 
-        // Panel central
         JPanel panelAvisos = new JPanel();
         panelAvisos.setLayout(new GridLayout(4, 2, 10, 10));
 
@@ -54,64 +50,59 @@ public class VentanaAvisos extends JFrame {
 
         add(panelAvisos, BorderLayout.CENTER);
 
-        // Panel inferior
         JPanel panelInferior = new JPanel();
 
-        btnMenuPrincipal = new JButton("Menú Principal");
+        JButton btnMenu = new JButton("Menú");
+        JButton btnProgreso = new JButton("Progreso");
+        JButton btnRutinas = new JButton("Mis rutinas");
+        JButton btnHistorial = new JButton("Historial");
+        JButton btnEstadisticas = new JButton("Estadísticas");
 
-        panelInferior.add(btnMenuPrincipal);
+        panelInferior.add(btnMenu);
+        panelInferior.add(btnProgreso);
+        panelInferior.add(btnRutinas);
+        panelInferior.add(btnHistorial);
+        panelInferior.add(btnEstadisticas);
 
         add(panelInferior, BorderLayout.SOUTH);
 
-        // Cambiar estado al pulsar
+        // CAMBIAR ESTADO
 
         btnEntrenamiento.addActionListener(e -> {
-
             if (btnEntrenamiento.getText().equals("No completado")) {
                 btnEntrenamiento.setText("Completado");
             } else {
                 btnEntrenamiento.setText("No completado");
             }
-
         });
 
         btnAgua.addActionListener(e -> {
-
             if (btnAgua.getText().equals("No completado")) {
                 btnAgua.setText("Completado");
             } else {
                 btnAgua.setText("No completado");
             }
-
         });
 
         btnDormir.addActionListener(e -> {
-
             if (btnDormir.getText().equals("No completado")) {
                 btnDormir.setText("Completado");
             } else {
                 btnDormir.setText("No completado");
             }
-
         });
 
         btnRecord.addActionListener(e -> {
-
             if (btnRecord.getText().equals("No completado")) {
                 btnRecord.setText("Completado");
             } else {
                 btnRecord.setText("No completado");
             }
-
         });
 
-        // Volver al menú principal
-
-        btnMenuPrincipal.addActionListener(e -> {
-
+        btnMenu.addActionListener(e -> {
             dispose();
             new VentanaPrincipal();
-
         });
 
         setVisible(true);
