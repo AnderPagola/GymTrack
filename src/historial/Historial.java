@@ -91,6 +91,9 @@ public class Historial extends JFrame {
 		((DefaultTableCellRenderer) tablaCalendario.getTableHeader()
 		        .getDefaultRenderer())
 		        .setHorizontalAlignment(SwingConstants.CENTER);
+		tablaCalendario.setSelectionMode(
+			    javax.swing.ListSelectionModel.SINGLE_SELECTION
+			);
 
 		JScrollPane scroll = new JScrollPane(tablaCalendario);
 
@@ -146,26 +149,28 @@ public class Historial extends JFrame {
 		trabajoDia.setFont(new Font("Arial",Font.PLAIN,16));
 		panelcentro.setLayout(new BorderLayout());
 		panelcentro.add(trabajoDia,BorderLayout.CENTER);
-		int columna = tablaCalendario.getSelectedColumn();
-
-		mostrarEntrenamiento(columna);
+		tablaCalendario.setRowSelectionAllowed(true);
+		tablaCalendario.setColumnSelectionAllowed(true);
 		tablaCalendario.setCellSelectionEnabled(true);
 
-		tablaCalendario.getSelectionModel().addListSelectionListener(e -> {
+		mostrarEntrenamiento(0);
 
-		    int fila = tablaCalendario.getSelectedRow();
-		    int columna3 = tablaCalendario.getSelectedColumn();
+		tablaCalendario.getColumnModel()
+		               .getSelectionModel()
+		               .addListSelectionListener(e -> {
 
-		    if (fila != -1 && columna != -1) {
+		    if (!e.getValueIsAdjusting()) {
 
-		        String dia = tablaCalendario.getValueAt(fila, columna).toString();
+		        int columna = tablaCalendario.getSelectedColumn();
 
-		        mostrarEntrenamiento(columna3);
+		        if (columna != -1) {
+		            mostrarEntrenamiento(columna);
+		        }
 		    }
 		});
 
 		JPanel panelsouth=new JPanel();
-		panelsouth.setLayout(new GridLayout(1,4,20,20));
+		panelsouth.setLayout(new GridLayout(1,5,20,20));
 
 		panelsouth.add(progreso);
 		panelsouth.add(Rutinas);
@@ -205,9 +210,6 @@ public class Historial extends JFrame {
 		add(panelcentro, BorderLayout.CENTER);
 		add(panelsouth, BorderLayout.SOUTH);
 		
-		
-		
-		
 	}
 	private void actualizarSemana() {
 
@@ -236,35 +238,45 @@ public class Historial extends JFrame {
 	            trabajoDia.setText(
 	                "Entrenamiento Pecho\n\n" +
 	                "✓ Press banca\n" +
-	                "✓ Aperturas\n" +
-	                "✓ Fondos"
+	                "✓ Press inclinado\n" +
+	                "✓ Aperturas"
 	            );
 	            break;
 
 	        case 2: // Miércoles
 	            trabajoDia.setText(
-	                "Entrenamiento Espalda"
+	            		"Entrenamiento Espalda\n\n"+
+	            		"✓ Dominadas\n" +
+	            		"✓ Remo superior\n" +
+	    	            "✓ Remo en polea"
 	            );
 	            break;
 
 	        case 3: 
 	            trabajoDia.setText(
-	                "Entrenamiento Hombro"
+	                "Entrenamiento Hombro\n\n"+
+	                	"Press frances\n"+
+	                		"Laterales"
 	            );
 	            break;
 
 	        case 4: 
 	            trabajoDia.setText(
-	                "Entrenamiento Brazos"
+	                "Entrenamiento Brazos\n\n"+
+	                "Curl predicador\n"+
+	                		"Curl Martillo\n"+
+	                "Frances\n"+
+	                		"Extensiones en polea"
 	            );
 	            break;
 
 	        case 5: 
 	            trabajoDia.setText(
-	                "Cardio"
+	                "Cardio\n\n"+"Correr"
 	            );
 	            break;
 
+	            
 	        case 6: 
 	            trabajoDia.setText(
 	                "Descanso"

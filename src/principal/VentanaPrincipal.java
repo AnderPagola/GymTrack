@@ -1,11 +1,22 @@
 package principal;
 
-import java.awt.BorderLayout;
-//import misEntrenamiento.MisEntrenamientos;
 import objetivos.VentanaObjetivos;
 import progreso.VentanaSeguimiento;
 import rutinas.Rutina;
 
+import java.awt.BorderLayout;
+
+
+import objetivos.VentanaObjetivos;
+import progreso.VentanaSeguimiento;
+import rutinas.Rutina;
+
+import java.awt.BorderLayout;
+import objetivos.VentanaObjetivos;
+import progreso.VentanaSeguimiento;
+import rutinas.Rutina;
+
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -19,8 +30,6 @@ import javax.swing.SwingConstants;
 
 import estadisticas.VentanaEstadisticas;
 import historial.Historial;
-//import misEntrenamiento.MisEntrenamientos;
-//import rutinas.VentanaRutinas;
 
 public class VentanaPrincipal extends JFrame {
 	
@@ -29,6 +38,7 @@ public class VentanaPrincipal extends JFrame {
 	private JButton historial = new JButton("Historial");
 	private JButton stats = new JButton("Estadísticas");
 	private JButton objetivos = new JButton("Objetivos");
+	
 	
 	
 	public VentanaPrincipal() {
@@ -83,10 +93,10 @@ public class VentanaPrincipal extends JFrame {
 		});
 		historial.addActionListener(e-> {
 			Historial v2=new Historial();
+
 			this.dispose();
 			v2.setVisible(true);
 		});
-
 		stats.addActionListener(e-> {
 			VentanaEstadisticas v2=new VentanaEstadisticas();
 			this.dispose();

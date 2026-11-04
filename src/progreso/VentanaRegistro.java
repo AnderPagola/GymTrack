@@ -130,6 +130,11 @@ public class VentanaRegistro extends JFrame{
 			
 			//Mostramos mensaje de confirmacion
 			System.out.println("Entrenamiento registrado correctamente");
+			campoEjercicio.setText("");
+			campoPeso.setText("");
+			campoSeries.setText("");
+			campoRepes.setText("");
+			campoFecha.setText("");
 			
 		}catch (NumberFormatException e) {
 			System.out.println("El peso, las series y las repeticiones deben ser números.");
