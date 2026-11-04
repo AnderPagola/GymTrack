@@ -29,7 +29,7 @@ public class Historial extends JFrame {
 	private JButton historial =new JButton("Historial");
 	private JButton Rutinas=new JButton("Mis rutinas");
 	private JButton progreso=new JButton("Progreso");
-	private JButton stats=new JButton("Perfil");
+	private JButton stats=new JButton("Estadisticas");
 	private JButton objetivos=new JButton("Obejtivos");
 	private int diaI=8;
 	private JTable tablaCalendario;
@@ -137,14 +137,10 @@ public class Historial extends JFrame {
 	
 		
 		JPanel panelcentro=new JPanel();
-		panelcentro.setBackground(Color.black);
+
 		JPanel panelsouth=new JPanel();
 		panelsouth.setLayout(new GridLayout(1,4,20,20));
-		formatoBoton(Rutinas);
-		formatoBoton(historial);
-		formatoBoton(stats);
-		formatoBoton(progreso);
-		formatoBoton(objetivos);
+
 		panelsouth.add(progreso);
 		panelsouth.add(Rutinas);
 		panelsouth.add(historial);
@@ -186,14 +182,6 @@ public class Historial extends JFrame {
 		
 		
 		
-	}public void formatoBoton(JButton boton) {
-		boton.setFont(new Font("Arial", Font.BOLD, 30));
-		boton.setBackground(Color.CYAN);
-//		boton.setOpaque(true);
-//	    boton.setContentAreaFilled(true);
-	    boton.setFocusPainted(false);
-	    
-	    
 	}
 	private void actualizarSemana() {
 
