@@ -50,6 +50,26 @@ public class VentanaProgreso extends JFrame{
 		
 		JScrollPane desplazamiento = new JScrollPane(tablaProgreso);
 		
+		//Panel contenedor del titulo y el selector
+		JPanel panelSuperior = new JPanel(new BorderLayout());
+		
+		panelSuperior.add(titulo, BorderLayout.NORTH);
+		panelSuperior.add(panelSeleccion, BorderLayout.SOUTH);
+		
+		//Añadir los componentes a la ventana
+		panelPrincipal.add(panelSuperior, BorderLayout.NORTH);
+		panelPrincipal.add(desplazamiento, BorderLayout.CENTER);
+		
+		add(panelPrincipal);
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 	
 	}
