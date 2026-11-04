@@ -213,7 +213,7 @@ public class VentanaEstadisticas extends JFrame {
 			    {"15 - 1h", "16 - 0h", "17 - 1h", "18 - 0h", "19 - 1h 30min", "20 - 0h", "21 - 0h"},
 			    {"22 - 1h", "23 - 0h", "24 - 1h", "25 - 0h", "26 - 1h", "27 - 0h", "28 - 0h"},
 		};
-		JTable tabla = new JTable();
+		JTable tabla = new JTable(datos, dias);
 		tabla.setRowHeight(40);
 		tabla.setFillsViewportHeight(true);
 		
@@ -312,11 +312,44 @@ public class VentanaEstadisticas extends JFrame {
 	}
 	
 	private void SeriesReps() {
-		
+		 JPanel panel = new JPanel();
+		    panel.setLayout(new GridLayout(3, 1));
+
+		    JLabel titulo = new JLabel("SERIES Y REPETICIONES");
+		    JLabel series = new JLabel("Series realizadas: 45");
+		    JLabel repeticiones = new JLabel("Repeticiones realizadas: 320");
+
+		    titulo.setFont(new Font("Arial", Font.BOLD, 20));
+
+		    titulo.setHorizontalAlignment(SwingConstants.CENTER);
+		    series.setHorizontalAlignment(SwingConstants.CENTER);
+		    repeticiones.setHorizontalAlignment(SwingConstants.CENTER);
+
+		    panel.add(titulo);
+		    panel.add(series);
+		    panel.add(repeticiones);
+
+		    panelContenido.add(panel, BorderLayout.CENTER);
 	}
 	
 	private void Pesos() {
-		
+		JPanel panel = new JPanel(new GridLayout(3, 1));
+
+	    JLabel titulo = new JLabel("PESOS");
+	    JLabel mayor = new JLabel("Mayor peso levantado: 100 kg");
+	    JLabel ejercicio = new JLabel("Ejercicio: Press banca");
+
+	    titulo.setFont(new Font("Arial", Font.BOLD, 20));
+
+	    titulo.setHorizontalAlignment(SwingConstants.CENTER);
+	    mayor.setHorizontalAlignment(SwingConstants.CENTER);
+	    ejercicio.setHorizontalAlignment(SwingConstants.CENTER);
+
+	    panel.add(titulo);
+	    panel.add(mayor);
+	    panel.add(ejercicio);
+
+	    panelContenido.add(panel, BorderLayout.CENTER);
 	}
 	
 	private void Records() {
