@@ -27,7 +27,7 @@ public class VentanaSeguimiento extends JFrame {
         setSize(900, 600);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
-        setResizable(false);
+        
         setVisible(true);
 
         // Panel principal
@@ -129,15 +129,4 @@ public class VentanaSeguimiento extends JFrame {
         add(panelPrincipal);
     }
 
-    // Método principal
-    public static void main(String[] args) {
-
-        SwingUtilities.invokeLater(() -> {
-
-            VentanaSeguimiento ventana =
-                new VentanaSeguimiento();
-
-            ventana.setVisible(true);
-        });
-    }
 }
