@@ -10,6 +10,8 @@ import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JTextField;
 
+import principal.VentanaPrincipal;
+
 public class VentanaObjetivos extends JFrame {
 
     private JButton btnActualizarFuerza;
@@ -151,7 +153,8 @@ public class VentanaObjetivos extends JFrame {
         });
 
         btnMenuPrincipal.addActionListener(e -> {
-
+        	dispose();
+        	new VentanaPrincipal();
         });
         
         btnAvisos.addActionListener(e -> {

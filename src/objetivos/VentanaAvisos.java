@@ -8,6 +8,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import principal.VentanaPrincipal;
+
 public class VentanaAvisos extends JFrame {
 
     private JButton btnEntrenamiento;
@@ -108,8 +110,7 @@ public class VentanaAvisos extends JFrame {
         btnMenuPrincipal.addActionListener(e -> {
 
             dispose();
-
-            // new VentanaPrincipal();
+            new VentanaPrincipal();
 
         });
 
