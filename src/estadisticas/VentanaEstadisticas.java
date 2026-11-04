@@ -373,7 +373,26 @@ public class VentanaEstadisticas extends JFrame {
 	}
 	
 	private void ProgresoMusculo() {
-		
+		JPanel panel = new JPanel(new GridLayout(4, 1));
+
+	    JLabel titulo = new JLabel("PROGRESO POR MÚSCULO");
+	    JLabel pecho = new JLabel("Pecho: 12 series");
+	    JLabel espalda = new JLabel("Espalda: 15 series");
+	    JLabel piernas = new JLabel("Piernas: 18 series");
+
+	    titulo.setFont(new Font("Arial", Font.BOLD, 20));
+
+	    titulo.setHorizontalAlignment(SwingConstants.CENTER);
+	    pecho.setHorizontalAlignment(SwingConstants.CENTER);
+	    espalda.setHorizontalAlignment(SwingConstants.CENTER);
+	    piernas.setHorizontalAlignment(SwingConstants.CENTER);
+
+	    panel.add(titulo);
+	    panel.add(pecho);
+	    panel.add(espalda);
+	    panel.add(piernas);
+
+	    panelContenido.add(panel, BorderLayout.CENTER);
 	}
 
 }
