@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -34,6 +35,7 @@ public class Historial extends JFrame {
 	private int diaI=8;
 	private JTable tablaCalendario;
 	private DefaultTableModel modeloTabla;
+	private JTextArea trabajoDia=new JTextArea();
 	
 	public Historial() {
 		// TODO Auto-generated constructor stub
@@ -110,6 +112,7 @@ public class Historial extends JFrame {
 					actualizarSemana();
 				}
 			    
+			    
 		});
 		botondespues.addActionListener(e->{
 			diaI+=7;
@@ -137,6 +140,13 @@ public class Historial extends JFrame {
 	
 		
 		JPanel panelcentro=new JPanel();
+		
+		trabajoDia.setEditable(false);
+		trabajoDia.setFont(new Font("Arial",Font.PLAIN,16));
+		panelcentro.setLayout(new BorderLayout());
+		panelcentro.add(trabajoDia,BorderLayout.CENTER);
+		
+		
 
 		JPanel panelsouth=new JPanel();
 		panelsouth.setLayout(new GridLayout(1,4,20,20));
