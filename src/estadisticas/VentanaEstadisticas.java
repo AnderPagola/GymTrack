@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -152,15 +153,55 @@ public class VentanaEstadisticas extends JFrame {
 		JPanel panel = new JPanel();
 		panel.setLayout(new GridLayout(3,1,5,5));
 		
+		//1
 		JLabel titulo = new JLabel("VOLUMEN DE LA SEMANA");
 		titulo.setHorizontalAlignment(SwingConstants.CENTER);
-		titulo.setFont(new Font("Arial", Font.BOLD, 30));
+		titulo.setVerticalAlignment(SwingConstants.TOP);
+		titulo.setFont(new Font("Arial", Font.BOLD, 20));
 		
-		JLabel volumen = new JLabel("Volumen total: 12.500kg");
-		volumen.setHorizontalAlignment(SwingConstants.CENTER);
+		//2
+		JPanel panelVolumen = new JPanel();
+		panelVolumen.setBorder(BorderFactory.createTitledBorder("Volumen"));
+		panelVolumen.setLayout(new GridLayout(1,2));
+		
+		JLabel volumen = new JLabel("Volumen total:");
+		volumen.setHorizontalAlignment(SwingConstants.LEFT);
+		volumen.setVerticalAlignment(SwingConstants.CENTER);
+		panelVolumen.add(volumen);
+		
+		JLabel cant = new JLabel("12.500kg");
+		cant.setFont(new Font("Arial", Font.BOLD, 20));
+		panelVolumen.add(cant);
+		
+		//3
+		JPanel panelCant = new JPanel();
+		panelCant.setLayout(new GridLayout(1,3,5,5));
+		panelCant.setBorder(BorderFactory.createTitledBorder("Progreso"));
+		
+		JLabel comparacion = new JLabel("Aumento de esta semana: ");
+		comparacion.setHorizontalAlignment(SwingConstants.LEFT);
+		comparacion.setVerticalAlignment(SwingConstants.CENTER);
+		panelCant.add(comparacion);
+		
+		JLabel cantMas = new JLabel("500kg");
+		cantMas.setFont(new Font("Arial", Font.BOLD, 20));
+		panelCant.add(cantMas);
+		
+		JLabel cantPor = new JLabel("+4%");
+		cantPor.setFont(new Font("Arial", Font.BOLD, 20));
+		panelCant.add(cantPor);
+		
+		panel.add(titulo);
+		panel.add(panelVolumen);
+		panel.add(panelCant);
+		
+		panelContenido.add(panel);
 	}
 	
 	private void TiempoEntrenamiento() {
+		JPanel panel = new JPanel();
+		panel.setLayout(new GridLayout(5,1,5,5));
+		//1
 		
 	}
 	
