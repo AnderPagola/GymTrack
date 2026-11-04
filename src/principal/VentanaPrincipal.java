@@ -28,6 +28,7 @@ public class VentanaPrincipal extends JFrame {
 	private JButton objetivos = new JButton("Objetivos");
 	
 	
+	
 	public VentanaPrincipal() {
 		setSize(400,600);
 		setTitle("GymTrack");
