@@ -353,7 +353,23 @@ public class VentanaEstadisticas extends JFrame {
 	}
 	
 	private void Records() {
+		JPanel panel = new JPanel(new GridLayout(3, 1));
+
+		JLabel titulo = new JLabel("RÉCORDS PERSONALES");
+		JLabel press = new JLabel("Press banca: 80 kg");
+		JLabel sentadilla = new JLabel("Sentadilla: 100 kg");
 		
+		titulo.setFont(new Font("Arial", Font.BOLD, 20));
+
+		titulo.setHorizontalAlignment(SwingConstants.CENTER);
+		press.setHorizontalAlignment(SwingConstants.CENTER);
+		sentadilla.setHorizontalAlignment(SwingConstants.CENTER);
+
+		panel.add(titulo);
+		panel.add(press);
+		panel.add(sentadilla);
+
+		panelContenido.add(panel, BorderLayout.CENTER);
 	}
 	
 	private void ProgresoMusculo() {
