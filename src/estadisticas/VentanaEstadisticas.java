@@ -94,6 +94,7 @@ public class VentanaEstadisticas extends JFrame {
 		});
 		
 		
+		//Panel contenido
 		JPanel panelGeneral = new JPanel();
 		panelGeneral.setLayout(new BorderLayout());
 		add(panelGeneral, BorderLayout.CENTER);
