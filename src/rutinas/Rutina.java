@@ -108,23 +108,220 @@ public class Rutina extends JFrame {
         panelPrincipal.add(contenido, BorderLayout.CENTER);
 		
 	}
+    
     //PANEL DE RUTINAS
 	private void crearPanelRutinas() {
-		// TODO Auto-generated method stub
 		
+        panelRutinas = new JPanel(new GridLayout(2, 1, 0, 10));
+        panelRutinas.setBackground(FONDO);
+
+        JButton pierna = crearBotonRutina(
+            "PIERNA Y ABDOMEN",
+            "Seleccionar rutina"
+        );
+
+        JButton torso = crearBotonRutina(
+            "TORSO Y BRAZOS",
+            "Seleccionar rutina"
+        );
+
+        pierna.addActionListener(e -> {
+            rutinaSeleccionada = "Pierna y abdomen";
+            actualizarEjercicios();
+        });
+
+        torso.addActionListener(e -> {
+            rutinaSeleccionada = "Torso y brazos";
+            actualizarEjercicios();
+        });
+
+        panelRutinas.add(pierna);
+        panelRutinas.add(torso);
 	}
+
+	//ACTUALIZAR LA LISTA
+	private void actualizarEjercicios() {
+        modeloEjercicios.clear();
+
+        ArrayList<String> ejercicios;
+
+        if (rutinaSeleccionada.equals("Pierna y abdomen")) {
+            ejercicios = ejerciciosPierna;
+        } else {
+            ejercicios = ejerciciosTorso;
+        }
+
+        for (String ejercicio : ejercicios) {
+            modeloEjercicios.addElement(ejercicio);
+        }
+	}
+
+
+	
+	private JButton crearBotonRutina(String titulo, String texto) {
+		JButton boton = new JButton(titulo + " - " + texto);
+		boton.setFont(new Font("Arial", Font.PLAIN, 16));
+		boton.setBackground(BLANCO);
+		boton.setFocusPainted(false);
+		boton.setBorder(
+		BorderFactory.createLineBorder(new Color(220, 220, 220))
+		);
+		return boton;
+	}
+
 
 
 	//PANEL DE EJERCICIOS
 	private void crearPanelEjercicios() {
-		// TODO Auto-generated method stub
+        panelEjercicios = new JPanel(new BorderLayout(10, 10));
+        panelEjercicios.setBackground(BLANCO);
+        panelEjercicios.setBorder(
+            BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(
+                    new Color(220, 220, 220)
+                ),
+                BorderFactory.createEmptyBorder(15, 15, 15, 15)
+            )
+        );
+
+        // Título
+        JLabel titulo = new JLabel("Ejercicios");
+        titulo.setFont(new Font("Arial", Font.BOLD, 20));
+
+        panelEjercicios.add(titulo, BorderLayout.NORTH);
+
+        // Lista
+        modeloEjercicios = new DefaultListModel<>();
+        listaEjercicios = new JList<>(modeloEjercicios);
+
+        listaEjercicios.setFont(new Font("Arial", Font.PLAIN, 16));
+        listaEjercicios.setSelectionMode(
+            ListSelectionModel.SINGLE_SELECTION
+        );
+
+        JScrollPane scroll = new JScrollPane(listaEjercicios);
+
+        panelEjercicios.add(scroll, BorderLayout.CENTER);
+
+        // Botones
+        JPanel botones = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        botones.setBackground(BLANCO);
+
+        JButton anadir = new JButton("Añadir");
+        JButton editar = new JButton("Editar");
+        JButton eliminar = new JButton("Eliminar");
+
+        botones.add(anadir);
+        botones.add(editar);
+        botones.add(eliminar);
+
+        panelEjercicios.add(botones, BorderLayout.SOUTH);
+
+        // Acciones
+        anadir.addActionListener(e -> anadirEjercicio());
+
+        editar.addActionListener(e -> editarEjercicio());
+
+        eliminar.addActionListener(e -> eliminarEjercicio());
+
+        actualizarEjercicios();
+		
+	}
+	
+//	 //AÑADIR EJERCICIO                 FUNCION HECHA CON IA(CHATGPT)
+	private void anadirEjercicio() {
+        String nombre = JOptionPane.showInputDialog(
+                this,
+                "Introduce el nombre del ejercicio:"
+            );
+
+            if (nombre != null && !nombre.trim().isEmpty()) {
+
+                obtenerEjercicios().add(nombre.trim());
+
+                actualizarEjercicios();
+            }
+	}
+
+	//DEVOLVER LA LISTA DE LOS EJERCICIOS SELECCIONADOS
+	   private ArrayList<String> obtenerEjercicios() {
+
+	        if (rutinaSeleccionada.equals("Pierna y abdomen")) {
+	            return ejerciciosPierna;
+	        } else {
+	            return ejerciciosTorso;
+	        }
+	    }
+
+	//ELIMINAR EJERCICIO
+	private void eliminarEjercicio() {
+	      int posicion = listaEjercicios.getSelectedIndex();
+
+	        if (posicion == -1) {
+	            JOptionPane.showMessageDialog(
+	                this,
+	                "Selecciona un ejercicio primero."
+	            );
+	            return;
+	        }
+
+	        obtenerEjercicios().remove(posicion);
+
+	        actualizarEjercicios();
+	}
+
+
+	//EDITAR EJERCICIO
+	private void editarEjercicio() {
+        int posicion = listaEjercicios.getSelectedIndex();
+
+        if (posicion == -1) {
+            JOptionPane.showMessageDialog(
+                this,
+                "Selecciona un ejercicio primero."
+            );
+            return;
+        }
+
+        String nombreAnterior = listaEjercicios.getSelectedValue();
+
+        String nombreNuevo = JOptionPane.showInputDialog(
+            this,
+            "Nuevo nombre:",
+            nombreAnterior
+        );
+
+        if (nombreNuevo != null && !nombreNuevo.trim().isEmpty()) {
+
+            obtenerEjercicios().set(posicion, nombreNuevo.trim());
+
+            actualizarEjercicios();
+        }
 		
 	}
 
 
 	//NAVEGACION INFERIOR
 	private void crearNavegacion() {
-		// TODO Auto-generated method stub
+	       JPanel navegacion = new JPanel(new GridLayout(1, 4));
+	        navegacion.setBackground(BLANCO);
+	        navegacion.setBorder(
+	            BorderFactory.createEmptyBorder(10, 10, 10, 10)
+	        );
+
+	        JButton entrenar = new JButton("Entrenar");
+	        JButton rutinas = new JButton("Mis Rutinas");
+	        JButton progreso = new JButton("Progreso");
+	        JButton perfil = new JButton("Perfil");
+
+	        rutinas.setForeground(AZUL);
+
+	        navegacion.add(entrenar);
+	        navegacion.add(rutinas);
+	        navegacion.add(progreso);
+	        navegacion.add(perfil);
+
+	        panelPrincipal.add(navegacion, BorderLayout.SOUTH);
 		
 	}
 
