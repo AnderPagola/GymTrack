@@ -12,7 +12,10 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 
 import historial.Historial;
 import objetivos.VentanaObjetivos;
@@ -32,7 +35,7 @@ public class VentanaEstadisticas extends JFrame {
 
 	
 	public VentanaEstadisticas() {
-		setSize(400,600);
+		setSize(600,600);
 		setTitle("Mis rutinas");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
@@ -200,9 +203,69 @@ public class VentanaEstadisticas extends JFrame {
 	
 	private void TiempoEntrenamiento() {
 		JPanel panel = new JPanel();
-		panel.setLayout(new GridLayout(5,1,5,5));
+		panel.setLayout(new GridLayout(5,1,5,10));
+		panel.setBorder(new EmptyBorder(10,10,10,10));
 		//1
+		String[] dias = {"L", "M", "X", "J", "V", "S", "D"};
+		Object[][] datos = {
+				{"1 - 1h 30min", "2 - 0h", "3 - 1h 15min", "4 - 0h", "5 - 1h", "6 - 0h", "7 - 0h"},
+			    {"8 - 1h", "9 - 0h", "10 - 1h 20min", "11 - 0h", "12 - 1h 30min", "13 - 0h", "14 - 0h"},
+			    {"15 - 1h", "16 - 0h", "17 - 1h", "18 - 0h", "19 - 1h 30min", "20 - 0h", "21 - 0h"},
+			    {"22 - 1h", "23 - 0h", "24 - 1h", "25 - 0h", "26 - 1h", "27 - 0h", "28 - 0h"},
+		};
+		JTable tabla = new JTable();
+		tabla.setRowHeight(40);
+		tabla.setFillsViewportHeight(true);
 		
+		JScrollPane scrollTabla = new JScrollPane(tabla);
+		scrollTabla.setBorder(BorderFactory.createTitledBorder("Calendario de entrenamiento"));
+		
+		//2
+		JPanel panelTotal = new JPanel();
+		panelTotal.setLayout(new GridLayout(1,2,5,5));
+		panelTotal.setBorder(BorderFactory.createTitledBorder("Horas totales del mes"));
+		
+		JLabel hMes = new JLabel("Horas de este mes: ");
+		hMes.setHorizontalAlignment(SwingConstants.LEFT);
+		hMes.setVerticalAlignment(SwingConstants.CENTER);
+		JLabel total = new JLabel("18 horas y 45 minutos");
+		total.setFont(new Font("Arial", Font.BOLD, 25));
+		panelTotal.add(hMes);
+		panelTotal.add(total);
+		
+		//3
+		JPanel panelSemanas = new JPanel();
+		panelSemanas.setBorder(BorderFactory.createTitledBorder("Horas por semana"));
+		
+		String[] semanas = {
+			    "Semana 1",
+			    "Semana 2",
+			    "Semana 3",
+			    "Semana 4",
+			};
+
+		JComboBox<String> boxSemanas = new JComboBox<>(semanas);
+		JLabel horasSemana = new JLabel("");
+
+		horasSemana.setFont(new Font("Arial", Font.BOLD, 20));
+
+		boxSemanas.addActionListener(e -> {
+
+		    String seleccion = (String) boxSemanas.getSelectedItem();
+
+		    if (seleccion.equals("Semana 1")) {
+		        horasSemana.setText("3 horas y 45 minutos");
+		    } else if (seleccion.equals("Semana 2")) {
+		        horasSemana.setText("3 horas y 50 minutos");
+		    } else if (seleccion.equals("Semana 3")) {
+		        horasSemana.setText("3 horas y 30 minutos");
+		    } else if (seleccion.equals("Semana 4")) {
+		        horasSemana.setText("3 horas y 40 minutos");
+		    }
+		});
+		
+		panelSemanas.add(boxSemanas);
+		panelSemanas.add(horasSemana);
 	}
 	
 	private void SeriesReps() {
