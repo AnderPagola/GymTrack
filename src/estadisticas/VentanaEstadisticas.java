@@ -26,6 +26,7 @@ public class VentanaEstadisticas extends JFrame {
 	private JButton progreso = new JButton("Progreso");
 	private JButton rutina = new JButton("Mis rutinas");
 	private JButton historial = new JButton("Historial");
+	private JButton stats = new JButton("Estadísticas");
 	private JButton objetivos = new JButton("Objetivos");
 
 	
@@ -53,14 +54,17 @@ public class VentanaEstadisticas extends JFrame {
 		
 		//Panel menu
 		JPanel panelMenu = new JPanel();
-		panelMenu.setLayout(new GridLayout(1,4,5,5));
+		panelMenu.setLayout(new GridLayout(1,5,5,5));
 		progreso.setFocusPainted(false);
 		rutina.setFocusPainted(false);
 		historial.setFocusPainted(false);
+		stats.setFocusPainted(false);
 		objetivos.setFocusPainted(false);
+		stats.setEnabled(false);
 		panelMenu.add(progreso);
 		panelMenu.add(rutina);
 		panelMenu.add(historial);
+		panelMenu.add(stats);
 		panelMenu.add(objetivos);
 		add(panelMenu, BorderLayout.SOUTH);
 		
@@ -77,6 +81,10 @@ public class VentanaEstadisticas extends JFrame {
 		historial.addActionListener(e -> {
 			MisEntrenamientos v2=new MisEntrenamientos();
 			this.dispose();
+			v2.setVisible(true);
+		});
+		stats.addActionListener(e -> {
+			VentanaEstadisticas v2 = new VentanaEstadisticas();
 			v2.setVisible(true);
 		});
 		objetivos.addActionListener(e -> {
