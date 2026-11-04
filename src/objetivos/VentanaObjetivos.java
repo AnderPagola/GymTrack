@@ -165,6 +165,11 @@ public class VentanaObjetivos extends JFrame {
             dispose();
             new Historial();
         });
+        
+        btnEstadisticas.addActionListener(e -> {
+            dispose();
+            new Historial();
+        });
 
         btnAvisos.addActionListener(e -> {
             dispose();
