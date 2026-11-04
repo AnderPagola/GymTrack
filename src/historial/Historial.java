@@ -274,6 +274,7 @@ public class Historial extends JFrame {
 	            );
 	            break;
 
+	            
 	        case 6: 
 	            trabajoDia.setText(
 	                "Descanso"
