@@ -4,6 +4,11 @@ import java.awt.*;
 import java.util.ArrayList;
 import javax.swing.*;
 
+import estadisticas.VentanaEstadisticas;
+import historial.Historial;
+import objetivos.VentanaObjetivos;
+import progreso.VentanaSeguimiento;
+
 public class Rutina extends JFrame {
 
     // Colores
@@ -30,7 +35,7 @@ public class Rutina extends JFrame {
     public Rutina() {
 
         setTitle("GYMTRACK - Gestión de rutinas");
-        setSize(850, 650);
+        setSize(600, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
@@ -69,12 +74,8 @@ public class Rutina extends JFrame {
 
         JLabel titulo = new JLabel("Mis Rutinas");
         titulo.setFont(new Font("Arial", Font.BOLD, 25));
-
-        JButton configuracion = new JButton("O");
-        configuracion.setFont(new Font("Arial", Font.PLAIN, 20));
-
+        
         cabecera.add(titulo, BorderLayout.WEST);
-        cabecera.add(configuracion, BorderLayout.EAST);
 
         panelPrincipal.add(cabecera, BorderLayout.NORTH);
     }
@@ -309,20 +310,48 @@ public class Rutina extends JFrame {
 	            BorderFactory.createEmptyBorder(10, 10, 10, 10)
 	        );
 
-	        JButton entrenar = new JButton("Entrenar");
-	        JButton rutinas = new JButton("Mis Rutinas");
 	        JButton progreso = new JButton("Progreso");
-	        JButton perfil = new JButton("Perfil");
+	        JButton rutinas = new JButton("Mis Rutinas");
+	        JButton historial = new JButton("Historial");
+	        JButton estadisticas = new JButton("Estadisticas");
+	        JButton objetivos = new JButton("Objetivos");
 
 	        rutinas.setForeground(AZUL);
 
-	        navegacion.add(entrenar);
-	        navegacion.add(rutinas);
 	        navegacion.add(progreso);
-	        navegacion.add(perfil);
+	        navegacion.add(rutinas);
+	        navegacion.add(historial);
+	        navegacion.add(estadisticas);
+	        navegacion.add(objetivos);
+	        rutinas.setEnabled(false);
 
 	        panelPrincipal.add(navegacion, BorderLayout.SOUTH);
-		
+	        
+			progreso.addActionListener(e-> {
+				VentanaSeguimiento v2=new VentanaSeguimiento();
+				this.dispose();
+				v2.setVisible(true);
+			});
+			rutinas.addActionListener(e-> {
+				Rutina v2=new Rutina();
+				this.dispose();
+				v2.setVisible(true);
+			});
+			historial.addActionListener(e-> {
+				Historial v2=new Historial();
+				this.dispose();
+				v2.setVisible(true);
+			});
+			estadisticas.addActionListener(e-> {
+				VentanaEstadisticas v2=new VentanaEstadisticas();
+				this.dispose();
+				v2.setVisible(true);
+			});
+			objetivos.addActionListener(e-> {
+				VentanaObjetivos v2=new VentanaObjetivos();
+				this.dispose();
+				v2.setVisible(true);
+			});
 	}
 
 }

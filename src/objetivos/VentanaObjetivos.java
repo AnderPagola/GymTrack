@@ -10,13 +10,18 @@ import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JTextField;
 
+import historial.Historial;
+import principal.VentanaPrincipal;
+import progreso.VentanaSeguimiento;
+import rutinas.Rutina;
+
 public class VentanaObjetivos extends JFrame {
 
     private JButton btnActualizarFuerza;
     private JButton btnActualizarVolumen;
     private JButton btnActualizarPeso;
 
-    private JButton btnMenuPrincipal;
+    private JButton btnAvisos;
 
     public VentanaObjetivos() {
 
@@ -27,89 +32,90 @@ public class VentanaObjetivos extends JFrame {
 
         setLayout(new BorderLayout());
 
-        // TÍTULO
+        // PANEL SUPERIOR
+
+        JPanel panelSuperior = new JPanel(new BorderLayout());
+
         JLabel lblTitulo = new JLabel("OBJETIVOS", JLabel.CENTER);
-        add(lblTitulo, BorderLayout.NORTH);
+
+        btnAvisos = new JButton("Avisos");
+
+        panelSuperior.add(lblTitulo, BorderLayout.CENTER);
+        panelSuperior.add(btnAvisos, BorderLayout.EAST);
+
+        add(panelSuperior, BorderLayout.NORTH);
 
         // PANEL CENTRAL
+
         JPanel panelCentral = new JPanel();
         panelCentral.setLayout(new GridLayout(3, 1, 10, 10));
 
-        // ================= FUERZA =================
+        // FUERZA
 
-        JPanel panelFuerza = new JPanel(new GridLayout(5, 2, 5, 5));
+        JPanel panelFuerza = new JPanel(new GridLayout(5, 2));
 
         panelFuerza.add(new JLabel("Valor objetivo:"));
-        JTextField txtObjetivoFuerza = new JTextField();
-        panelFuerza.add(txtObjetivoFuerza);
+        panelFuerza.add(new JTextField());
 
         panelFuerza.add(new JLabel("Valor actual:"));
-        JTextField txtActualFuerza = new JTextField();
-        panelFuerza.add(txtActualFuerza);
+        panelFuerza.add(new JTextField());
 
         panelFuerza.add(new JLabel("Progreso:"));
+
         JProgressBar barraFuerza = new JProgressBar(0, 100);
-        barraFuerza.setValue(0);
         barraFuerza.setStringPainted(true);
         panelFuerza.add(barraFuerza);
 
         panelFuerza.add(new JLabel("Estado:"));
-        JLabel lblEstadoFuerza = new JLabel("Pendiente");
-        panelFuerza.add(lblEstadoFuerza);
+        panelFuerza.add(new JLabel("Pendiente"));
 
         btnActualizarFuerza = new JButton("Actualizar");
         panelFuerza.add(btnActualizarFuerza);
 
         panelFuerza.add(new JLabel("FUERZA"));
 
-        // ================= VOLUMEN =================
+        // VOLUMEN
 
-        JPanel panelVolumen = new JPanel(new GridLayout(5, 2, 5, 5));
+        JPanel panelVolumen = new JPanel(new GridLayout(5, 2));
 
         panelVolumen.add(new JLabel("Valor objetivo:"));
-        JTextField txtObjetivoVolumen = new JTextField();
-        panelVolumen.add(txtObjetivoVolumen);
+        panelVolumen.add(new JTextField());
 
         panelVolumen.add(new JLabel("Valor actual:"));
-        JTextField txtActualVolumen = new JTextField();
-        panelVolumen.add(txtActualVolumen);
+        panelVolumen.add(new JTextField());
 
         panelVolumen.add(new JLabel("Progreso:"));
+
         JProgressBar barraVolumen = new JProgressBar(0, 100);
-        barraVolumen.setValue(0);
         barraVolumen.setStringPainted(true);
         panelVolumen.add(barraVolumen);
 
         panelVolumen.add(new JLabel("Estado:"));
-        JLabel lblEstadoVolumen = new JLabel("Pendiente");
-        panelVolumen.add(lblEstadoVolumen);
+        panelVolumen.add(new JLabel("Pendiente"));
 
         btnActualizarVolumen = new JButton("Actualizar");
         panelVolumen.add(btnActualizarVolumen);
 
         panelVolumen.add(new JLabel("VOLUMEN"));
 
-        // ================= PESO =================
+        // PESO
 
-        JPanel panelPeso = new JPanel(new GridLayout(5, 2, 5, 5));
+        JPanel panelPeso = new JPanel(new GridLayout(5, 2));
 
         panelPeso.add(new JLabel("Valor objetivo:"));
-        JTextField txtObjetivoPeso = new JTextField();
-        panelPeso.add(txtObjetivoPeso);
+        panelPeso.add(new JTextField());
 
         panelPeso.add(new JLabel("Valor actual:"));
-        JTextField txtActualPeso = new JTextField();
-        panelPeso.add(txtActualPeso);
+        panelPeso.add(new JTextField());
 
         panelPeso.add(new JLabel("Progreso:"));
+
         JProgressBar barraPeso = new JProgressBar(0, 100);
-        barraPeso.setValue(0);
         barraPeso.setStringPainted(true);
         panelPeso.add(barraPeso);
 
         panelPeso.add(new JLabel("Estado:"));
-        JLabel lblEstadoPeso = new JLabel("Pendiente");
-        panelPeso.add(lblEstadoPeso);
+        panelPeso.add(new JLabel("Pendiente"));
 
         btnActualizarPeso = new JButton("Actualizar");
         panelPeso.add(btnActualizarPeso);
@@ -126,34 +132,43 @@ public class VentanaObjetivos extends JFrame {
 
         JPanel panelInferior = new JPanel();
 
-        btnMenuPrincipal = new JButton("Menú Principal");
-        JButton btnEntrenar = new JButton("Entrenar");
-        JButton btnRutinas = new JButton("Rutinas");
         JButton btnProgreso = new JButton("Progreso");
+        JButton btnRutinas = new JButton("Mis rutinas");
+        JButton btnHistorial = new JButton("Historial");
+        JButton btnEstadisticas = new JButton("Estadísticas");
+        JButton btnObjetivos = new JButton("Objetivos");
+        btnObjetivos.setEnabled(false);
+        
 
-        panelInferior.add(btnMenuPrincipal);
-        panelInferior.add(btnEntrenar);
-        panelInferior.add(btnRutinas);
+        
         panelInferior.add(btnProgreso);
+        panelInferior.add(btnRutinas);
+        panelInferior.add(btnHistorial);
+        panelInferior.add(btnEstadisticas);
+        panelInferior.add(btnObjetivos);
 
         add(panelInferior, BorderLayout.SOUTH);
 
-        // ACTION LISTENERS VACÍOS
+        // EVENTOS
 
-        btnActualizarFuerza.addActionListener(e -> {
-
+        btnProgreso.addActionListener(e -> {
+            dispose();
+            new VentanaSeguimiento();
+        });
+        
+        btnRutinas.addActionListener(e -> {
+            dispose();
+            new Rutina();
+        });
+        
+        btnHistorial.addActionListener(e -> {
+            dispose();
+            new Historial();
         });
 
-        btnActualizarVolumen.addActionListener(e -> {
-
-        });
-
-        btnActualizarPeso.addActionListener(e -> {
-
-        });
-
-        btnMenuPrincipal.addActionListener(e -> {
-
+        btnAvisos.addActionListener(e -> {
+            dispose();
+            new VentanaAvisos();
         });
 
         setVisible(true);

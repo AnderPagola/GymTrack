@@ -11,6 +11,18 @@ import progreso.VentanaSeguimiento;
 import rutinas.Rutina;
 
 import java.awt.BorderLayout;
+
+
+import objetivos.VentanaObjetivos;
+import progreso.VentanaSeguimiento;
+import rutinas.Rutina;
+
+import java.awt.BorderLayout;
+import objetivos.VentanaObjetivos;
+import progreso.VentanaSeguimiento;
+import rutinas.Rutina;
+
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
