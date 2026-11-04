@@ -193,6 +193,7 @@ public class Historial extends JFrame {
 //	    boton.setContentAreaFilled(true);
 	    boton.setFocusPainted(false);
 	    
+	    
 	}
 	private void actualizarSemana() {
 
