@@ -22,20 +22,20 @@ import javax.swing.table.DefaultTableModel;
 
 import estadisticas.VentanaEstadisticas;
 import objetivos.VentanaObjetivos;
-import perfil.VentanaPerfil;
 import progreso.VentanaSeguimiento;
 import rutinas.Rutina;
 
-public class MisEntrenamientos extends JFrame {
-	private JButton botonhistorial =new JButton("Entrenar");
-	private JButton botonRutinas=new JButton("Mis rutinas");
-	private JButton botonprogreso=new JButton("Progreso");
-	private JButton botonperfil=new JButton("Perfil");
+public class Historial extends JFrame {
+	private JButton historial =new JButton("Historial");
+	private JButton Rutinas=new JButton("Mis rutinas");
+	private JButton progreso=new JButton("Progreso");
+	private JButton stats=new JButton("Perfil");
+	private JButton objetivos=new JButton("Obejtivos");
 	private int diaI=8;
 	private JTable tablaCalendario;
 	private DefaultTableModel modeloTabla;
 	
-	public MisEntrenamientos() {
+	public Historial() {
 		// TODO Auto-generated constructor stub
 		
 		setTitle("Historial y evolucion");
@@ -140,35 +140,44 @@ public class MisEntrenamientos extends JFrame {
 		panelcentro.setBackground(Color.black);
 		JPanel panelsouth=new JPanel();
 		panelsouth.setLayout(new GridLayout(1,4,20,20));
-		formatoBoton(botonRutinas);
-		formatoBoton(botonhistorial);
-		formatoBoton(botonperfil);
-		formatoBoton(botonprogreso);
-		panelsouth.add(botonhistorial);
-		panelsouth.add(botonRutinas);
-		panelsouth.add(botonprogreso);
-		panelsouth.add(botonperfil);
+		formatoBoton(Rutinas);
+		formatoBoton(historial);
+		formatoBoton(stats);
+		formatoBoton(progreso);
+		formatoBoton(objetivos);
+		panelsouth.add(progreso);
+		panelsouth.add(Rutinas);
+		panelsouth.add(historial);
+		panelsouth.add(stats);
+		panelsouth.add(objetivos);
+		historial.setEnabled(false);
 		
-		botonprogreso.addActionListener(e-> {
+		progreso.addActionListener(e-> {
 			VentanaSeguimiento v2=new VentanaSeguimiento();
 			this.dispose();
 			v2.setVisible(true);
 		});
-		botonRutinas.addActionListener(e-> {
+		Rutinas.addActionListener(e-> {
 			Rutina v2=new Rutina();
 			this.dispose();
 			v2.setVisible(true);
 		});
-		botonhistorial.addActionListener(e-> {
-			MisEntrenamientos v2=new MisEntrenamientos();
+		historial.addActionListener(e-> {
+			Historial v2=new Historial();
 			this.dispose();
 			v2.setVisible(true);
 		});
-		botonperfil.addActionListener(e-> {
-			VentanaPerfil v2=new VentanaPerfil();
+		stats.addActionListener(e-> {
+			VentanaEstadisticas v2=new VentanaEstadisticas();
 			this.dispose();
 			v2.setVisible(true);
 		});
+		objetivos.addActionListener(e-> {
+			VentanaObjetivos v2=new VentanaObjetivos();
+			this.dispose();
+			v2.setVisible(true);
+		});
+		
 		
 		add(panelnorth, BorderLayout.NORTH);
 		add(panelcentro, BorderLayout.CENTER);

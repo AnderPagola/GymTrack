@@ -18,7 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import estadisticas.VentanaEstadisticas;
-import historial.MisEntrenamientos;
+import historial.Historial;
 
 public class VentanaPrincipal extends JFrame {
 	
@@ -80,7 +80,7 @@ public class VentanaPrincipal extends JFrame {
 			v2.setVisible(true);
 		});
 		historial.addActionListener(e-> {
-			MisEntrenamientos v2=new MisEntrenamientos();
+			Historial v2=new Historial();
 			this.dispose();
 			v2.setVisible(true);
 		});

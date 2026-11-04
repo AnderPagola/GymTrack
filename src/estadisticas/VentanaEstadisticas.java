@@ -13,7 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import historial.MisEntrenamientos;
+import historial.Historial;
 import objetivos.VentanaObjetivos;
 import progreso.VentanaSeguimiento;
 import rutinas.Rutina;
@@ -75,7 +75,7 @@ public class VentanaEstadisticas extends JFrame {
 			v2.setVisible(true);
 		});
 		historial.addActionListener(e -> {
-			MisEntrenamientos v2=new MisEntrenamientos();
+			Historial v2=new Historial();
 			this.dispose();
 			v2.setVisible(true);
 		});
