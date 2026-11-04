@@ -35,7 +35,7 @@ public class Rutina extends JFrame {
     public Rutina() {
 
         setTitle("GYMTRACK - Gestión de rutinas");
-        setSize(850, 650);
+        setSize(600, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
