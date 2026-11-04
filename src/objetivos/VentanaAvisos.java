@@ -10,70 +10,109 @@ import javax.swing.JPanel;
 
 public class VentanaAvisos extends JFrame {
 
-	private JButton btnEntrenamiento;
-	private JButton btnAgua;
-	private JButton btnDormir;
-	private JButton btnRecord;
+    private JButton btnEntrenamiento;
+    private JButton btnAgua;
+    private JButton btnDormir;
+    private JButton btnRecord;
 
-	public VentanaAvisos() {
+    private JButton btnMenuPrincipal;
 
-		setTitle("Avisos");
-		setSize(400, 600);
-		setLocationRelativeTo(null);
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    public VentanaAvisos() {
 
-		setLayout(new BorderLayout());
+        setTitle("Avisos y Recordatorios");
+        setSize(600, 400);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-		// Título
-		JLabel lblTitulo = new JLabel("AVISOS", JLabel.CENTER);
-		add(lblTitulo, BorderLayout.NORTH);
+        setLayout(new BorderLayout());
 
-		// Panel central
-		JPanel panelAvisos = new JPanel();
-		panelAvisos.setLayout(new GridLayout(4, 1, 10, 10));
+        // Título
+        JLabel lblTitulo = new JLabel("AVISOS Y RECORDATORIOS", JLabel.CENTER);
+        add(lblTitulo, BorderLayout.NORTH);
 
-		btnEntrenamiento = new JButton("Proximo entrenamiento");
-		btnAgua = new JButton("Beber agua");
-		btnDormir = new JButton("Dormir 8 horas");
-		btnRecord = new JButton("Nuevo record personal");
+        // Panel central
+        JPanel panelAvisos = new JPanel();
+        panelAvisos.setLayout(new GridLayout(4, 2, 10, 10));
 
-		panelAvisos.add(btnEntrenamiento);
-		panelAvisos.add(btnAgua);
-		panelAvisos.add(btnDormir);
-		panelAvisos.add(btnRecord);
+        panelAvisos.add(new JLabel("Próximo entrenamiento: Mañana"));
+        btnEntrenamiento = new JButton("No completado");
+        panelAvisos.add(btnEntrenamiento);
 
-		add(panelAvisos, BorderLayout.CENTER);
+        panelAvisos.add(new JLabel("Beber al menos 2 litros de agua"));
+        btnAgua = new JButton("No completado");
+        panelAvisos.add(btnAgua);
 
-		// Menú inferior
-		JPanel panelInferior = new JPanel();
+        panelAvisos.add(new JLabel("Dormir 8 horas"));
+        btnDormir = new JButton("No completado");
+        panelAvisos.add(btnDormir);
 
-		JButton btnEntrenar = new JButton("Entrenar");
-		JButton btnRutinas = new JButton("Rutinas");
-		JButton btnProgreso = new JButton("Progreso");
+        panelAvisos.add(new JLabel("Nuevo récord personal"));
+        btnRecord = new JButton("No completado");
+        panelAvisos.add(btnRecord);
 
-		panelInferior.add(btnEntrenar);
-		panelInferior.add(btnRutinas);
-		panelInferior.add(btnProgreso);
+        add(panelAvisos, BorderLayout.CENTER);
 
-		add(panelInferior, BorderLayout.SOUTH);
+        // Panel inferior
+        JPanel panelInferior = new JPanel();
 
-		// Eventos vacíos para implementar después
-		btnEntrenamiento.addActionListener(e -> {
+        btnMenuPrincipal = new JButton("Menú Principal");
 
-		});
+        panelInferior.add(btnMenuPrincipal);
 
-		btnAgua.addActionListener(e -> {
+        add(panelInferior, BorderLayout.SOUTH);
 
-		});
+        // Cambiar estado al pulsar
 
-		btnDormir.addActionListener(e -> {
+        btnEntrenamiento.addActionListener(e -> {
 
-		});
+            if (btnEntrenamiento.getText().equals("No completado")) {
+                btnEntrenamiento.setText("Completado");
+            } else {
+                btnEntrenamiento.setText("No completado");
+            }
 
-		btnRecord.addActionListener(e -> {
+        });
 
-		});
+        btnAgua.addActionListener(e -> {
 
-		setVisible(true);
-	}
+            if (btnAgua.getText().equals("No completado")) {
+                btnAgua.setText("Completado");
+            } else {
+                btnAgua.setText("No completado");
+            }
+
+        });
+
+        btnDormir.addActionListener(e -> {
+
+            if (btnDormir.getText().equals("No completado")) {
+                btnDormir.setText("Completado");
+            } else {
+                btnDormir.setText("No completado");
+            }
+
+        });
+
+        btnRecord.addActionListener(e -> {
+
+            if (btnRecord.getText().equals("No completado")) {
+                btnRecord.setText("Completado");
+            } else {
+                btnRecord.setText("No completado");
+            }
+
+        });
+
+        // Volver al menú principal
+
+        btnMenuPrincipal.addActionListener(e -> {
+
+            dispose();
+
+            // new VentanaPrincipal();
+
+        });
+
+        setVisible(true);
+    }
 }

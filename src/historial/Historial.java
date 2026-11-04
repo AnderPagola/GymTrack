@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -29,11 +30,12 @@ public class Historial extends JFrame {
 	private JButton historial =new JButton("Historial");
 	private JButton Rutinas=new JButton("Mis rutinas");
 	private JButton progreso=new JButton("Progreso");
-	private JButton stats=new JButton("Perfil");
+	private JButton stats=new JButton("Estadisticas");
 	private JButton objetivos=new JButton("Obejtivos");
 	private int diaI=8;
 	private JTable tablaCalendario;
 	private DefaultTableModel modeloTabla;
+	private JTextArea trabajoDia=new JTextArea();
 	
 	public Historial() {
 		// TODO Auto-generated constructor stub
@@ -110,7 +112,9 @@ public class Historial extends JFrame {
 					actualizarSemana();
 				}
 			    
+			    
 		});
+		
 		botondespues.addActionListener(e->{
 			diaI+=7;
 			if(diaI>22) {
@@ -137,14 +141,32 @@ public class Historial extends JFrame {
 	
 		
 		JPanel panelcentro=new JPanel();
-		panelcentro.setBackground(Color.black);
+		
+		trabajoDia.setEditable(false);
+		trabajoDia.setFont(new Font("Arial",Font.PLAIN,16));
+		panelcentro.setLayout(new BorderLayout());
+		panelcentro.add(trabajoDia,BorderLayout.CENTER);
+		int columna = tablaCalendario.getSelectedColumn();
+
+		mostrarEntrenamiento(columna);
+		tablaCalendario.setCellSelectionEnabled(true);
+
+		tablaCalendario.getSelectionModel().addListSelectionListener(e -> {
+
+		    int fila = tablaCalendario.getSelectedRow();
+		    int columna3 = tablaCalendario.getSelectedColumn();
+
+		    if (fila != -1 && columna != -1) {
+
+		        String dia = tablaCalendario.getValueAt(fila, columna).toString();
+
+		        mostrarEntrenamiento(columna3);
+		    }
+		});
+
 		JPanel panelsouth=new JPanel();
 		panelsouth.setLayout(new GridLayout(1,4,20,20));
-		formatoBoton(Rutinas);
-		formatoBoton(historial);
-		formatoBoton(stats);
-		formatoBoton(progreso);
-		formatoBoton(objetivos);
+
 		panelsouth.add(progreso);
 		panelsouth.add(Rutinas);
 		panelsouth.add(historial);
@@ -186,14 +208,6 @@ public class Historial extends JFrame {
 		
 		
 		
-	}public void formatoBoton(JButton boton) {
-		boton.setFont(new Font("Arial", Font.BOLD, 30));
-		boton.setBackground(Color.CYAN);
-//		boton.setOpaque(true);
-//	    boton.setContentAreaFilled(true);
-	    boton.setFocusPainted(false);
-	    
-	    
 	}
 	private void actualizarSemana() {
 
@@ -203,6 +217,60 @@ public class Historial extends JFrame {
 	            0,
 	            i
 	        );
+	    }
+	}private void mostrarEntrenamiento(int columna3) {
+
+	    switch (columna3) {
+
+	        case 0: 
+	            trabajoDia.setText(
+	                "Entrenamiento Pierna\n\n" +
+	                "✓ Sentadillas\n" +
+	                "✓ Prensa\n" +
+	                "✓ Extensiones\n\n" +
+	                "✓ Mejor que última sesión"
+	            );
+	            break;
+
+	        case 1: 
+	            trabajoDia.setText(
+	                "Entrenamiento Pecho\n\n" +
+	                "✓ Press banca\n" +
+	                "✓ Aperturas\n" +
+	                "✓ Fondos"
+	            );
+	            break;
+
+	        case 2: // Miércoles
+	            trabajoDia.setText(
+	                "Entrenamiento Espalda"
+	            );
+	            break;
+
+	        case 3: 
+	            trabajoDia.setText(
+	                "Entrenamiento Hombro"
+	            );
+	            break;
+
+	        case 4: 
+	            trabajoDia.setText(
+	                "Entrenamiento Brazos"
+	            );
+	            break;
+
+	        case 5: 
+	            trabajoDia.setText(
+	                "Cardio"
+	            );
+	            break;
+
+	        case 6: 
+	            trabajoDia.setText(
+	                "Descanso"
+	            );
+	            break;
+	            
 	    }
 	}
 }
