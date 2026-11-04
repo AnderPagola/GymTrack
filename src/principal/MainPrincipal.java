@@ -9,5 +9,4 @@ public class MainPrincipal {
 		SwingUtilities.invokeLater(() -> new VentanaPrincipal());
 
 	}
-
 }

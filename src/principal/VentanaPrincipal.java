@@ -5,6 +5,18 @@ import progreso.VentanaSeguimiento;
 import rutinas.Rutina;
 
 import java.awt.BorderLayout;
+
+
+import objetivos.VentanaObjetivos;
+import progreso.VentanaSeguimiento;
+import rutinas.Rutina;
+
+import java.awt.BorderLayout;
+import objetivos.VentanaObjetivos;
+import progreso.VentanaSeguimiento;
+import rutinas.Rutina;
+
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -26,6 +38,7 @@ public class VentanaPrincipal extends JFrame {
 	private JButton historial = new JButton("Historial");
 	private JButton stats = new JButton("Estadísticas");
 	private JButton objetivos = new JButton("Objetivos");
+	
 	
 	
 	public VentanaPrincipal() {
