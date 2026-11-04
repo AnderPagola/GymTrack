@@ -117,31 +117,58 @@ public class VentanaEstadisticas extends JFrame {
 		panelGeneral.add(box, BorderLayout.NORTH);
 		
 		box.addActionListener(e -> {
-//			panelContenido.removeAll();
 			String seleccion = (String) box.getSelectedItem();
+			panelContenido.removeAll();
 			
-			if(seleccion.equals("")) {
-				label.setText("");
-			} else if(seleccion.equals("Volumen de la semana")) {
-				label.setText("VOLUMEN DE LA SEMANA");
+//			if(seleccion.equals("")) {
+//				label.setText("");
+			if(seleccion.equals("Volumen de la semana")) {
+				VolumenSemana();
+//				label.setText("VOLUMEN DE LA SEMANA");
 			} else if(seleccion.equals("Tiempo entrenamiento")) {
-				label.setText("TIEMPO ENTRENAMIENTO");
+				TiempoEntrenamiento();
+//				label.setText("TIEMPO ENTRENAMIENTO");
 			} else if(seleccion.equals("Series y repeticiones")) {
-				label.setText("SERIES Y REPETICIONES");
+				SeriesReps();
+//				label.setText("SERIES Y REPETICIONES");
 			} else if(seleccion.equals("Pesos")) {
-				label.setText("PESOS");
+				Pesos();
+//				label.setText("PESOS");
 			} else if(seleccion.equals("Records")) {
-				label.setText("RECORDS");
+				Records();
+//				label.setText("RECORDS");
 			} else if(seleccion.equals("Progreso por músculo")) {
-				label.setText("PROGRESO POR MÚSCULO");
+				ProgresoMusculo();
+//				label.setText("PROGRESO POR MÚSCULO");
 			}
+			//Estas dos funciones las he sacado con la IA
+			panelContenido.revalidate();
+			panelContenido.repaint();
 		});
-		
-		
+	}
+	
+	//Contenido de cada elección
+	private void VolumenSemana() {
 		
 	}
 	
-	public void VolumenSemana() {
+	private void TiempoEntrenamiento() {
+		
+	}
+	
+	private void SeriesReps() {
+		
+	}
+	
+	private void Pesos() {
+		
+	}
+	
+	private void Records() {
+		
+	}
+	
+	private void ProgresoMusculo() {
 		
 	}
 
