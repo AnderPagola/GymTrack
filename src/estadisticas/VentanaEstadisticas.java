@@ -2,20 +2,24 @@ package estadisticas;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 
 import historial.Historial;
 import objetivos.VentanaObjetivos;
@@ -58,7 +62,7 @@ public class VentanaEstadisticas extends JFrame {
 		
 		//Panel menu
 		JPanel panelMenu = new JPanel();
-		panelMenu.setLayout(new GridLayout(1,5,5,5));
+		panelMenu.setLayout(new GridLayout(1,5));
 		progreso.setFocusPainted(false);
 		rutina.setFocusPainted(false);
 		historial.setFocusPainted(false);
@@ -203,8 +207,18 @@ public class VentanaEstadisticas extends JFrame {
 	
 	private void TiempoEntrenamiento() {
 		JPanel panel = new JPanel();
-		panel.setLayout(new GridLayout(5,1,5,10));
+		panel.setLayout(new GridLayout(6,1,5,10));
 		panel.setBorder(new EmptyBorder(10,10,10,10));
+		//Titulo
+		JPanel panelTitulo = new JPanel();
+		JLabel titulo = new JLabel("TIEMPOS DE ENTRENAMIENTOS");
+		titulo.setHorizontalAlignment(SwingConstants.CENTER);
+		titulo.setVerticalAlignment(SwingConstants.TOP);
+		titulo.setFont(new Font("Arial", Font.BOLD, 20));
+		panelTitulo.add(titulo);
+		panelTitulo.setPreferredSize(new Dimension(600,40));
+		panelContenido.add(panelTitulo, BorderLayout.NORTH);
+		
 		//1
 		String[] dias = {"L", "M", "X", "J", "V", "S", "D"};
 		Object[][] datos = {
@@ -312,85 +326,269 @@ public class VentanaEstadisticas extends JFrame {
 	}
 	
 	private void SeriesReps() {
-		 JPanel panel = new JPanel();
-		    panel.setLayout(new GridLayout(3, 1));
+		JPanel panel = new JPanel();
+		panel.setLayout(new GridLayout(3, 1));
 
-		    JLabel titulo = new JLabel("SERIES Y REPETICIONES");
-		    JLabel series = new JLabel("Series realizadas: 45");
-		    JLabel repeticiones = new JLabel("Repeticiones realizadas: 320");
-
-		    titulo.setFont(new Font("Arial", Font.BOLD, 20));
-
-		    titulo.setHorizontalAlignment(SwingConstants.CENTER);
-		    series.setHorizontalAlignment(SwingConstants.CENTER);
-		    repeticiones.setHorizontalAlignment(SwingConstants.CENTER);
-
-		    panel.add(titulo);
-		    panel.add(series);
-		    panel.add(repeticiones);
-
-		    panelContenido.add(panel, BorderLayout.CENTER);
-	}
-	
-	private void Pesos() {
-		JPanel panel = new JPanel(new GridLayout(3, 1));
-
-	    JLabel titulo = new JLabel("PESOS");
-	    JLabel mayor = new JLabel("Mayor peso levantado: 100 kg");
-	    JLabel ejercicio = new JLabel("Ejercicio: Press banca");
-
-	    titulo.setFont(new Font("Arial", Font.BOLD, 20));
-
-	    titulo.setHorizontalAlignment(SwingConstants.CENTER);
-	    mayor.setHorizontalAlignment(SwingConstants.CENTER);
-	    ejercicio.setHorizontalAlignment(SwingConstants.CENTER);
-
-	    panel.add(titulo);
-	    panel.add(mayor);
-	    panel.add(ejercicio);
-
-	    panelContenido.add(panel, BorderLayout.CENTER);
-	}
-	
-	private void Records() {
-		JPanel panel = new JPanel(new GridLayout(3, 1));
-
-		JLabel titulo = new JLabel("RÉCORDS PERSONALES");
-		JLabel press = new JLabel("Press banca: 80 kg");
-		JLabel sentadilla = new JLabel("Sentadilla: 100 kg");
-		
+		//1
+		JLabel titulo = new JLabel("SERIES Y REPETICIONES");
 		titulo.setFont(new Font("Arial", Font.BOLD, 20));
-
 		titulo.setHorizontalAlignment(SwingConstants.CENTER);
-		press.setHorizontalAlignment(SwingConstants.CENTER);
-		sentadilla.setHorizontalAlignment(SwingConstants.CENTER);
+		titulo.setVerticalAlignment(SwingConstants.TOP);
+		
+		//2
+		JPanel panelSeries = new JPanel();
+		panelSeries.setLayout(new GridLayout(1,2));
+		panelSeries.setBorder(BorderFactory.createTitledBorder("Series"));
+		JLabel series = new JLabel("Series realizadas: ");
+		series.setHorizontalAlignment(SwingConstants.LEFT);
+		JLabel cantSeries = new JLabel("45");
+		cantSeries.setFont(new Font("Arial", Font.BOLD, 25));
+		panelSeries.add(series);
+		panelSeries.add(cantSeries);
 
+		//3
+		JPanel panelReps = new JPanel();
+		panelReps.setLayout(new GridLayout(1,2));
+		panelReps.setBorder(BorderFactory.createTitledBorder("Repeticiones"));
+		JLabel reps = new JLabel("Repeticiones realizadas: ");
+		reps.setHorizontalAlignment(SwingConstants.LEFT);
+		JLabel repsCant = new JLabel("320");
+		repsCant.setFont(new Font("Arial", Font.BOLD, 25));
+		panelReps.add(reps);
+		panelReps.add(repsCant);
+				 
 		panel.add(titulo);
-		panel.add(press);
-		panel.add(sentadilla);
+		panel.add(panelSeries);
+		panel.add(panelReps);
 
 		panelContenido.add(panel, BorderLayout.CENTER);
 	}
 	
-	private void ProgresoMusculo() {
+	private void Pesos() {
+		JPanel panel = new JPanel();
+		panel.setLayout(new BorderLayout());
+		JLabel titulo = new JLabel("PESOS");
+		titulo.setFont(new Font("Arial", Font.BOLD, 20));
+		panel.add(titulo, BorderLayout.NORTH);
+		
+		JPanel panelBox = new JPanel();
+		panelBox.setLayout(new BorderLayout());
+		panel.add(panelBox, BorderLayout.CENTER);
+
+		String[] partes = {
+				"",
+				"Pecho",
+				"Espalda",
+				"Piernas",
+				"Brazos"
+		};
+		JComboBox<String> box = new JComboBox<>(partes);
+		box.setPreferredSize(new Dimension(150,30));
+		panelBox.add(box, BorderLayout.NORTH);
+		
+		String[] ejpecho = {
+				"Press Banca", 
+				"Press con mancuernas",
+				"Fondos",
+				"Apertural polea",
+		};
+		
+		String[] ejespalda = {
+				"Peso muerto",
+				"Remo con barra",
+				"Dominadas",
+				"Jalón al pecho",
+		};
+		
+		String[] ejpiernas = {
+				"Sentadilla",
+				"Prensa",
+				"Máquina isquio",
+				"Máquina gemelos",
+		};
+		
+		String[] ejbrazos = {
+				"Curl de bíceps",
+				"Tríceps en polea",
+				"Bíceps con barra",
+				"Tríceps unilateral",
+		};
+		
+		int[] pesosPecho = {60, 22, 10, 15};
+
+		int[] pesosEspalda = {100, 50, 8, 45};
+
+		int[] pesosPiernas = {80, 120, 40, 35};
+
+		int[] pesosBrazos = {15, 25, 20, 12};
+		
+		DefaultTableModel modelo = new DefaultTableModel(
+				new Object[] {"Ejercicio", "Peso (kg)"}, 0
+		) {
+			public boolean isCellEditable(int row, int column) {
+				return column == 1;
+			}
+		};
+		
+		JTable tabla = new JTable(modelo);
+		tabla.setRowHeight(35);
+		
+		JScrollPane scrollTabla = new JScrollPane(tabla);
+		panelBox.add(scrollTabla, BorderLayout.CENTER);
+
+
+		box.addActionListener(e -> {
+			String seleccionado = (String) box.getSelectedItem();
+			
+			modelo.setRowCount(0);
+			
+			String[] ejercicios = null;
+			int[] pesos = null;
+			
+			if(seleccionado.equals("Pecho")) {
+				ejercicios=ejpecho;
+				pesos=pesosPecho;
+			} else if (seleccionado.equals("Espalda")) {
+				ejercicios=ejespalda;
+				pesos=pesosEspalda;
+			} else if (seleccionado.equals("Piernas")) {
+				ejercicios=ejpiernas;
+				pesos=pesosPiernas;
+			} else if (seleccionado.equals("Brazos")) {
+				ejercicios=ejbrazos;
+				pesos=pesosBrazos;
+			}
+			
+			if(ejercicios != null) {
+				for(int i = 0; i < ejercicios.length; i++) {
+					modelo.addRow(new Object[] {ejercicios[i], pesos[i]});
+				}
+			}
+		});
+		
+		panelContenido.add(panel);
+	}
+	
+	private void Records() {
 		JPanel panel = new JPanel(new GridLayout(4, 1));
 
+		JLabel titulo = new JLabel("RÉCORDS PERSONALES");
+		titulo.setFont(new Font("Arial", Font.BOLD, 20));
+		titulo.setVerticalAlignment(SwingConstants.NORTH);
+		titulo.setHorizontalAlignment(SwingConstants.CENTER);
+		panel.add(titulo);
+		
+		JPanel press = new JPanel();
+		press.setBorder(BorderFactory.createTitledBorder("Press de banca"));
+		press.setLayout(new GridLayout(1,1));
+		JLabel labelpress = new JLabel("80kg");
+		labelpress.setFont(new Font("Arial", Font.BOLD, 25));
+		labelpress.setHorizontalAlignment(SwingConstants.CENTER);
+		labelpress.setVerticalAlignment(SwingConstants.CENTER);
+		press.add(labelpress);
+		panel.add(press);
+		
+		JPanel pesomuerto = new JPanel();
+		pesomuerto.setBorder(BorderFactory.createTitledBorder("Peso muerto"));
+		pesomuerto.setLayout(new GridLayout(1,1));
+		JLabel labelpesomuerto = new JLabel("120kg");
+		labelpesomuerto.setFont(new Font("Arial", Font.BOLD, 25));
+		labelpesomuerto.setHorizontalAlignment(SwingConstants.CENTER);
+		labelpesomuerto.setVerticalAlignment(SwingConstants.CENTER);
+		pesomuerto.add(labelpesomuerto);
+		panel.add(pesomuerto);
+		
+		JPanel sentadilla = new JPanel();
+		sentadilla.setBorder(BorderFactory.createTitledBorder("Sentadilla"));
+		sentadilla.setLayout(new GridLayout(1,1));
+		JLabel labelsentadilla = new JLabel("90kg");
+		labelsentadilla.setFont(new Font("Arial", Font.BOLD, 25));
+		labelsentadilla.setHorizontalAlignment(SwingConstants.CENTER);
+		labelsentadilla.setVerticalAlignment(SwingConstants.CENTER);
+		sentadilla.add(labelsentadilla);
+		panel.add(sentadilla);
+	
+		panelContenido.add(panel, BorderLayout.CENTER);
+	}
+	
+	private void ProgresoMusculo() {
+		JPanel panel = new JPanel();
+		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+
 	    JLabel titulo = new JLabel("PROGRESO POR MÚSCULO");
-	    JLabel pecho = new JLabel("Pecho: 12 series");
-	    JLabel espalda = new JLabel("Espalda: 15 series");
-	    JLabel piernas = new JLabel("Piernas: 18 series");
-
 	    titulo.setFont(new Font("Arial", Font.BOLD, 20));
-
+	    titulo.setAlignmentX(Component.CENTER_ALIGNMENT); //Esto lo he hecho con la IA
 	    titulo.setHorizontalAlignment(SwingConstants.CENTER);
-	    pecho.setHorizontalAlignment(SwingConstants.CENTER);
-	    espalda.setHorizontalAlignment(SwingConstants.CENTER);
-	    piernas.setHorizontalAlignment(SwingConstants.CENTER);
-
+	    titulo.setVerticalAlignment(SwingConstants.NORTH);
 	    panel.add(titulo);
-	    panel.add(pecho);
-	    panel.add(espalda);
-	    panel.add(piernas);
+	    
+	    JPanel panelDatos = new JPanel();
+	    panelDatos.setLayout(new GridLayout(2,2));
+	    panel.add(panelDatos);
+	    
+	    //1,1
+	    JPanel datosPecho = new JPanel();
+	    datosPecho.setLayout(new GridLayout(1,2));
+	    datosPecho.setBorder(BorderFactory.createTitledBorder("Pecho"));
+	    JLabel pesoPecho = new JLabel("+8kg");
+	    JLabel porPecho = new JLabel("+4,25%");
+	    pesoPecho.setFont(new Font("Arial", Font.BOLD, 25));
+	    porPecho.setFont(new Font("Arial", Font.BOLD, 25));
+	    pesoPecho.setHorizontalAlignment(SwingConstants.CENTER);
+	    pesoPecho.setVerticalAlignment(SwingConstants.CENTER);
+	    porPecho.setHorizontalAlignment(SwingConstants.CENTER);
+	    porPecho.setVerticalAlignment(SwingConstants.CENTER);
+	    datosPecho.add(pesoPecho);
+	    datosPecho.add(porPecho);
+	    panelDatos.add(datosPecho);
+	    
+	    //1,2
+	    JPanel datosEspalda = new JPanel();
+	    datosEspalda.setLayout(new GridLayout(1,2));
+	    datosEspalda.setBorder(BorderFactory.createTitledBorder("Espalda"));
+	    JLabel pesoEspalda = new JLabel("+10kg");
+	    JLabel porEspalda = new JLabel("+5,1%");
+	    pesoEspalda.setFont(new Font("Arial", Font.BOLD, 25));
+	    porEspalda.setFont(new Font("Arial", Font.BOLD, 25));
+	    pesoEspalda.setHorizontalAlignment(SwingConstants.CENTER);
+	    pesoEspalda.setVerticalAlignment(SwingConstants.CENTER);
+	    porEspalda.setHorizontalAlignment(SwingConstants.CENTER);
+	    porEspalda.setVerticalAlignment(SwingConstants.CENTER);
+	    datosEspalda.add(pesoEspalda);
+	    datosEspalda.add(porEspalda);
+	    panelDatos.add(datosEspalda);
+	    
+	    //2,1
+	    JPanel datosPiernas = new JPanel();
+	    datosPiernas.setLayout(new GridLayout(1,2));
+	    datosPiernas.setBorder(BorderFactory.createTitledBorder("Piernas"));
+	    JLabel pesoPiernas = new JLabel("+15kg");
+	    JLabel porPiernas = new JLabel("+3,75%");
+	    pesoPiernas.setFont(new Font("Arial", Font.BOLD, 25));
+	    porPiernas.setFont(new Font("Arial", Font.BOLD, 25));
+	    pesoPiernas.setHorizontalAlignment(SwingConstants.CENTER);
+	    pesoPiernas.setVerticalAlignment(SwingConstants.CENTER);
+	    porPiernas.setHorizontalAlignment(SwingConstants.CENTER);
+	    porPiernas.setVerticalAlignment(SwingConstants.CENTER);
+	    datosPiernas.add(pesoPiernas);
+	    datosPiernas.add(porPiernas);
+	    panelDatos.add(datosPiernas);
+	    
+	    //2,2
+	    JPanel datosBrazos = new JPanel();
+	    datosBrazos.setLayout(new GridLayout(1,2));
+	    datosBrazos.setBorder(BorderFactory.createTitledBorder("Brazos"));
+	    JLabel pesoBrazos = new JLabel("+4kg");
+	    JLabel porBrazos = new JLabel("+4,5");
+	    pesoBrazos.setFont(new Font("Arial", Font.BOLD, 25));
+	    porBrazos.setFont(new Font("Arial", Font.BOLD, 25));
+	    pesoBrazos.setHorizontalAlignment(SwingConstants.CENTER);
+	    pesoBrazos.setVerticalAlignment(SwingConstants.CENTER);
+	    porBrazos.setHorizontalAlignment(SwingConstants.CENTER);
+	    porBrazos.setVerticalAlignment(SwingConstants.CENTER);
+	    datosBrazos.add(pesoBrazos);
+	    datosBrazos.add(porBrazos);
+	    panelDatos.add(datosBrazos);
 
 	    panelContenido.add(panel, BorderLayout.CENTER);
 	}
