@@ -8,7 +8,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import estadisticas.VentanaEstadisticas;
+import historial.Historial;
 import principal.VentanaPrincipal;
+import progreso.VentanaSeguimiento;
+import rutinas.Rutina;
 
 public class VentanaAvisos extends JFrame {
 
@@ -57,11 +61,13 @@ public class VentanaAvisos extends JFrame {
         JButton btnRutinas = new JButton("Mis rutinas");
         JButton btnHistorial = new JButton("Historial");
         JButton btnEstadisticas = new JButton("Estadísticas");
+        JButton btnObjetivo = new JButton("Objetivos");
 
         panelInferior.add(btnProgreso);
         panelInferior.add(btnRutinas);
         panelInferior.add(btnHistorial);
         panelInferior.add(btnEstadisticas);
+        panelInferior.add(btnObjetivo);
 
         add(panelInferior, BorderLayout.SOUTH);
 
@@ -99,7 +105,31 @@ public class VentanaAvisos extends JFrame {
             }
         });
 
+        // EVENTOS
+        btnProgreso.addActionListener(e -> {
+            dispose();
+            new VentanaSeguimiento();
+        });
         
+        btnRutinas.addActionListener(e -> {
+            dispose();
+            new Rutina();
+        });
+        
+        btnHistorial.addActionListener(e -> {
+            dispose();
+            new Historial();
+        });
+        
+        btnEstadisticas.addActionListener(e -> {
+            dispose();
+            new VentanaEstadisticas();
+        });
+        
+        btnObjetivo.addActionListener(e -> {
+            dispose();
+            new VentanaObjetivos();
+        });
 
         setVisible(true);
     }

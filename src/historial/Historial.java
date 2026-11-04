@@ -170,7 +170,7 @@ public class Historial extends JFrame {
 		});
 
 		JPanel panelsouth=new JPanel();
-		panelsouth.setLayout(new GridLayout(1,5,20,20));
+		panelsouth.setLayout(new GridLayout(1,5));
 
 		panelsouth.add(progreso);
 		panelsouth.add(Rutinas);
