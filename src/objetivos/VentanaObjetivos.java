@@ -136,6 +136,8 @@ public class VentanaObjetivos extends JFrame {
         JButton btnRutinas = new JButton("Mis rutinas");
         JButton btnHistorial = new JButton("Historial");
         JButton btnEstadisticas = new JButton("Estadísticas");
+        JButton btnObjetivos = new JButton("Objetivos");
+        btnObjetivos.setEnabled(false);
         
 
         
@@ -143,6 +145,7 @@ public class VentanaObjetivos extends JFrame {
         panelInferior.add(btnRutinas);
         panelInferior.add(btnHistorial);
         panelInferior.add(btnEstadisticas);
+        panelInferior.add(btnObjetivos);
 
         add(panelInferior, BorderLayout.SOUTH);
 
