@@ -579,7 +579,7 @@ public class VentanaEstadisticas extends JFrame {
 	    datosBrazos.setLayout(new GridLayout(1,2));
 	    datosBrazos.setBorder(BorderFactory.createTitledBorder("Brazos"));
 	    JLabel pesoBrazos = new JLabel("+4kg");
-	    JLabel porBrazos = new JLabel("+4,5");
+	    JLabel porBrazos = new JLabel("+4,5%");
 	    pesoBrazos.setFont(new Font("Arial", Font.BOLD, 25));
 	    porBrazos.setFont(new Font("Arial", Font.BOLD, 25));
 	    pesoBrazos.setHorizontalAlignment(SwingConstants.CENTER);
