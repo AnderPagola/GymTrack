@@ -270,6 +270,7 @@ public class Historial extends JFrame {
 	                "Descanso"
 	            );
 	            break;
+	            
 	    }
 	}
 }
