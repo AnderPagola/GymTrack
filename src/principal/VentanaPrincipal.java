@@ -1,11 +1,5 @@
 package principal;
 
-
-import objetivos.VentanaObjetivos;
-import progreso.VentanaSeguimiento;
-import rutinas.Rutina;
-
-import java.awt.BorderLayout;
 import objetivos.VentanaObjetivos;
 import progreso.VentanaSeguimiento;
 import rutinas.Rutina;
@@ -74,15 +68,18 @@ public class VentanaPrincipal extends JFrame {
 		add(panelNorte, BorderLayout.NORTH);
 		
 		//Botones
-		JPanel panelsouth=new JPanel();
-		panelsouth.setLayout(new GridLayout(1,4,20,20));
+		formatoBoton(progreso);
+		formatoBoton(rutinas);
+		formatoBoton(historial);
+		formatoBoton(stats);
+		formatoBoton(objetivos);
 
-		panelsouth.add(progreso);
-		panelsouth.add(rutinas);
-		panelsouth.add(historial);
-		panelsouth.add(stats);
-		panelsouth.add(objetivos);
-		progreso.setEnabled(false);
+
+		panelPrincipal.add(progreso);
+		panelPrincipal.add(rutinas);
+		panelPrincipal.add(historial);
+		panelPrincipal.add(stats);
+		panelPrincipal.add(objetivos);
 		
 		progreso.addActionListener(e-> {
 			VentanaSeguimiento v2=new VentanaSeguimiento();
@@ -96,6 +93,7 @@ public class VentanaPrincipal extends JFrame {
 		});
 		historial.addActionListener(e-> {
 			Historial v2=new Historial();
+
 			this.dispose();
 			v2.setVisible(true);
 		});
