@@ -83,6 +83,7 @@ public class VentanaSeguimiento extends JFrame {
         JButton historial = new JButton("Historial");
         JButton stats = new JButton("Estadísticas");
         JButton objetivos = new JButton("Objetivos");
+        progreso.setEnabled(false);
         
         progreso.addActionListener(e-> {
 			VentanaSeguimiento v2=new VentanaSeguimiento();
