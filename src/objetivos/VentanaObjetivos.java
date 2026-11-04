@@ -7,66 +7,155 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JProgressBar;
+import javax.swing.JTextField;
 
 public class VentanaObjetivos extends JFrame {
 
-	private JButton btnFuerza;
-	private JButton btnVolumen;
-	private JButton btnPeso;
+    private JButton btnActualizarFuerza;
+    private JButton btnActualizarVolumen;
+    private JButton btnActualizarPeso;
 
-	public VentanaObjetivos() {
+    private JButton btnMenuPrincipal;
 
-		setTitle("Objetivos");
-		setSize(400, 600);
-		setLocationRelativeTo(null);
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    public VentanaObjetivos() {
 
-		setLayout(new BorderLayout());
+        setTitle("Objetivos");
+        setSize(700, 550);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-		// Título
-		JLabel lblTitulo = new JLabel("OBJETIVOS", JLabel.CENTER);
-		add(lblTitulo, BorderLayout.NORTH);
+        setLayout(new BorderLayout());
 
-		// Centro
-		JPanel panelObjetivos = new JPanel();
-		panelObjetivos.setLayout(new GridLayout(3, 1, 10, 10));
+        // TÍTULO
+        JLabel lblTitulo = new JLabel("OBJETIVOS", JLabel.CENTER);
+        add(lblTitulo, BorderLayout.NORTH);
 
-		btnFuerza = new JButton("Meta Fuerza");
-		btnVolumen = new JButton("Meta Volumen");
-		btnPeso = new JButton("Meta Peso");
+        // PANEL CENTRAL
+        JPanel panelCentral = new JPanel();
+        panelCentral.setLayout(new GridLayout(3, 1, 10, 10));
 
-		panelObjetivos.add(btnFuerza);
-		panelObjetivos.add(btnVolumen);
-		panelObjetivos.add(btnPeso);
+        // ================= FUERZA =================
 
-		add(panelObjetivos, BorderLayout.CENTER);
+        JPanel panelFuerza = new JPanel(new GridLayout(5, 2, 5, 5));
 
-		// Menú inferior
-		JPanel panelInferior = new JPanel();
+        panelFuerza.add(new JLabel("Valor objetivo:"));
+        JTextField txtObjetivoFuerza = new JTextField();
+        panelFuerza.add(txtObjetivoFuerza);
 
-		JButton btnEntrenar = new JButton("Entrenar");
-		JButton btnRutinas = new JButton("Rutinas");
-		JButton btnProgreso = new JButton("Progreso");
+        panelFuerza.add(new JLabel("Valor actual:"));
+        JTextField txtActualFuerza = new JTextField();
+        panelFuerza.add(txtActualFuerza);
 
-		panelInferior.add(btnEntrenar);
-		panelInferior.add(btnRutinas);
-		panelInferior.add(btnProgreso);
+        panelFuerza.add(new JLabel("Progreso:"));
+        JProgressBar barraFuerza = new JProgressBar(0, 100);
+        barraFuerza.setValue(0);
+        barraFuerza.setStringPainted(true);
+        panelFuerza.add(barraFuerza);
 
-		add(panelInferior, BorderLayout.SOUTH);
+        panelFuerza.add(new JLabel("Estado:"));
+        JLabel lblEstadoFuerza = new JLabel("Pendiente");
+        panelFuerza.add(lblEstadoFuerza);
 
-		// Eventos vacíos para el futuro
-		btnFuerza.addActionListener(e -> {
+        btnActualizarFuerza = new JButton("Actualizar");
+        panelFuerza.add(btnActualizarFuerza);
 
-		});
+        panelFuerza.add(new JLabel("FUERZA"));
 
-		btnVolumen.addActionListener(e -> {
+        // ================= VOLUMEN =================
 
-		});
+        JPanel panelVolumen = new JPanel(new GridLayout(5, 2, 5, 5));
 
-		btnPeso.addActionListener(e -> {
+        panelVolumen.add(new JLabel("Valor objetivo:"));
+        JTextField txtObjetivoVolumen = new JTextField();
+        panelVolumen.add(txtObjetivoVolumen);
 
-		});
+        panelVolumen.add(new JLabel("Valor actual:"));
+        JTextField txtActualVolumen = new JTextField();
+        panelVolumen.add(txtActualVolumen);
 
-		setVisible(true);
-	}
+        panelVolumen.add(new JLabel("Progreso:"));
+        JProgressBar barraVolumen = new JProgressBar(0, 100);
+        barraVolumen.setValue(0);
+        barraVolumen.setStringPainted(true);
+        panelVolumen.add(barraVolumen);
+
+        panelVolumen.add(new JLabel("Estado:"));
+        JLabel lblEstadoVolumen = new JLabel("Pendiente");
+        panelVolumen.add(lblEstadoVolumen);
+
+        btnActualizarVolumen = new JButton("Actualizar");
+        panelVolumen.add(btnActualizarVolumen);
+
+        panelVolumen.add(new JLabel("VOLUMEN"));
+
+        // ================= PESO =================
+
+        JPanel panelPeso = new JPanel(new GridLayout(5, 2, 5, 5));
+
+        panelPeso.add(new JLabel("Valor objetivo:"));
+        JTextField txtObjetivoPeso = new JTextField();
+        panelPeso.add(txtObjetivoPeso);
+
+        panelPeso.add(new JLabel("Valor actual:"));
+        JTextField txtActualPeso = new JTextField();
+        panelPeso.add(txtActualPeso);
+
+        panelPeso.add(new JLabel("Progreso:"));
+        JProgressBar barraPeso = new JProgressBar(0, 100);
+        barraPeso.setValue(0);
+        barraPeso.setStringPainted(true);
+        panelPeso.add(barraPeso);
+
+        panelPeso.add(new JLabel("Estado:"));
+        JLabel lblEstadoPeso = new JLabel("Pendiente");
+        panelPeso.add(lblEstadoPeso);
+
+        btnActualizarPeso = new JButton("Actualizar");
+        panelPeso.add(btnActualizarPeso);
+
+        panelPeso.add(new JLabel("PESO"));
+
+        panelCentral.add(panelFuerza);
+        panelCentral.add(panelVolumen);
+        panelCentral.add(panelPeso);
+
+        add(panelCentral, BorderLayout.CENTER);
+
+        // PANEL INFERIOR
+
+        JPanel panelInferior = new JPanel();
+
+        btnMenuPrincipal = new JButton("Menú Principal");
+        JButton btnEntrenar = new JButton("Entrenar");
+        JButton btnRutinas = new JButton("Rutinas");
+        JButton btnProgreso = new JButton("Progreso");
+
+        panelInferior.add(btnMenuPrincipal);
+        panelInferior.add(btnEntrenar);
+        panelInferior.add(btnRutinas);
+        panelInferior.add(btnProgreso);
+
+        add(panelInferior, BorderLayout.SOUTH);
+
+        // ACTION LISTENERS VACÍOS
+
+        btnActualizarFuerza.addActionListener(e -> {
+
+        });
+
+        btnActualizarVolumen.addActionListener(e -> {
+
+        });
+
+        btnActualizarPeso.addActionListener(e -> {
+
+        });
+
+        btnMenuPrincipal.addActionListener(e -> {
+
+        });
+
+        setVisible(true);
+    }
 }

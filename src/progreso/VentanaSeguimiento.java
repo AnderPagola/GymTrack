@@ -30,15 +30,10 @@ public class VentanaSeguimiento extends JFrame {
         panelPrincipal.setBackground(new Color(245, 245, 245));
 
         // Título
-        JLabel titulo = new JLabel(
-            "Seguimiento del progreso",
-            SwingConstants.CENTER
-        );
+        JLabel titulo = new JLabel("Seguimiento del progreso",SwingConstants.CENTER);
 
         titulo.setFont(new Font("Arial", Font.BOLD, 26));
-        titulo.setBorder(
-            BorderFactory.createEmptyBorder(25, 10, 25, 10)
-        );
+        titulo.setBorder(BorderFactory.createEmptyBorder(25, 10, 25, 10));
 
         panelPrincipal.add(titulo, BorderLayout.NORTH);
 
@@ -50,14 +45,21 @@ public class VentanaSeguimiento extends JFrame {
             BorderFactory.createEmptyBorder(50, 200, 50, 200)
         );
 
-        JButton botonRegistrar =
-            new JButton("Registrar Entrenamiento");
+        JButton botonRegistrar = new JButton("Registrar Entrenamiento");
+        botonRegistrar.addActionListener(e-> {
+        	VentanaRegistro ventana = new VentanaRegistro();
+        	ventana.setVisible(true);
+        });
+        
 
-        JButton botonHistorial =
-            new JButton("Consultar Historial");
+        JButton botonHistorial = new JButton("Consultar Historial");
+        botonHistorial.addActionListener(e -> {
+        	VentanaHistorial ventana = new VentanaHistorial();
+        	ventana.setVisible(true);
+        });
+        
 
-        JButton botonProgreso =
-            new JButton("Consultar Progreso");
+        JButton botonProgreso = new JButton("Consultar Progreso");
 
         // Añadir botones
         panelBotones.add(botonRegistrar);

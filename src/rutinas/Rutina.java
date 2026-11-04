@@ -228,7 +228,7 @@ public class Rutina extends JFrame {
 		
 	}
 	
-	 //AÑADIR EJERCICIO                 FUNCION HECHA CON IA(CHATGPT)
+//	 //AÑADIR EJERCICIO                 FUNCION HECHA CON IA(CHATGPT)
 	private void anadirEjercicio() {
         String nombre = JOptionPane.showInputDialog(
                 this,
