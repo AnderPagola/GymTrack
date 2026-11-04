@@ -13,6 +13,11 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 
+import estadisticas.VentanaEstadisticas;
+import historial.Historial;
+import objetivos.VentanaObjetivos;
+import rutinas.Rutina;
+
 public class VentanaSeguimiento extends JFrame {
 
     // Constructor de la ventana
@@ -60,6 +65,10 @@ public class VentanaSeguimiento extends JFrame {
         
 
         JButton botonProgreso = new JButton("Consultar Progreso");
+        botonProgreso.addActionListener(e -> {
+        	VentanaProgreso ventana = new VentanaProgreso();
+        	ventana.setVisible(true);
+        });
 
         // Añadir botones
         panelBotones.add(botonRegistrar);
@@ -67,6 +76,52 @@ public class VentanaSeguimiento extends JFrame {
         panelBotones.add(botonProgreso);
 
         panelPrincipal.add(panelBotones, BorderLayout.CENTER);
+        
+        //Botones para accedes a otros apartados
+        JButton progreso = new JButton("Progreso");
+        JButton rutinas = new JButton("Rutinas");
+        JButton historial = new JButton("Historial");
+        JButton stats = new JButton("Estadísticas");
+        JButton objetivos = new JButton("Objetivos");
+        
+        progreso.addActionListener(e-> {
+			VentanaSeguimiento v2=new VentanaSeguimiento();
+			this.dispose();
+			v2.setVisible(true);
+		});
+		rutinas.addActionListener(e-> {
+			Rutina v2=new Rutina();
+			this.dispose();
+			v2.setVisible(true);
+		});
+		historial.addActionListener(e-> {
+			Historial v2=new Historial();
+
+			this.dispose();
+			v2.setVisible(true);
+		});
+		stats.addActionListener(e-> {
+			VentanaEstadisticas v2=new VentanaEstadisticas();
+			this.dispose();
+			v2.setVisible(true);
+		});
+		objetivos.addActionListener(e-> {
+			VentanaObjetivos v2=new VentanaObjetivos();
+			this.dispose();
+			v2.setVisible(true);
+		});
+		
+		//Crear el panel del menú
+		JPanel panelBotones2 = new JPanel();
+
+		//Añadir los botones al panel
+		panelBotones2.add(progreso);
+		panelBotones2.add(rutinas);
+		panelBotones2.add(historial);
+		panelBotones2.add(stats);
+		panelBotones2.add(objetivos);
+		
+		panelPrincipal.add(panelBotones2, BorderLayout.SOUTH);
 
         // Añadir panel a la ventana
         add(panelPrincipal);
