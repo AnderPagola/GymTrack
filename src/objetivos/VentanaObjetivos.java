@@ -10,7 +10,10 @@ import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JTextField;
 
+import historial.Historial;
 import principal.VentanaPrincipal;
+import progreso.VentanaSeguimiento;
+import rutinas.Rutina;
 
 public class VentanaObjetivos extends JFrame {
 
@@ -145,7 +148,20 @@ public class VentanaObjetivos extends JFrame {
 
         // EVENTOS
 
+        btnProgreso.addActionListener(e -> {
+            dispose();
+            new VentanaSeguimiento();
+        });
         
+        btnRutinas.addActionListener(e -> {
+            dispose();
+            new Rutina();
+        });
+        
+        btnHistorial.addActionListener(e -> {
+            dispose();
+            new Historial();
+        });
 
         btnAvisos.addActionListener(e -> {
             dispose();
