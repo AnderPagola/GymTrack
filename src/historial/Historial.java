@@ -91,6 +91,9 @@ public class Historial extends JFrame {
 		((DefaultTableCellRenderer) tablaCalendario.getTableHeader()
 		        .getDefaultRenderer())
 		        .setHorizontalAlignment(SwingConstants.CENTER);
+		tablaCalendario.setSelectionMode(
+			    javax.swing.ListSelectionModel.SINGLE_SELECTION
+			);
 
 		JScrollPane scroll = new JScrollPane(tablaCalendario);
 
@@ -146,26 +149,28 @@ public class Historial extends JFrame {
 		trabajoDia.setFont(new Font("Arial",Font.PLAIN,16));
 		panelcentro.setLayout(new BorderLayout());
 		panelcentro.add(trabajoDia,BorderLayout.CENTER);
-		int columna = tablaCalendario.getSelectedColumn();
-
-		mostrarEntrenamiento(columna);
+		tablaCalendario.setRowSelectionAllowed(true);
+		tablaCalendario.setColumnSelectionAllowed(true);
 		tablaCalendario.setCellSelectionEnabled(true);
 
-		tablaCalendario.getSelectionModel().addListSelectionListener(e -> {
+		mostrarEntrenamiento(0);
 
-		    int fila = tablaCalendario.getSelectedRow();
-		    int columna3 = tablaCalendario.getSelectedColumn();
+		tablaCalendario.getColumnModel()
+		               .getSelectionModel()
+		               .addListSelectionListener(e -> {
 
-		    if (fila != -1 && columna != -1) {
+		    if (!e.getValueIsAdjusting()) {
 
-		        String dia = tablaCalendario.getValueAt(fila, columna).toString();
+		        int columna = tablaCalendario.getSelectedColumn();
 
-		        mostrarEntrenamiento(columna3);
+		        if (columna != -1) {
+		            mostrarEntrenamiento(columna);
+		        }
 		    }
 		});
 
 		JPanel panelsouth=new JPanel();
-		panelsouth.setLayout(new GridLayout(1,4,20,20));
+		panelsouth.setLayout(new GridLayout(1,5,20,20));
 
 		panelsouth.add(progreso);
 		panelsouth.add(Rutinas);
