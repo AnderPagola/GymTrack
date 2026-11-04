@@ -133,9 +133,9 @@ public class VentanaObjetivos extends JFrame {
         JButton btnRutinas = new JButton("Mis rutinas");
         JButton btnHistorial = new JButton("Historial");
         JButton btnEstadisticas = new JButton("Estadísticas");
-        JButton btnMenu = new JButton("Menú");
+        
 
-        panelInferior.add(btnMenu);
+        
         panelInferior.add(btnProgreso);
         panelInferior.add(btnRutinas);
         panelInferior.add(btnHistorial);
@@ -145,10 +145,7 @@ public class VentanaObjetivos extends JFrame {
 
         // EVENTOS
 
-        btnMenu.addActionListener(e -> {
-            dispose();
-            new VentanaPrincipal();
-        });
+        
 
         btnAvisos.addActionListener(e -> {
             dispose();
