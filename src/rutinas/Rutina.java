@@ -69,12 +69,8 @@ public class Rutina extends JFrame {
 
         JLabel titulo = new JLabel("Mis Rutinas");
         titulo.setFont(new Font("Arial", Font.BOLD, 25));
-
-        JButton configuracion = new JButton("O");
-        configuracion.setFont(new Font("Arial", Font.PLAIN, 20));
-
+        
         cabecera.add(titulo, BorderLayout.WEST);
-        cabecera.add(configuracion, BorderLayout.EAST);
 
         panelPrincipal.add(cabecera, BorderLayout.NORTH);
     }
