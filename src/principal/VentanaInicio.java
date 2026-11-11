@@ -9,10 +9,14 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
+import estadisticas.VentanaEstadisticas;
+import objetivos.VentanaObjetivos;
 
 public class VentanaInicio extends JFrame {
 
@@ -56,6 +60,24 @@ public class VentanaInicio extends JFrame {
         add(lblTitulo, BorderLayout.NORTH);
         add(panelFormulario, BorderLayout.CENTER);
         add(btnIniciarSesion, BorderLayout.SOUTH);
+        
+        btnIniciarSesion.addActionListener(e-> {
+        	
+        	String usuario = txtUsuario.getText();
+            String contra = String.valueOf(txtContrasena.getPassword());
+
+            if (usuario.trim().isEmpty() || contra.trim().isEmpty()) {
+                JOptionPane.showMessageDialog(
+                        this,
+                        "Debes rellenar todos los campos",
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE);
+        	}else {
+        		VentanaPrincipal v2=new VentanaPrincipal();
+    			this.dispose();
+    			v2.setVisible(true);
+        	}
+        });
 
         setVisible(true);
     }
