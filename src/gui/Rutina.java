@@ -4,6 +4,8 @@ import java.awt.*;
 import java.util.ArrayList;
 import javax.swing.*;
 
+import domain.Recursos;
+
 public class Rutina extends JFrame {
 
     // Colores
@@ -50,10 +52,12 @@ public class Rutina extends JFrame {
         // Crear las diferentes partes
         crearCabecera();
         crearContenido();
-        crearNavegacion();
+        
 
         setContentPane(panelPrincipal);
         setVisible(true);
+        
+        add(Recursos.crearPanelSur(this, "Mis Rutinas"), BorderLayout.SOUTH);
     }
 
 
@@ -297,57 +301,8 @@ public class Rutina extends JFrame {
 	}
 
 
-	//NAVEGACION INFERIOR
-	private void crearNavegacion() {
-	       JPanel navegacion = new JPanel(new GridLayout(1, 4));
-	        navegacion.setBackground(BLANCO);
-	        navegacion.setBorder(
-	            BorderFactory.createEmptyBorder(10, 10, 10, 10)
-	        );
 
-	        JButton progreso = new JButton("Progreso");
-	        JButton rutinas = new JButton("Mis Rutinas");
-	        JButton historial = new JButton("Historial");
-	        JButton estadisticas = new JButton("Estadisticas");
-	        JButton objetivos = new JButton("Objetivos");
-
-	        rutinas.setForeground(AZUL);
-
-	        navegacion.add(progreso);
-	        navegacion.add(rutinas);
-	        navegacion.add(historial);
-	        navegacion.add(estadisticas);
-	        navegacion.add(objetivos);
-	        rutinas.setEnabled(false);
-
-	        panelPrincipal.add(navegacion, BorderLayout.SOUTH);
-	        
-			progreso.addActionListener(e-> {
-				VentanaSeguimiento v2=new VentanaSeguimiento();
-				this.dispose();
-				v2.setVisible(true);
-			});
-			rutinas.addActionListener(e-> {
-				Rutina v2=new Rutina();
-				this.dispose();
-				v2.setVisible(true);
-			});
-			historial.addActionListener(e-> {
-				Historial v2=new Historial();
-				this.dispose();
-				v2.setVisible(true);
-			});
-			estadisticas.addActionListener(e-> {
-				VentanaEstadisticas v2=new VentanaEstadisticas();
-				this.dispose();
-				v2.setVisible(true);
-			});
-			objetivos.addActionListener(e-> {
-				VentanaObjetivos v2=new VentanaObjetivos();
-				this.dispose();
-				v2.setVisible(true);
-			});
-	}
+	
 
 }
 

@@ -10,6 +10,8 @@ import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JTextField;
 
+import domain.Recursos;
+
 public class VentanaObjetivos extends JFrame {
 
     private JButton btnActualizarFuerza;
@@ -125,51 +127,7 @@ public class VentanaObjetivos extends JFrame {
 
         // PANEL INFERIOR
 
-        JPanel panelInferior = new JPanel(new GridLayout(1,5));
-
-        JButton btnProgreso = new JButton("Progreso");
-        JButton btnRutinas = new JButton("Mis rutinas");
-        JButton btnHistorial = new JButton("Historial");
-        JButton btnEstadisticas = new JButton("Estadísticas");
-        JButton btnObjetivos = new JButton("Objetivos");
-        btnObjetivos.setEnabled(false);
-        
-
-        
-        panelInferior.add(btnProgreso);
-        panelInferior.add(btnRutinas);
-        panelInferior.add(btnHistorial);
-        panelInferior.add(btnEstadisticas);
-        panelInferior.add(btnObjetivos);
-
-        add(panelInferior, BorderLayout.SOUTH);
-
-        // EVENTOS
-
-        btnProgreso.addActionListener(e -> {
-            dispose();
-            new VentanaSeguimiento();
-        });
-        
-        btnRutinas.addActionListener(e -> {
-            dispose();
-            new Rutina();
-        });
-        
-        btnHistorial.addActionListener(e -> {
-            dispose();
-            new Historial();
-        });
-        
-        btnEstadisticas.addActionListener(e -> {
-            dispose();
-            new VentanaEstadisticas();
-        });
-
-        btnAvisos.addActionListener(e -> {
-            dispose();
-            new VentanaAvisos();
-        });
+        add(Recursos.crearPanelSur(this, "Objetivos"), BorderLayout.SOUTH);
 
         setVisible(true);
     }

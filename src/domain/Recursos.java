@@ -17,7 +17,7 @@ public class Recursos extends JFrame {
         JPanel panelSur = new JPanel(new GridLayout(1, 5));
 
         JButton btnProgreso = new JButton("Progreso");
-        JButton btnRutinas = new JButton("Mis rutinas");
+        JButton btnRutinas = new JButton("Mis Rutinas");
         JButton btnHistorial = new JButton("Historial");
         JButton btnStats = new JButton("Estadísticas");
         JButton btnObjetivos = new JButton("Objetivos");
@@ -27,13 +27,13 @@ public class Recursos extends JFrame {
             case "Progreso":
                 btnProgreso.setEnabled(false);
                 break;
-            case "Rutinas":
+            case "Mis Rutinas":
                 btnRutinas.setEnabled(false);
                 break;
             case "Historial":
                 btnHistorial.setEnabled(false);
                 break;
-            case "Stats":
+            case "Estadísticas":
                 btnStats.setEnabled(false);
                 break;
             case "Objetivos":

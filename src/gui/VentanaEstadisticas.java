@@ -21,6 +21,8 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import domain.Recursos;
+
 public class VentanaEstadisticas extends JFrame {
 	
 	private JPanel panelContenido = new JPanel();
@@ -55,47 +57,7 @@ public class VentanaEstadisticas extends JFrame {
 		texto.setForeground(Color.WHITE);
 		add(panelNorte, BorderLayout.NORTH);
 		
-		//Panel menu
-		JPanel panelMenu = new JPanel();
-		panelMenu.setLayout(new GridLayout(1,5));
-		progreso.setFocusPainted(false);
-		rutina.setFocusPainted(false);
-		historial.setFocusPainted(false);
-		stats.setFocusPainted(false);
-		objetivos.setFocusPainted(false);
-		stats.setEnabled(false);
-		panelMenu.add(progreso);
-		panelMenu.add(rutina);
-		panelMenu.add(historial);
-		panelMenu.add(stats);
-		panelMenu.add(objetivos);
-		add(panelMenu, BorderLayout.SOUTH);
-		
-		progreso.addActionListener(e -> {
-			VentanaSeguimiento v2=new VentanaSeguimiento();
-			this.dispose();
-			v2.setVisible(true);
-		});
-		rutina.addActionListener(e -> {
-			Rutina v2=new Rutina();
-			this.dispose();
-			v2.setVisible(true);
-		});
-		historial.addActionListener(e -> {
-			Historial v2=new Historial();
-			this.dispose();
-			v2.setVisible(true);
-		});
-		stats.addActionListener(e -> {
-			VentanaEstadisticas v2 = new VentanaEstadisticas();
-			v2.setVisible(true);
-		});
-		objetivos.addActionListener(e -> {
-			VentanaObjetivos v2=new VentanaObjetivos();
-			this.dispose();
-			v2.setVisible(true);
-		});
-		
+		add(Recursos.crearPanelSur(this, "Estadísticas"), BorderLayout.SOUTH);
 		
 		//Panel contenido
 		JPanel panelGeneral = new JPanel();

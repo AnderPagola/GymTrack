@@ -8,6 +8,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import domain.Recursos;
+
 public class VentanaAvisos extends JFrame {
 
     private JButton btnEntrenamiento;
@@ -48,22 +50,7 @@ public class VentanaAvisos extends JFrame {
 
         add(panelAvisos, BorderLayout.CENTER);
 
-        JPanel panelInferior = new JPanel();
-
-    
-        JButton btnProgreso = new JButton("Progreso");
-        JButton btnRutinas = new JButton("Mis rutinas");
-        JButton btnHistorial = new JButton("Historial");
-        JButton btnEstadisticas = new JButton("Estadísticas");
-        JButton btnObjetivo = new JButton("Objetivos");
-
-        panelInferior.add(btnProgreso);
-        panelInferior.add(btnRutinas);
-        panelInferior.add(btnHistorial);
-        panelInferior.add(btnEstadisticas);
-        panelInferior.add(btnObjetivo);
-
-        add(panelInferior, BorderLayout.SOUTH);
+        add(Recursos.crearPanelSur(this, ""), BorderLayout.SOUTH);
 
         // CAMBIAR ESTADO
 
@@ -98,33 +85,7 @@ public class VentanaAvisos extends JFrame {
                 btnRecord.setText("No completado");
             }
         });
-
-        // EVENTOS
-        btnProgreso.addActionListener(e -> {
-            dispose();
-            new VentanaSeguimiento();
-        });
         
-        btnRutinas.addActionListener(e -> {
-            dispose();
-            new Rutina();
-        });
-        
-        btnHistorial.addActionListener(e -> {
-            dispose();
-            new Historial();
-        });
-        
-        btnEstadisticas.addActionListener(e -> {
-            dispose();
-            new VentanaEstadisticas();
-        });
-        
-        btnObjetivo.addActionListener(e -> {
-            dispose();
-            new VentanaObjetivos();
-        });
-
         setVisible(true);
     }
 }
