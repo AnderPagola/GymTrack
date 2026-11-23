@@ -14,6 +14,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import domain.Recursos;
+
 public class VentanaPrincipal extends JFrame {
 	
 	private JButton progreso = new JButton("Progreso");
@@ -90,6 +92,8 @@ public class VentanaPrincipal extends JFrame {
 			this.dispose();
 			v2.setVisible(true);
 		});
+		
+        Recursos.configurarAtajoCerrar(this);
 	}
 	
 	public void formatoBoton(JButton boton) {
