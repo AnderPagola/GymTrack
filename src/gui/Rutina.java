@@ -1,13 +1,8 @@
-package rutinas;
+package gui;
 
 import java.awt.*;
 import java.util.ArrayList;
 import javax.swing.*;
-
-import estadisticas.VentanaEstadisticas;
-import historial.Historial;
-import objetivos.VentanaObjetivos;
-import progreso.VentanaSeguimiento;
 
 public class Rutina extends JFrame {
 

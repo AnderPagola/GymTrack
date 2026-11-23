@@ -1,4 +1,4 @@
-package estadisticas;
+package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -20,11 +20,6 @@ import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
-
-import historial.Historial;
-import objetivos.VentanaObjetivos;
-import progreso.VentanaSeguimiento;
-import rutinas.Rutina;
 
 public class VentanaEstadisticas extends JFrame {
 	

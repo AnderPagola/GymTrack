@@ -1,6 +1,8 @@
-package principal;
+package main;
 
 import javax.swing.SwingUtilities;
+
+import gui.VentanaInicio;
 
 public class MainPrincipal {
 

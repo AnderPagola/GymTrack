@@ -1,4 +1,4 @@
-package historial;
+package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -23,11 +23,6 @@ import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-
-import estadisticas.VentanaEstadisticas;
-import objetivos.VentanaObjetivos;
-import progreso.VentanaSeguimiento;
-import rutinas.Rutina;
 
 public class Historial extends JFrame {
 	private JButton historial =new JButton("Historial");

@@ -1,4 +1,4 @@
-package progreso;
+package gui;
 
 // 1. Importaciones necesarias
 import javax.swing.*;

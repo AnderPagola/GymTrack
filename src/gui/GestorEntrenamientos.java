@@ -1,4 +1,4 @@
-package progreso;
+package gui;
 
 import java.util.ArrayList;
 

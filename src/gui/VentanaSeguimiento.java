@@ -1,4 +1,4 @@
-package progreso;
+package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -12,11 +12,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
-
-import estadisticas.VentanaEstadisticas;
-import historial.Historial;
-import objetivos.VentanaObjetivos;
-import rutinas.Rutina;
 
 public class VentanaSeguimiento extends JFrame {
 

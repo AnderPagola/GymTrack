@@ -1,4 +1,4 @@
-package principal;
+package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -14,9 +14,6 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-
-import estadisticas.VentanaEstadisticas;
-import objetivos.VentanaObjetivos;
 
 public class VentanaInicio extends JFrame {
 

@@ -1,21 +1,7 @@
-package principal;
-
-import objetivos.VentanaObjetivos;
-import progreso.VentanaSeguimiento;
-import rutinas.Rutina;
+package gui;
 
 import java.awt.BorderLayout;
-
-
-import objetivos.VentanaObjetivos;
-import progreso.VentanaSeguimiento;
-import rutinas.Rutina;
-
 import java.awt.BorderLayout;
-import objetivos.VentanaObjetivos;
-import progreso.VentanaSeguimiento;
-import rutinas.Rutina;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -27,9 +13,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-
-import estadisticas.VentanaEstadisticas;
-import historial.Historial;
 
 public class VentanaPrincipal extends JFrame {
 	

@@ -1,4 +1,4 @@
-package objetivos;
+package gui;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -9,12 +9,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JTextField;
-
-import estadisticas.VentanaEstadisticas;
-import historial.Historial;
-import principal.VentanaPrincipal;
-import progreso.VentanaSeguimiento;
-import rutinas.Rutina;
 
 public class VentanaObjetivos extends JFrame {
 
