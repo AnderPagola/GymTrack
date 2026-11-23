@@ -78,6 +78,7 @@ public class VentanaSeguimiento extends JFrame {
         
         //Botones para accedes a otros apartados
         add(Recursos.crearPanelSur(this, "Progreso"), BorderLayout.SOUTH);
+        Recursos.configurarAtajoCerrar(this);
     }
 
 }

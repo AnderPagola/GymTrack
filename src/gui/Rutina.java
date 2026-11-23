@@ -58,6 +58,7 @@ public class Rutina extends JFrame {
         setVisible(true);
         
         add(Recursos.crearPanelSur(this, "Mis Rutinas"), BorderLayout.SOUTH);
+        Recursos.configurarAtajoCerrar(this);
     }
 
 

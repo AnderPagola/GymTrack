@@ -11,6 +11,8 @@ import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
+import domain.Recursos;
+
 public class VentanaHistorial extends JFrame{
 
 	private JTable tablaEntrenamientos;
@@ -60,7 +62,7 @@ public class VentanaHistorial extends JFrame{
 		
 		add(panelPrincipal);
 		
-		
+		Recursos.configurarAtajoCerrar(this);
 	}
 
 	private void cargarEntrenamientos() {

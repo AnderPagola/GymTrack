@@ -110,6 +110,7 @@ public class VentanaEstadisticas extends JFrame {
 			panelContenido.revalidate();
 			panelContenido.repaint();
 		});
+		Recursos.configurarAtajoCerrar(this);
 	}
 	
 	//Contenido de cada elección

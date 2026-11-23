@@ -15,6 +15,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import domain.Recursos;
+
 public class VentanaInicio extends JFrame {
 
     private JTextField txtUsuario;
@@ -77,5 +79,6 @@ public class VentanaInicio extends JFrame {
         });
 
         setVisible(true);
+        Recursos.configurarAtajoCerrar(this);
     }
 }

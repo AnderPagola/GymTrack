@@ -27,11 +27,6 @@ import javax.swing.table.DefaultTableModel;
 import domain.Recursos;
 
 public class Historial extends JFrame {
-	private JButton historial =new JButton("Historial");
-	private JButton Rutinas=new JButton("Mis rutinas");
-	private JButton progreso=new JButton("Progreso");
-	private JButton stats=new JButton("Estadisticas");
-	private JButton objetivos=new JButton("Obejtivos");
 	private int diaI=8;
 	private JTable tablaCalendario;
 	private DefaultTableModel modeloTabla;

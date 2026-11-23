@@ -2,13 +2,19 @@ package gui;
 
 import java.util.ArrayList;
 
-public class GestorEntrenamientos {
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+
+import domain.Recursos;
+
+public class GestorEntrenamientos extends JFrame{
 	
 	//Creamos la lista donde guardaremos los registros
 	private ArrayList<RegistroEntrenamiento> entrenamientos;
 	
 	public GestorEntrenamientos() {
 		entrenamientos = new ArrayList<>();
+		Recursos.configurarAtajoCerrar(this);
 	}
 	
 	//Añadimos el entrenamiento a la lista
@@ -25,5 +31,6 @@ public class GestorEntrenamientos {
 	public int contarEntrenamientos() {
 		return entrenamientos.size();
 	}
+	
 	
 }

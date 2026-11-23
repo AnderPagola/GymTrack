@@ -85,7 +85,7 @@ public class VentanaAvisos extends JFrame {
                 btnRecord.setText("No completado");
             }
         });
-        
+        Recursos.configurarAtajoCerrar(this);
         setVisible(true);
     }
 }

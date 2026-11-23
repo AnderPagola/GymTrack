@@ -2,6 +2,9 @@ package gui;
 
 // 1. Importaciones necesarias
 import javax.swing.*;
+
+import domain.Recursos;
+
 import java.awt.*;
 import java.awt.geom.*;
 import java.time.format.DateTimeFormatter;
@@ -100,6 +103,7 @@ public class VentanaProgreso extends JFrame {
         if (selectorEjercicio.getItemCount() > 0) {
             consultarProgreso();
         }
+        Recursos.configurarAtajoCerrar(this);
     }
 
     // 16. Método para cargar los ejercicios en el desplegable

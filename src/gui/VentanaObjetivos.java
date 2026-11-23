@@ -130,5 +130,6 @@ public class VentanaObjetivos extends JFrame {
         add(Recursos.crearPanelSur(this, "Objetivos"), BorderLayout.SOUTH);
 
         setVisible(true);
+        Recursos.configurarAtajoCerrar(this);
     }
 }

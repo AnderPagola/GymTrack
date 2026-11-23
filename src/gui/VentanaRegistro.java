@@ -20,6 +20,8 @@ import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.border.Border;
 
+import domain.Recursos;
+
 public class VentanaRegistro extends JFrame{
 
 	private JTextField campoEjercicio;
@@ -99,7 +101,7 @@ public class VentanaRegistro extends JFrame{
 		add(panelPrincipal);
 		
 		
-		
+		Recursos.configurarAtajoCerrar(this);
 	}
 	
 	

@@ -2,8 +2,12 @@ package gui;
 
 import java.time.LocalDate;
 
+import javax.swing.JFrame;
 
-public class RegistroEntrenamiento {
+import domain.Recursos;
+
+
+public class RegistroEntrenamiento extends JFrame{
 	
 	private String ejercicio;
 	private double peso;
@@ -18,6 +22,7 @@ public class RegistroEntrenamiento {
 		this.series = series;
 		this.repeticiones = repeticiones;
 		this.fecha = fecha;
+		Recursos.configurarAtajoCerrar(this);
 	}
 
 	public String getEjercicio() {
