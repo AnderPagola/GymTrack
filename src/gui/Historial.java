@@ -24,6 +24,8 @@ import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
+import domain.Recursos;
+
 public class Historial extends JFrame {
 	private JButton historial =new JButton("Historial");
 	private JButton Rutinas=new JButton("Mis rutinas");
@@ -34,6 +36,7 @@ public class Historial extends JFrame {
 	private JTable tablaCalendario;
 	private DefaultTableModel modeloTabla;
 	private JTextArea trabajoDia=new JTextArea();
+	
 	
 	
 	public Historial() {
@@ -166,47 +169,10 @@ public class Historial extends JFrame {
 		        }
 		    }
 		});
-
-		JPanel panelsouth=new JPanel();
-		panelsouth.setLayout(new GridLayout(1,5));
-
-		panelsouth.add(progreso);
-		panelsouth.add(Rutinas);
-		panelsouth.add(historial);
-		panelsouth.add(stats);
-		panelsouth.add(objetivos);
-		historial.setEnabled(false);
-		
-		progreso.addActionListener(e-> {
-			VentanaSeguimiento v2=new VentanaSeguimiento();
-			this.dispose();
-			v2.setVisible(true);
-		});
-		Rutinas.addActionListener(e-> {
-			Rutina v2=new Rutina();
-			this.dispose();
-			v2.setVisible(true);
-		});
-		historial.addActionListener(e-> {
-			Historial v2=new Historial();
-			this.dispose();
-			v2.setVisible(true);
-		});
-		stats.addActionListener(e-> {
-			VentanaEstadisticas v2=new VentanaEstadisticas();
-			this.dispose();
-			v2.setVisible(true);
-		});
-		objetivos.addActionListener(e-> {
-			VentanaObjetivos v2=new VentanaObjetivos();
-			this.dispose();
-			v2.setVisible(true);
-		});
-		
 		
 		add(panelnorth, BorderLayout.NORTH);
 		add(panelcentro, BorderLayout.CENTER);
-		add(panelsouth, BorderLayout.SOUTH);
+		add(Recursos.crearPanelSur(this, "Historial"), BorderLayout.SOUTH);
 		
 	}
 	private void actualizarSemana() {
