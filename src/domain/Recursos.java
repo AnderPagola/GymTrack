@@ -1,10 +1,15 @@
 package domain;
 
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 
+import javax.swing.AbstractAction;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.KeyStroke;
 
 import gui.Historial;
 import gui.Rutina;
@@ -13,8 +18,8 @@ import gui.VentanaObjetivos;
 import gui.VentanaSeguimiento;
 
 public class Recursos extends JFrame {
-	public static JPanel crearPanelSur(JFrame ventanaActual, String pantallaActual) {
-        JPanel panelSur = new JPanel(new GridLayout(1, 5));
+	public static JPanel crearPanelSur(JFrame ventanaActual, String pantallaActual) {		
+		JPanel panelSur = new JPanel(new GridLayout(1, 5));
 
         JButton btnProgreso = new JButton("Progreso");
         JButton btnRutinas = new JButton("Mis Rutinas");
@@ -75,5 +80,18 @@ public class Recursos extends JFrame {
         panelSur.add(btnObjetivos);
 
         return panelSur;
+    }
+	public static void configurarAtajoCerrar(JFrame ventana) {
+        KeyStroke ctrlW = KeyStroke.getKeyStroke(KeyEvent.VK_W, KeyEvent.CTRL_DOWN_MASK);
+        
+        ventana.getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(ctrlW, "cerrarVentana");
+        ventana.getRootPane().getActionMap().put("cerrarVentana", new AbstractAction() {
+            private static final long serialVersionUID = 1L;
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ventana.dispose(); // Cierra la ventana
+            }
+        });
     }
 }
