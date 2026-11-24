@@ -35,22 +35,49 @@ public class PlanRutina {
         return total;
     }
 
-    public String getNombre() { return nombre; }
-    public void setNombre(String nombre) { this.nombre = nombre; }
+    
 
-    public String getDescripcion() { return descripcion; }
-    public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
+    public String getNombre() {
+		return nombre;
+	}
 
-    public GrupoMuscular getGrupoPrincipal() { return grupoPrincipal; }
-    public void setGrupoPrincipal(GrupoMuscular grupoPrincipal) { this.grupoPrincipal = grupoPrincipal; }
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
-    public DayOfWeek getDiaAsignado() { return diaAsignado; }
-    public void setDiaAsignado(DayOfWeek diaAsignado) { this.diaAsignado = diaAsignado; }
+	public String getDescripcion() {
+		return descripcion;
+	}
 
-    public List<Ejercicio> getEjercicios() { return ejercicios; }
-    public void setEjercicios(List<Ejercicio> ejercicios) { this.ejercicios = ejercicios; }
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
 
-    @Override
+	public GrupoMuscular getGrupoPrincipal() {
+		return grupoPrincipal;
+	}
+
+	public void setGrupoPrincipal(GrupoMuscular grupoPrincipal) {
+		this.grupoPrincipal = grupoPrincipal;
+	}
+
+	public DayOfWeek getDiaAsignado() {
+		return diaAsignado;
+	}
+
+	public void setDiaAsignado(DayOfWeek diaAsignado) {
+		this.diaAsignado = diaAsignado;
+	}
+
+	public List<Ejercicio> getEjercicios() {
+		return ejercicios;
+	}
+
+	public void setEjercicios(List<Ejercicio> ejercicios) {
+		this.ejercicios = ejercicios;
+	}
+
+	@Override
     public String toString() {
         return nombre + " - " + grupoPrincipal + " (" + ejercicios.size() + " ejercicios)";
     }
