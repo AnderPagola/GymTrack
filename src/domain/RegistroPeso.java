@@ -48,4 +48,5 @@ public class RegistroPeso {
     public String toString() {
         return fecha + " -> " + pesoCorporal + " kg (" + porcentajeGrasa + "% grasa)";
     }
+	
 }

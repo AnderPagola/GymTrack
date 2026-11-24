@@ -94,6 +94,5 @@ public class Entrenamiento {
 	public void setSuperoMarcaAnterior(boolean superoMarcaAnterior) {
 		this.superoMarcaAnterior = superoMarcaAnterior;
 	}
-
     
 }

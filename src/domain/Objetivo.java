@@ -108,4 +108,5 @@ public class Objetivo {
     public String toString() {
         return descripcion + " [" + getEstado() + " - " + String.format("%.1f", getPorcentajeProgreso()) + "%]";
     }
+	
 }
