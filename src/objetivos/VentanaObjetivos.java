@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -100,8 +101,9 @@ public class VentanaObjetivos extends JFrame {
 
         btnActualizarFuerza = new JButton("Actualizar");
         panelFuerza.add(btnActualizarFuerza);
-
-        panelFuerza.add(new JLabel("FUERZA"));
+     
+        ImageIcon iconoFuerza = new ImageIcon("recursos/fuerza.png");
+        panelFuerza.add(new JLabel("FUERZA"),iconoFuerza,JLabel.LEFT);
 
         // VOLUMEN
 
@@ -128,7 +130,8 @@ public class VentanaObjetivos extends JFrame {
         btnActualizarVolumen = new JButton("Actualizar");
         panelVolumen.add(btnActualizarVolumen);
 
-        panelVolumen.add(new JLabel("VOLUMEN"));
+        ImageIcon iconoVolumen = new ImageIcon("recursos/logo_volumen_kcal.png");
+        panelVolumen.add(new JLabel("VOLUMEN"),iconoVolumen,JLabel.LEFT);
 
         // PESO
 
@@ -155,7 +158,8 @@ public class VentanaObjetivos extends JFrame {
         btnActualizarPeso = new JButton("Actualizar");
         panelPeso.add(btnActualizarPeso);
 
-        panelPeso.add(new JLabel("PESO"));
+        ImageIcon iconoPeso = new ImageIcon("recursos/logo_peso_corporal.png");
+        panelPeso.add(new JLabel("PESO"),iconoPeso,JLabel.LEFT);
         
         //AÑADIR A PANEL 
         panelCentral.add(panelFuerza);
@@ -244,6 +248,7 @@ public class VentanaObjetivos extends JFrame {
         setVisible(true);
     }
     
+    // METODO AUXILIAR PARA DARLE FUNCIONALIDAD A LA BARRA DE PROGRESO
     private void actualizarObjetivo(JTextField txtObjetivo,
             JTextField txtActual,
             JProgressBar barra,
