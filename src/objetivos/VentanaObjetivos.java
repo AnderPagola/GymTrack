@@ -200,6 +200,33 @@ public class VentanaObjetivos extends JFrame {
             new VentanaAvisos();
         });
         
+        // BOTONES DE ACTUALIZAR (ACTION LISTENERS)
+        btnActualizarFuerza.addActionListener(e -> {
+
+            actualizarObjetivo(
+                    txtObjetivoFuerza,
+                    txtActualFuerza,
+                    barraFuerza,
+                    lblEstadoFuerza);
+        });
+
+        btnActualizarVolumen.addActionListener(e -> {
+
+            actualizarObjetivo(
+                    txtObjetivoVolumen,
+                    txtActualVolumen,
+                    barraVolumen,
+                    lblEstadoVolumen);
+        });
+
+        btnActualizarPeso.addActionListener(e -> {
+
+            actualizarObjetivo(
+                    txtObjetivoPeso,
+                    txtActualPeso,
+                    barraPeso,
+                    lblEstadoPeso);
+        });
         
 
         setVisible(true);
