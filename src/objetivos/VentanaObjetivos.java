@@ -151,6 +151,13 @@ public class VentanaObjetivos extends JFrame {
         panelPeso.add(btnActualizarPeso);
 
         panelPeso.add(new JLabel("PESO"));
+        
+        //AÑADIR A PANEL 
+        panelCentral.add(panelFuerza);
+        panelCentral.add(panelVolumen);
+        panelCentral.add(panelPeso);
+
+        add(panelCentral, BorderLayout.CENTER);
 
         // PANEL INFERIOR
 
