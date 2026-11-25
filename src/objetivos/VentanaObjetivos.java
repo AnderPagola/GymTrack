@@ -130,30 +130,27 @@ public class VentanaObjetivos extends JFrame {
         JPanel panelPeso = new JPanel(new GridLayout(5, 2));
 
         panelPeso.add(new JLabel("Valor objetivo:"));
-        panelPeso.add(new JTextField());
+        txtObjetivoPeso = new JTextField();
+        panelPeso.add(txtObjetivoPeso);
 
         panelPeso.add(new JLabel("Valor actual:"));
-        panelPeso.add(new JTextField());
+        txtActualPeso = new JTextField();
+        panelPeso.add(txtActualPeso);
 
         panelPeso.add(new JLabel("Progreso:"));
 
-        JProgressBar barraPeso = new JProgressBar(0, 100);
+        barraPeso = new JProgressBar(0, 100);
         barraPeso.setStringPainted(true);
         panelPeso.add(barraPeso);
 
         panelPeso.add(new JLabel("Estado:"));
-        panelPeso.add(new JLabel("Pendiente"));
+        lblEstadoPeso = new JLabel("Pendiente");
+        panelPeso.add(lblEstadoPeso);
 
         btnActualizarPeso = new JButton("Actualizar");
         panelPeso.add(btnActualizarPeso);
 
         panelPeso.add(new JLabel("PESO"));
-
-        panelCentral.add(panelFuerza);
-        panelCentral.add(panelVolumen);
-        panelCentral.add(panelPeso);
-
-        add(panelCentral, BorderLayout.CENTER);
 
         // PANEL INFERIOR
 
