@@ -19,11 +19,28 @@ import rutinas.Rutina;
 
 public class VentanaObjetivos extends JFrame {
 
+	// VARIABLES
     private JButton btnActualizarFuerza;
     private JButton btnActualizarVolumen;
     private JButton btnActualizarPeso;
-
     private JButton btnAvisos;
+    
+    private JTextField txtObjetivoFuerza;
+    private JTextField txtActualFuerza;
+
+    private JTextField txtObjetivoVolumen;
+    private JTextField txtActualVolumen;
+
+    private JTextField txtObjetivoPeso;
+    private JTextField txtActualPeso;
+
+    private JProgressBar barraFuerza;
+    private JProgressBar barraVolumen;
+    private JProgressBar barraPeso;
+
+    private JLabel lblEstadoFuerza;
+    private JLabel lblEstadoVolumen;
+    private JLabel lblEstadoPeso;
 
     public VentanaObjetivos() {
 
@@ -34,7 +51,6 @@ public class VentanaObjetivos extends JFrame {
 
         setLayout(new BorderLayout());
 
-        // VARIABLES
         
         
         // PANEL SUPERIOR
