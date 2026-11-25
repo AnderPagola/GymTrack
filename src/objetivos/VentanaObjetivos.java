@@ -204,6 +204,79 @@ public class VentanaObjetivos extends JFrame {
 
         setVisible(true);
     }
+    
+    private void actualizarObjetivo(JTextField txtObjetivo,
+            JTextField txtActual,
+            JProgressBar barra,
+            JLabel estado) {
+
+    	try {
+    		
+    		int objetivo = Integer.parseInt(txtObjetivo.getText());
+    		int actual = Integer.parseInt(txtActual.getText());
+    		
+    		if (objetivo <= 0) {
+    			
+    			JOptionPane.showMessageDialog(this, "El objetivo debe ser mayor que 0");
+    			return;
+    		}
+    		
+    		int porcentaje = (actual * 100) / objetivo;
+    		
+    		if (porcentaje > 100) {
+    			porcentaje = 100;
+    		}
+    		
+    		final int destino = porcentaje;
+    		
+    		Thread hilo = new Thread(() -> {
+    			
+    			int inicio = barra.getValue();
+    			
+    			if (inicio < destino) {
+    				
+    				for (int i = inicio; i <= destino; i++) {
+    					
+    					barra.setValue(i);
+    					
+    					try {
+    						Thread.sleep(15);
+    					} catch (InterruptedException e) {
+    						e.printStackTrace();
+    					}
+    				}
+    				
+    			} else {
+    				
+    				for (int i = inicio; i >= destino; i--) {
+    					
+    					barra.setValue(i);
+    					
+    					try {
+    						Thread.sleep(15);
+    					} catch (InterruptedException e) {
+    						e.printStackTrace();
+    					}
+    				}
+    			}
+    			
+    			if (destino >= 100) {
+    				
+    				estado.setText("Completado");
+    				
+    			} else {
+    				
+    				estado.setText(destino + "%");
+    			}
+    		});
+
+    		hilo.start();
+    		
+    	} catch (NumberFormatException e) {
+    		
+    		JOptionPane.showMessageDialog(this, "Introduce valores numéricos válidos");
+    	}
+    }
 }
 
 
