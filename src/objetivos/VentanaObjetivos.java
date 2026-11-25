@@ -66,6 +66,7 @@ public class VentanaObjetivos extends JFrame {
         JLabel lblTitulo = new JLabel("OBJETIVOS", JLabel.CENTER);
 
         btnAvisos = new JButton("Avisos");
+        btnAvisos.setBackground(Color.RED);
 
         panelSuperior.add(lblTitulo, BorderLayout.CENTER);
         panelSuperior.add(btnAvisos, BorderLayout.EAST);
