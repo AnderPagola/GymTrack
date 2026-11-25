@@ -19,6 +19,10 @@ import rutinas.Rutina;
 
 public class VentanaObjetivos extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	// VARIABLES
     private JButton btnActualizarFuerza;
     private JButton btnActualizarVolumen;
