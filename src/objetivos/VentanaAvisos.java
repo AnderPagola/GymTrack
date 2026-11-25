@@ -49,7 +49,7 @@ public class VentanaAvisos extends JFrame {
         JPanel panelAvisos = new JPanel();
         panelAvisos.setLayout(new GridLayout(4, 2, 10, 10));
 
-        panelAvisos.add(new JLabel("Próximo entrenamiento: Mañana"));
+        panelAvisos.add(new JLabel("Organizar el entrenamiento de mañana"));
         btnEntrenamiento = new JButton("No completado");
         btnEntrenamiento.setIcon(iconoNoCompletado);
         panelAvisos.add(btnEntrenamiento);
