@@ -1,6 +1,7 @@
 package objetivos;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.GridLayout;
 
 import javax.swing.JButton;
@@ -298,13 +299,20 @@ public class VentanaObjetivos extends JFrame {
     				}
     			}
     			
-    			if (destino >= 100) {
-    				
-    				estado.setText("Completado");
-    				
+    			if (destino < 40) {
+
+    			    estado.setText("Bajo");
+    			    barra.setForeground(Color.RED);
+
+    			} else if (destino < 80) {
+
+    			    estado.setText("En progreso");
+    			    barra.setForeground(Color.ORANGE);
+
     			} else {
-    				
-    				estado.setText(destino + "%");
+
+    			    estado.setText("Completado");
+    			    barra.setForeground(Color.GREEN);
     			}
     		});
 
