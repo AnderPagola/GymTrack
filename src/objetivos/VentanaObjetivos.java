@@ -102,8 +102,8 @@ public class VentanaObjetivos extends JFrame {
         btnActualizarFuerza = new JButton("Actualizar");
         panelFuerza.add(btnActualizarFuerza);
      
-        ImageIcon iconoFuerza = new ImageIcon("recursos/fuerza.png");
-        panelFuerza.add(new JLabel("FUERZA"),iconoFuerza,JLabel.LEFT);
+        
+        panelFuerza.add(new JLabel("FUERZA"));
 
         // VOLUMEN
 
@@ -130,8 +130,8 @@ public class VentanaObjetivos extends JFrame {
         btnActualizarVolumen = new JButton("Actualizar");
         panelVolumen.add(btnActualizarVolumen);
 
-        ImageIcon iconoVolumen = new ImageIcon("recursos/logo_volumen_kcal.png");
-        panelVolumen.add(new JLabel("VOLUMEN"),iconoVolumen,JLabel.LEFT);
+        
+        panelVolumen.add(new JLabel("VOLUMEN"));
 
         // PESO
 
@@ -158,8 +158,8 @@ public class VentanaObjetivos extends JFrame {
         btnActualizarPeso = new JButton("Actualizar");
         panelPeso.add(btnActualizarPeso);
 
-        ImageIcon iconoPeso = new ImageIcon("recursos/logo_peso_corporal.png");
-        panelPeso.add(new JLabel("PESO"),iconoPeso,JLabel.LEFT);
+        
+        panelPeso.add(new JLabel("PESO"));
         
         //AÑADIR A PANEL 
         panelCentral.add(panelFuerza);
