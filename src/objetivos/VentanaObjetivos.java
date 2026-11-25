@@ -103,19 +103,22 @@ public class VentanaObjetivos extends JFrame {
         JPanel panelVolumen = new JPanel(new GridLayout(5, 2));
 
         panelVolumen.add(new JLabel("Valor objetivo:"));
-        panelVolumen.add(new JTextField());
+        txtObjetivoVolumen = new JTextField();
+        panelVolumen.add(txtObjetivoVolumen);
 
         panelVolumen.add(new JLabel("Valor actual:"));
-        panelVolumen.add(new JTextField());
+        txtActualVolumen = new JTextField();
+        panelVolumen.add(txtActualVolumen);
 
         panelVolumen.add(new JLabel("Progreso:"));
 
-        JProgressBar barraVolumen = new JProgressBar(0, 100);
+        barraVolumen = new JProgressBar(0, 100);
         barraVolumen.setStringPainted(true);
         panelVolumen.add(barraVolumen);
 
         panelVolumen.add(new JLabel("Estado:"));
-        panelVolumen.add(new JLabel("Pendiente"));
+        lblEstadoVolumen = new JLabel("Pendiente");
+        panelVolumen.add(lblEstadoVolumen);
 
         btnActualizarVolumen = new JButton("Actualizar");
         panelVolumen.add(btnActualizarVolumen);
