@@ -1,6 +1,7 @@
 package objetivos;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.GridLayout;
 
 import javax.swing.ImageIcon;
@@ -93,9 +94,11 @@ public class VentanaAvisos extends JFrame {
             if (btnEntrenamiento.getText().equals("No completado")) {
                 btnEntrenamiento.setText("Completado");
                 btnEntrenamiento.setIcon(iconoCompletado);
+                btnEntrenamiento.setBackground(Color.GREEN);
             } else {
                 btnEntrenamiento.setText("No completado");
                 btnEntrenamiento.setIcon(iconoNoCompletado);
+                btnEntrenamiento.setBackground(Color.RED);
             }
         });
 
@@ -103,9 +106,11 @@ public class VentanaAvisos extends JFrame {
             if (btnAgua.getText().equals("No completado")) {
                 btnAgua.setText("Completado");
                 btnAgua.setIcon(iconoCompletado);
+                btnAgua.setBackground(Color.GREEN);
             } else {
                 btnAgua.setText("No completado");
                 btnAgua.setIcon(iconoNoCompletado);
+                btnAgua.setBackground(Color.RED);
             }
         });
 
@@ -113,9 +118,11 @@ public class VentanaAvisos extends JFrame {
             if (btnDormir.getText().equals("No completado")) {
                 btnDormir.setText("Completado");
                 btnDormir.setIcon(iconoCompletado);
+                btnDormir.setBackground(Color.GREEN);
             } else {
                 btnDormir.setText("No completado");
                 btnDormir.setIcon(iconoNoCompletado);
+                btnDormir.setBackground(Color.RED);
             }
         });
 
@@ -123,9 +130,11 @@ public class VentanaAvisos extends JFrame {
             if (btnRecord.getText().equals("No completado")) {
                 btnRecord.setText("Completado");
                 btnRecord.setIcon(iconoCompletado);
+                btnRecord.setBackground(Color.GREEN);
             } else {
                 btnRecord.setText("No completado");
                 btnRecord.setIcon(iconoNoCompletado);
+                btnRecord.setBackground(Color.RED);
             }
         });
 
