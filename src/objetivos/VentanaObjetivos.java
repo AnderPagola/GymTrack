@@ -6,6 +6,7 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JTextField;
@@ -33,6 +34,9 @@ public class VentanaObjetivos extends JFrame {
 
         setLayout(new BorderLayout());
 
+        // VARIABLES
+        
+        
         // PANEL SUPERIOR
 
         JPanel panelSuperior = new JPanel(new BorderLayout());
@@ -176,7 +180,11 @@ public class VentanaObjetivos extends JFrame {
             dispose();
             new VentanaAvisos();
         });
+        
+        
 
         setVisible(true);
     }
 }
+
+
