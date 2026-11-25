@@ -76,19 +76,22 @@ public class VentanaObjetivos extends JFrame {
         JPanel panelFuerza = new JPanel(new GridLayout(5, 2));
 
         panelFuerza.add(new JLabel("Valor objetivo:"));
-        panelFuerza.add(new JTextField());
+        txtObjetivoFuerza = new JTextField();
+        panelFuerza.add(txtObjetivoFuerza);
 
         panelFuerza.add(new JLabel("Valor actual:"));
-        panelFuerza.add(new JTextField());
+        txtActualFuerza = new JTextField();
+        panelFuerza.add(txtActualFuerza);
 
         panelFuerza.add(new JLabel("Progreso:"));
 
-        JProgressBar barraFuerza = new JProgressBar(0, 100);
+        barraFuerza = new JProgressBar(0, 100);
         barraFuerza.setStringPainted(true);
         panelFuerza.add(barraFuerza);
 
         panelFuerza.add(new JLabel("Estado:"));
-        panelFuerza.add(new JLabel("Pendiente"));
+        lblEstadoFuerza = new JLabel("Pendiente");
+        panelFuerza.add(lblEstadoFuerza);
 
         btnActualizarFuerza = new JButton("Actualizar");
         panelFuerza.add(btnActualizarFuerza);
