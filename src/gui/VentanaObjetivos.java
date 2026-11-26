@@ -1,24 +1,49 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.GridLayout;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JTextField;
 
 import domain.Recursos;
 
+
 public class VentanaObjetivos extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	// VARIABLES
     private JButton btnActualizarFuerza;
     private JButton btnActualizarVolumen;
     private JButton btnActualizarPeso;
-
     private JButton btnAvisos;
+    
+    private JTextField txtObjetivoFuerza;
+    private JTextField txtActualFuerza;
+
+    private JTextField txtObjetivoVolumen;
+    private JTextField txtActualVolumen;
+
+    private JTextField txtObjetivoPeso;
+    private JTextField txtActualPeso;
+
+    private JProgressBar barraFuerza;
+    private JProgressBar barraVolumen;
+    private JProgressBar barraPeso;
+
+    private JLabel lblEstadoFuerza;
+    private JLabel lblEstadoVolumen;
+    private JLabel lblEstadoPeso;
 
     public VentanaObjetivos() {
 
@@ -29,6 +54,8 @@ public class VentanaObjetivos extends JFrame {
 
         setLayout(new BorderLayout());
 
+        
+        
         // PANEL SUPERIOR
 
         JPanel panelSuperior = new JPanel(new BorderLayout());
@@ -36,6 +63,7 @@ public class VentanaObjetivos extends JFrame {
         JLabel lblTitulo = new JLabel("OBJETIVOS", JLabel.CENTER);
 
         btnAvisos = new JButton("Avisos");
+        btnAvisos.setBackground(Color.RED);
 
         panelSuperior.add(lblTitulo, BorderLayout.CENTER);
         panelSuperior.add(btnAvisos, BorderLayout.EAST);
@@ -52,23 +80,27 @@ public class VentanaObjetivos extends JFrame {
         JPanel panelFuerza = new JPanel(new GridLayout(5, 2));
 
         panelFuerza.add(new JLabel("Valor objetivo:"));
-        panelFuerza.add(new JTextField());
+        txtObjetivoFuerza = new JTextField();
+        panelFuerza.add(txtObjetivoFuerza);
 
         panelFuerza.add(new JLabel("Valor actual:"));
-        panelFuerza.add(new JTextField());
+        txtActualFuerza = new JTextField();
+        panelFuerza.add(txtActualFuerza);
 
         panelFuerza.add(new JLabel("Progreso:"));
 
-        JProgressBar barraFuerza = new JProgressBar(0, 100);
+        barraFuerza = new JProgressBar(0, 100);
         barraFuerza.setStringPainted(true);
         panelFuerza.add(barraFuerza);
 
         panelFuerza.add(new JLabel("Estado:"));
-        panelFuerza.add(new JLabel("Pendiente"));
+        lblEstadoFuerza = new JLabel("Pendiente");
+        panelFuerza.add(lblEstadoFuerza);
 
         btnActualizarFuerza = new JButton("Actualizar");
         panelFuerza.add(btnActualizarFuerza);
-
+     
+        
         panelFuerza.add(new JLabel("FUERZA"));
 
         // VOLUMEN
@@ -76,23 +108,27 @@ public class VentanaObjetivos extends JFrame {
         JPanel panelVolumen = new JPanel(new GridLayout(5, 2));
 
         panelVolumen.add(new JLabel("Valor objetivo:"));
-        panelVolumen.add(new JTextField());
+        txtObjetivoVolumen = new JTextField();
+        panelVolumen.add(txtObjetivoVolumen);
 
         panelVolumen.add(new JLabel("Valor actual:"));
-        panelVolumen.add(new JTextField());
+        txtActualVolumen = new JTextField();
+        panelVolumen.add(txtActualVolumen);
 
         panelVolumen.add(new JLabel("Progreso:"));
 
-        JProgressBar barraVolumen = new JProgressBar(0, 100);
+        barraVolumen = new JProgressBar(0, 100);
         barraVolumen.setStringPainted(true);
         panelVolumen.add(barraVolumen);
 
         panelVolumen.add(new JLabel("Estado:"));
-        panelVolumen.add(new JLabel("Pendiente"));
+        lblEstadoVolumen = new JLabel("Pendiente");
+        panelVolumen.add(lblEstadoVolumen);
 
         btnActualizarVolumen = new JButton("Actualizar");
         panelVolumen.add(btnActualizarVolumen);
 
+        
         panelVolumen.add(new JLabel("VOLUMEN"));
 
         // PESO
@@ -100,25 +136,30 @@ public class VentanaObjetivos extends JFrame {
         JPanel panelPeso = new JPanel(new GridLayout(5, 2));
 
         panelPeso.add(new JLabel("Valor objetivo:"));
-        panelPeso.add(new JTextField());
+        txtObjetivoPeso = new JTextField();
+        panelPeso.add(txtObjetivoPeso);
 
         panelPeso.add(new JLabel("Valor actual:"));
-        panelPeso.add(new JTextField());
+        txtActualPeso = new JTextField();
+        panelPeso.add(txtActualPeso);
 
         panelPeso.add(new JLabel("Progreso:"));
 
-        JProgressBar barraPeso = new JProgressBar(0, 100);
+        barraPeso = new JProgressBar(0, 100);
         barraPeso.setStringPainted(true);
         panelPeso.add(barraPeso);
 
         panelPeso.add(new JLabel("Estado:"));
-        panelPeso.add(new JLabel("Pendiente"));
+        lblEstadoPeso = new JLabel("Pendiente");
+        panelPeso.add(lblEstadoPeso);
 
         btnActualizarPeso = new JButton("Actualizar");
         panelPeso.add(btnActualizarPeso);
 
+        
         panelPeso.add(new JLabel("PESO"));
-
+        
+        //AÑADIR A PANEL 
         panelCentral.add(panelFuerza);
         panelCentral.add(panelVolumen);
         panelCentral.add(panelPeso);
@@ -127,9 +168,109 @@ public class VentanaObjetivos extends JFrame {
 
         // PANEL INFERIOR
 
+        JPanel panelInferior = new JPanel(new GridLayout(1,5));
+
+        JButton btnProgreso = new JButton("Progreso");
+        JButton btnRutinas = new JButton("Mis rutinas");
+        JButton btnHistorial = new JButton("Historial");
+        JButton btnEstadisticas = new JButton("Estadísticas");
+        JButton btnObjetivos = new JButton("Objetivos");
+        btnObjetivos.setEnabled(false);
+        
+
+        
+        panelInferior.add(btnProgreso);
+        panelInferior.add(btnRutinas);
+        panelInferior.add(btnHistorial);
+        panelInferior.add(btnEstadisticas);
+        panelInferior.add(btnObjetivos);
+
+        add(panelInferior, BorderLayout.SOUTH);
+
         add(Recursos.crearPanelSur(this, "Objetivos"), BorderLayout.SOUTH);
 
         setVisible(true);
         Recursos.configurarAtajoCerrar(this);
+    }
+    
+    // METODO AUXILIAR PARA DARLE FUNCIONALIDAD A LA BARRA DE PROGRESO
+    private void actualizarObjetivo(JTextField txtObjetivo,
+            JTextField txtActual,
+            JProgressBar barra,
+            JLabel estado) {
+
+    	try {
+    		
+    		int objetivo = Integer.parseInt(txtObjetivo.getText());
+    		int actual = Integer.parseInt(txtActual.getText());
+    		
+    		if (objetivo <= 0) {
+    			
+    			JOptionPane.showMessageDialog(this, "El objetivo debe ser mayor que 0");
+    			return;
+    		}
+    		
+    		int porcentaje = (actual * 100) / objetivo;
+    		
+    		if (porcentaje > 100) {
+    			porcentaje = 100;
+    		}
+    		
+    		final int destino = porcentaje;
+    		
+    		Thread hilo = new Thread(() -> {
+    			
+    			int inicio = barra.getValue();
+    			
+    			if (inicio < destino) {
+    				
+    				for (int i = inicio; i <= destino; i++) {
+    					
+    					barra.setValue(i);
+    					
+    					try {
+    						Thread.sleep(15);
+    					} catch (InterruptedException e) {
+    						e.printStackTrace();
+    					}
+    				}
+    				
+    			} else {
+    				
+    				for (int i = inicio; i >= destino; i--) {
+    					
+    					barra.setValue(i);
+    					
+    					try {
+    						Thread.sleep(15);
+    					} catch (InterruptedException e) {
+    						e.printStackTrace();
+    					}
+    				}
+    			}
+    			
+    			if (destino < 40) {
+
+    			    estado.setText("Bajo");
+    			    barra.setForeground(Color.RED);
+
+    			} else if (destino < 80) {
+
+    			    estado.setText("En progreso");
+    			    barra.setForeground(Color.ORANGE);
+
+    			} else {
+
+    			    estado.setText("Completado");
+    			    barra.setForeground(Color.GREEN);
+    			}
+    		});
+
+    		hilo.start();
+    		
+    	} catch (NumberFormatException e) {
+    		
+    		JOptionPane.showMessageDialog(this, "Introduce valores numéricos válidos");
+    	}
     }
 }
