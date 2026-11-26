@@ -1,12 +1,33 @@
 package gui;
 
-import java.awt.*;
-import java.util.ArrayList;
-import javax.swing.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.time.DayOfWeek;
 
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.ListSelectionModel;
+
+import domain.Ejercicio;
+import domain.GrupoMuscular;
+import domain.PlanRutina;
 import domain.Recursos;
 
 public class Rutina extends JFrame {
+    private static final long serialVersionUID = 1L;
 
     // Colores
     private final Color AZUL = new Color(65, 85, 220);
@@ -18,88 +39,73 @@ public class Rutina extends JFrame {
     private JPanel panelRutinas;
     private JPanel panelEjercicios;
 
-    // Lista de ejercicios
-    private DefaultListModel<String> modeloEjercicios;
-    private JList<String> listaEjercicios;
+    // Lista de ejercicios del dominio
+    private DefaultListModel<Ejercicio> modeloEjercicios;
+    private JList<Ejercicio> listaEjercicios;
 
-    // Rutina seleccionada
-    private String rutinaSeleccionada = "Pierna y abdomen";
-
-    // Datos de ejemplo
-    private ArrayList<String> ejerciciosPierna = new ArrayList<>();
-    private ArrayList<String> ejerciciosTorso = new ArrayList<>();
+    // Rutinas del dominio
+    private PlanRutina rutinaPierna;
+    private PlanRutina rutinaTorso;
+    private PlanRutina rutinaSeleccionada;
 
     public Rutina() {
-
         setTitle("GYMTRACK - Gestión de rutinas");
         setSize(600, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        // Datos iniciales
-        ejerciciosPierna.add("Prensa inclinada");
-        ejerciciosPierna.add("Extension de cuadriceps");
-        ejerciciosPierna.add("Curl de pierna");
+        // Inicialización de objetos PlanRutina y Ejercicio de domain
+        rutinaPierna = new PlanRutina("Pierna y abdomen", "Entrenamiento de tren inferior", GrupoMuscular.PIERNA, DayOfWeek.MONDAY);
+        rutinaPierna.agregarEjercicio(new Ejercicio("Prensa inclinada", GrupoMuscular.PIERNA, 4, 12, 120.0));
+        rutinaPierna.agregarEjercicio(new Ejercicio("Extensión de cuádriceps", GrupoMuscular.PIERNA, 3, 15, 45.0));
+        rutinaPierna.agregarEjercicio(new Ejercicio("Curl de pierna", GrupoMuscular.PIERNA, 3, 12, 40.0));
 
-        ejerciciosTorso.add("Press banca");
-        ejerciciosTorso.add("Jalón al pecho");
-        ejerciciosTorso.add("Curl de bíceps");
-        
+        rutinaTorso = new PlanRutina("Torso y brazos", "Entrenamiento de tren superior", GrupoMuscular.PECHO, DayOfWeek.WEDNESDAY);
+        rutinaTorso.agregarEjercicio(new Ejercicio("Press banca", GrupoMuscular.PECHO, 4, 8, 80.0));
+        rutinaTorso.agregarEjercicio(new Ejercicio("Jalón al pecho", GrupoMuscular.ESPALDA, 4, 10, 60.0));
+        rutinaTorso.agregarEjercicio(new Ejercicio("Curl de bíceps", GrupoMuscular.BRAZOS, 3, 12, 15.0));
+
+        rutinaSeleccionada = rutinaPierna;
+
         // Panel principal
         panelPrincipal = new JPanel(new BorderLayout());
         panelPrincipal.setBackground(FONDO);
 
-        // Crear las diferentes partes
         crearCabecera();
         crearContenido();
-        
 
         setContentPane(panelPrincipal);
-        setVisible(true);
-        
         add(Recursos.crearPanelSur(this, "Mis Rutinas"), BorderLayout.SOUTH);
         Recursos.configurarAtajoCerrar(this);
+
+        setVisible(true);
     }
 
-
-
-	// CABECERA
+    // CABECERA
     private void crearCabecera() {
-
         JPanel cabecera = new JPanel(new BorderLayout());
         cabecera.setBackground(BLANCO);
-        cabecera.setBorder(
-            BorderFactory.createEmptyBorder(15, 25, 15, 25)
-        );
+        cabecera.setBorder(BorderFactory.createEmptyBorder(15, 25, 15, 25));
 
         JLabel titulo = new JLabel("Mis Rutinas");
         titulo.setFont(new Font("Arial", Font.BOLD, 25));
-        
-        cabecera.add(titulo, BorderLayout.WEST);
 
+        cabecera.add(titulo, BorderLayout.WEST);
         panelPrincipal.add(cabecera, BorderLayout.NORTH);
     }
-    
-    //CONTENIDO PRINCIPAL
+
+    // CONTENIDO PRINCIPAL
     private void crearContenido() {
         JPanel contenido = new JPanel();
-
-        contenido.setLayout(
-            new BoxLayout(contenido, BoxLayout.Y_AXIS)
-        );
-
+        contenido.setLayout(new BoxLayout(contenido, BoxLayout.Y_AXIS));
         contenido.setBackground(FONDO);
-
-        contenido.setBorder(
-            BorderFactory.createEmptyBorder(15, 20, 15, 20)
-        );
+        contenido.setBorder(BorderFactory.createEmptyBorder(15, 20, 15, 20));
 
         crearPanelRutinas();
         crearPanelEjercicios();
 
         panelRutinas.setPreferredSize(new Dimension(400, 150));
         panelRutinas.setMaximumSize(new Dimension(Integer.MAX_VALUE, 150));
-
         panelEjercicios.setPreferredSize(new Dimension(400, 350));
 
         contenido.add(panelRutinas);
@@ -107,104 +113,70 @@ public class Rutina extends JFrame {
         contenido.add(panelEjercicios);
 
         panelPrincipal.add(contenido, BorderLayout.CENTER);
-		
-	}
-    
-    //PANEL DE RUTINAS
-	private void crearPanelRutinas() {
-		
+    }
+
+    // PANEL DE RUTINAS
+    private void crearPanelRutinas() {
         panelRutinas = new JPanel(new GridLayout(2, 1, 0, 10));
         panelRutinas.setBackground(FONDO);
 
-        JButton pierna = crearBotonRutina(
-            "PIERNA Y ABDOMEN",
-            "Seleccionar rutina"
-        );
-
-        JButton torso = crearBotonRutina(
-            "TORSO Y BRAZOS",
-            "Seleccionar rutina"
-        );
+        JButton pierna = crearBotonRutina(rutinaPierna.getNombre().toUpperCase(), "Seleccionar rutina");
+        JButton torso = crearBotonRutina(rutinaTorso.getNombre().toUpperCase(), "Seleccionar rutina");
 
         pierna.addActionListener(e -> {
-            rutinaSeleccionada = "Pierna y abdomen";
+            rutinaSeleccionada = rutinaPierna;
             actualizarEjercicios();
         });
 
         torso.addActionListener(e -> {
-            rutinaSeleccionada = "Torso y brazos";
+            rutinaSeleccionada = rutinaTorso;
             actualizarEjercicios();
         });
 
         panelRutinas.add(pierna);
         panelRutinas.add(torso);
-	}
+    }
 
-	//ACTUALIZAR LA LISTA
-	private void actualizarEjercicios() {
+    // ACTUALIZAR LA LISTA
+    private void actualizarEjercicios() {
         modeloEjercicios.clear();
-
-        ArrayList<String> ejercicios;
-
-        if (rutinaSeleccionada.equals("Pierna y abdomen")) {
-            ejercicios = ejerciciosPierna;
-        } else {
-            ejercicios = ejerciciosTorso;
-        }
-
-        for (String ejercicio : ejercicios) {
+        for (Ejercicio ejercicio : rutinaSeleccionada.getEjercicios()) {
             modeloEjercicios.addElement(ejercicio);
         }
-	}
+    }
 
+    private JButton crearBotonRutina(String titulo, String texto) {
+        JButton boton = new JButton(titulo + " - " + texto);
+        boton.setFont(new Font("Arial", Font.PLAIN, 16));
+        boton.setBackground(BLANCO);
+        boton.setFocusPainted(false);
+        boton.setBorder(BorderFactory.createLineBorder(new Color(220, 220, 220)));
+        return boton;
+    }
 
-	
-	private JButton crearBotonRutina(String titulo, String texto) {
-		JButton boton = new JButton(titulo + " - " + texto);
-		boton.setFont(new Font("Arial", Font.PLAIN, 16));
-		boton.setBackground(BLANCO);
-		boton.setFocusPainted(false);
-		boton.setBorder(
-		BorderFactory.createLineBorder(new Color(220, 220, 220))
-		);
-		return boton;
-	}
-
-
-
-	//PANEL DE EJERCICIOS
-	private void crearPanelEjercicios() {
+    // PANEL DE EJERCICIOS
+    private void crearPanelEjercicios() {
         panelEjercicios = new JPanel(new BorderLayout(10, 10));
         panelEjercicios.setBackground(BLANCO);
         panelEjercicios.setBorder(
             BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(
-                    new Color(220, 220, 220)
-                ),
+                BorderFactory.createLineBorder(new Color(220, 220, 220)),
                 BorderFactory.createEmptyBorder(15, 15, 15, 15)
             )
         );
 
-        // Título
         JLabel titulo = new JLabel("Ejercicios");
         titulo.setFont(new Font("Arial", Font.BOLD, 20));
-
         panelEjercicios.add(titulo, BorderLayout.NORTH);
 
-        // Lista
         modeloEjercicios = new DefaultListModel<>();
         listaEjercicios = new JList<>(modeloEjercicios);
-
         listaEjercicios.setFont(new Font("Arial", Font.PLAIN, 16));
-        listaEjercicios.setSelectionMode(
-            ListSelectionModel.SINGLE_SELECTION
-        );
+        listaEjercicios.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         JScrollPane scroll = new JScrollPane(listaEjercicios);
-
         panelEjercicios.add(scroll, BorderLayout.CENTER);
 
-        // Botones
         JPanel botones = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         botones.setBackground(BLANCO);
 
@@ -218,92 +190,58 @@ public class Rutina extends JFrame {
 
         panelEjercicios.add(botones, BorderLayout.SOUTH);
 
-        // Acciones
         anadir.addActionListener(e -> anadirEjercicio());
-
         editar.addActionListener(e -> editarEjercicio());
-
         eliminar.addActionListener(e -> eliminarEjercicio());
 
         actualizarEjercicios();
-		
-	}
-	
-//	 //AÑADIR EJERCICIO                 FUNCION HECHA CON IA(CHATGPT)
-	private void anadirEjercicio() {
-        String nombre = JOptionPane.showInputDialog(
+    }
+
+    // AÑADIR EJERCICIO DEL DOMINIO
+    private void anadirEjercicio() {
+        String nombre = JOptionPane.showInputDialog(this, "Introduce el nombre del ejercicio:");
+        if (nombre != null && !nombre.trim().isEmpty()) {
+            GrupoMuscular grupo = (GrupoMuscular) JOptionPane.showInputDialog(
                 this,
-                "Introduce el nombre del ejercicio:"
+                "Selecciona el grupo muscular:",
+                "Grupo Muscular",
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                GrupoMuscular.values(),
+                rutinaSeleccionada.getGrupoPrincipal()
             );
 
-            if (nombre != null && !nombre.trim().isEmpty()) {
-
-                obtenerEjercicios().add(nombre.trim());
-
+            if (grupo != null) {
+                Ejercicio nuevo = new Ejercicio(nombre.trim(), grupo, 3, 10, 20.0);
+                rutinaSeleccionada.agregarEjercicio(nuevo);
                 actualizarEjercicios();
             }
-	}
+        }
+    }
 
-	//DEVOLVER LA LISTA DE LOS EJERCICIOS SELECCIONADOS
-	   private ArrayList<String> obtenerEjercicios() {
+    // ELIMINAR EJERCICIO DEL DOMINIO
+    private void eliminarEjercicio() {
+        Ejercicio seleccionado = listaEjercicios.getSelectedValue();
+        if (seleccionado == null) {
+            JOptionPane.showMessageDialog(this, "Selecciona un ejercicio primero.");
+            return;
+        }
+        rutinaSeleccionada.eliminarEjercicio(seleccionado);
+        actualizarEjercicios();
+    }
 
-	        if (rutinaSeleccionada.equals("Pierna y abdomen")) {
-	            return ejerciciosPierna;
-	        } else {
-	            return ejerciciosTorso;
-	        }
-	    }
-
-	//ELIMINAR EJERCICIO
-	private void eliminarEjercicio() {
-	      int posicion = listaEjercicios.getSelectedIndex();
-
-	        if (posicion == -1) {
-	            JOptionPane.showMessageDialog(
-	                this,
-	                "Selecciona un ejercicio primero."
-	            );
-	            return;
-	        }
-
-	        obtenerEjercicios().remove(posicion);
-
-	        actualizarEjercicios();
-	}
-
-
-	//EDITAR EJERCICIO
-	private void editarEjercicio() {
-        int posicion = listaEjercicios.getSelectedIndex();
-
-        if (posicion == -1) {
-            JOptionPane.showMessageDialog(
-                this,
-                "Selecciona un ejercicio primero."
-            );
+    // EDITAR EJERCICIO DEL DOMINIO
+    private void editarEjercicio() {
+        Ejercicio seleccionado = listaEjercicios.getSelectedValue();
+        if (seleccionado == null) {
+            JOptionPane.showMessageDialog(this, "Selecciona un ejercicio primero.");
             return;
         }
 
-        String nombreAnterior = listaEjercicios.getSelectedValue();
-
-        String nombreNuevo = JOptionPane.showInputDialog(
-            this,
-            "Nuevo nombre:",
-            nombreAnterior
-        );
-
+        String nombreNuevo = JOptionPane.showInputDialog(this, "Nuevo nombre:", seleccionado.getNombre());
         if (nombreNuevo != null && !nombreNuevo.trim().isEmpty()) {
-
-            obtenerEjercicios().set(posicion, nombreNuevo.trim());
-
+            seleccionado.setNombre(nombreNuevo.trim());
             actualizarEjercicios();
         }
-		
-	}
-
-
-
-	
-
+    }
 }
-

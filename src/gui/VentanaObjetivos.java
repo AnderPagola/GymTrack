@@ -273,4 +273,5 @@ public class VentanaObjetivos extends JFrame {
     		JOptionPane.showMessageDialog(this, "Introduce valores numéricos válidos");
     	}
     }
+    
 }
