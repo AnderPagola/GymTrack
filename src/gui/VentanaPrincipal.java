@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import domain.Colores;
 import domain.Recursos;
 
 public class VentanaPrincipal extends JFrame {
@@ -39,11 +40,11 @@ public class VentanaPrincipal extends JFrame {
 		JPanel panelPrincipal = new JPanel();
 		panelPrincipal.setLayout(new GridLayout(5,1,5,5));
 		//Mis rutinas, Progreso, Perfil
-		panelPrincipal.setBackground(Color.BLACK);
+		panelPrincipal.setBackground(Colores.NEGRO_CARBON.getColor());
 		add(panelPrincipal, BorderLayout.CENTER);
 		
 		JPanel panelNorte = new JPanel();
-		panelNorte.setBackground(Color.BLACK);
+		panelNorte.setBackground(Colores.NEGRO_CARBON.getColor());
 		panelNorte.setLayout(new GridLayout(1,1));
 		panelNorte.setPreferredSize(new Dimension(400,100));
 		JLabel texto = new JLabel("GymTrack");
@@ -51,7 +52,7 @@ public class VentanaPrincipal extends JFrame {
 		texto.setHorizontalAlignment(SwingConstants.CENTER);
 		texto.setVerticalAlignment(SwingConstants.CENTER);
 		texto.setFont(new Font("Arial", Font.BOLD, 50));
-		texto.setForeground(Color.decode("#F4F2ED"));
+		texto.setForeground(Colores.BLANCO_CALIDO.getColor());
 		add(panelNorte, BorderLayout.NORTH);
 		
 		//Botones
@@ -101,8 +102,8 @@ public class VentanaPrincipal extends JFrame {
 	public void formatoBoton(JButton boton) {
 		//Color dorado = Color.decode("#D4AF70");
 		boton.setFont(new Font("Arial", Font.BOLD, 30));
-		boton.setBackground(Color.decode("#DEAF70"));
-		boton.setForeground(Color.decode("#F4F2ED"));
+		boton.setBackground(Colores.DORADO.getColor());
+		boton.setForeground(Colores.BLANCO_CALIDO.getColor());
 		boton.setOpaque(true);
 	    boton.setContentAreaFilled(true);
 	    boton.setFocusPainted(false);
