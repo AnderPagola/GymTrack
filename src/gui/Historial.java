@@ -5,248 +5,241 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
-import javax.swing.ButtonGroup;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
+import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
-import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
+import domain.Ejercicio;
+import domain.Entrenamiento;
+import domain.GrupoMuscular;
 import domain.Recursos;
 
 public class Historial extends JFrame {
-	private int diaI=8;
-	private JTable tablaCalendario;
-	private DefaultTableModel modeloTabla;
-	private JTextArea trabajoDia=new JTextArea();
-	
-	
-	
-	public Historial() {
-		// TODO Auto-generated constructor stub
-		
-		setTitle("Historial y evolucion");
-		setSize(600,600);
-		setLocationRelativeTo(null);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setLayout(new BorderLayout());
-		setVisible(true);
-		 	
-		JPanel panelnorth= new JPanel();
-		panelnorth.setBorder(BorderFactory.createTitledBorder("Mis Entrenamientos"));
-		panelnorth.setBackground(Color.gray);
-		panelnorth.setPreferredSize(new Dimension(0,120));
-		panelnorth.setLayout(new BorderLayout());
-		
-		String[] columnas = {"L", "M", "M", "J", "V", "S", "D"};
+    private static final long serialVersionUID = 1L;
 
-		Object[][] datos = {
-		    {
-		        String.valueOf(diaI),
-		        String.valueOf(diaI + 1),
-		        String.valueOf(diaI + 2),
-		        String.valueOf(diaI + 3),
-		        String.valueOf(diaI + 4),
-		        String.valueOf(diaI + 5),
-		        String.valueOf(diaI + 6)
-		    }
-		};
-//**PARTE DE LA TABLA AYUDADA CON IA
-		modeloTabla = new DefaultTableModel(datos, columnas) {
-		    @Override
-		    public boolean isCellEditable(int row, int column) {
-		        return false;
-		    }
-		};
+    private int diaI = 8;
+    private JTable tablaCalendario;
+    private DefaultTableModel modeloTabla;
+    private JTextArea trabajoDia = new JTextArea();
+    private List<Entrenamiento> listaEntrenamientos = new ArrayList<>();
 
-		tablaCalendario = new JTable(modeloTabla);
+    public Historial() {
+        setTitle("Historial y evolucion");
+        setSize(600, 600);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLayout(new BorderLayout());
 
-		tablaCalendario.setRowHeight(40);
-		tablaCalendario.setFont(new Font("Arial", Font.BOLD, 16));
+        cargarEntrenamientos();
 
-		DefaultTableCellRenderer centrado = new DefaultTableCellRenderer();
-		centrado.setHorizontalAlignment(SwingConstants.CENTER);
+        JPanel panelnorth = new JPanel();
+        panelnorth.setBorder(BorderFactory.createTitledBorder("Mis Entrenamientos"));
+        panelnorth.setBackground(Color.gray);
+        panelnorth.setPreferredSize(new Dimension(0, 120));
+        panelnorth.setLayout(new BorderLayout());
 
-		for (int i = 0; i < tablaCalendario.getColumnCount(); i++) {
-		    tablaCalendario.getColumnModel()
-		                   .getColumn(i)
-		                   .setCellRenderer(centrado);
-		}
+        String[] columnas = {"L", "M", "M", "J", "V", "S", "D"};
 
-		((DefaultTableCellRenderer) tablaCalendario.getTableHeader()
-		        .getDefaultRenderer())
-		        .setHorizontalAlignment(SwingConstants.CENTER);
-		tablaCalendario.setSelectionMode(
-			    javax.swing.ListSelectionModel.SINGLE_SELECTION
-			);
+        Object[][] datos = {
+            {
+                String.valueOf(diaI),
+                String.valueOf(diaI + 1),
+                String.valueOf(diaI + 2),
+                String.valueOf(diaI + 3),
+                String.valueOf(diaI + 4),
+                String.valueOf(diaI + 5),
+                String.valueOf(diaI + 6)
+            }
+        };
 
-		JScrollPane scroll = new JScrollPane(tablaCalendario);
+        modeloTabla = new DefaultTableModel(datos, columnas) {
+            private static final long serialVersionUID = 1L;
 
-		panelnorth.add(scroll, BorderLayout.CENTER);
-		JButton botonantes=new JButton("Semana pasada");
-		JButton botonactual=new JButton("Semana actual");
-		JButton botondespues=new JButton("Semana siguente");
-		
-		botonantes.addActionListener(e->{
-			    diaI -= 7;
-			    if(diaI<1) {
-					JOptionPane.showMessageDialog(
-						    this,
-						    "No puedes retroceder más",
-						    "Error",
-						    JOptionPane.ERROR_MESSAGE
-						);//Mensaje creado con IA
-				}else {
-					actualizarSemana();
-				}
-			    
-			    
-		});
-		
-		botondespues.addActionListener(e->{
-			diaI+=7;
-			if(diaI>22) {
-				JOptionPane.showMessageDialog(
-					    this,
-					    "No puedes avanzar más",
-					    "Error",
-					    JOptionPane.ERROR_MESSAGE
-					);
-			}else {
-				actualizarSemana();
-			}
-		});
-		botonactual.addActionListener(e->{
-			diaI=8;
-			actualizarSemana();
-		});
-		JPanel panelsur2=new JPanel();
-		panelsur2.setLayout(new GridLayout(1,3,20,20));
-		panelsur2.add(botonantes);
-		panelsur2.add(botonactual);
-		panelsur2.add(botondespues);
-		panelnorth.add(panelsur2,BorderLayout.SOUTH);
-	
-		
-		JPanel panelcentro=new JPanel();
-		panelcentro.setBackground(Color.white);
-		
-		trabajoDia.setEditable(false);
-		trabajoDia.setFont(new Font("Arial",Font.PLAIN,16));
-		panelcentro.setLayout(new BorderLayout());
-		panelcentro.add(trabajoDia,BorderLayout.NORTH);
-		tablaCalendario.setRowSelectionAllowed(true);
-		tablaCalendario.setColumnSelectionAllowed(true);
-		tablaCalendario.setCellSelectionEnabled(true);
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
 
-		mostrarEntrenamiento(0);
+        tablaCalendario = new JTable(modeloTabla);
+        tablaCalendario.setRowHeight(40);
+        tablaCalendario.setFont(new Font("Arial", Font.BOLD, 16));
 
-		tablaCalendario.getColumnModel()
-		               .getSelectionModel()
-		               .addListSelectionListener(e -> {
+        DefaultTableCellRenderer centrado = new DefaultTableCellRenderer();
+        centrado.setHorizontalAlignment(SwingConstants.CENTER);
 
-		    if (!e.getValueIsAdjusting()) {
-		        int columna = tablaCalendario.getSelectedColumn();
-		        if (columna != -1) {
-		            mostrarEntrenamiento(columna);
-		        }
-		    }
-		});
-		
-		add(panelnorth, BorderLayout.NORTH);
-		add(panelcentro, BorderLayout.CENTER);
-		add(Recursos.crearPanelSur(this, "Historial"), BorderLayout.SOUTH);
-		
-	}
-	private void actualizarSemana() {
+        for (int i = 0; i < tablaCalendario.getColumnCount(); i++) {
+            tablaCalendario.getColumnModel()
+                           .getColumn(i)
+                           .setCellRenderer(centrado);
+        }
 
-	    for(int i = 0; i < 7; i++) {
-	        modeloTabla.setValueAt(
-	            String.valueOf(diaI + i),
-	            0,
-	            i
-	        );
-	    }
-	}private void mostrarEntrenamiento(int columna3) {
+        ((DefaultTableCellRenderer) tablaCalendario.getTableHeader()
+                .getDefaultRenderer())
+                .setHorizontalAlignment(SwingConstants.CENTER);
+        tablaCalendario.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
-	    switch (columna3) {
-//En la ventana no sale el tick, no carga el simbolo
-	        case 0: 
-	            trabajoDia.setText(
-	                "Entrenamiento Pierna\n\n" +
-	                "✕ Sentadillas\n" +
-	                "✕ Prensa\n" +
-	                "✓ Extensiones\n\n" +
-	                "✕ Mejor que última entrenamiento"
-	            	
-	            );
-	           
-	            break;
+        JScrollPane scroll = new JScrollPane(tablaCalendario);
+        panelnorth.add(scroll, BorderLayout.CENTER);
 
-	        case 1: 
-	            trabajoDia.setText(
-	                "Entrenamiento Pecho\n\n" +
-	                "✕ Press banca\n" +
-	                "✓ Press inclinado\n" +
-	                "✓ Aperturas"
-	            		
-	            );
+        JButton botonantes = new JButton("Semana pasada");
+        JButton botonactual = new JButton("Semana actual");
+        JButton botondespues = new JButton("Semana siguente");
 
-	            break;
+        botonantes.addActionListener(e -> {
+            diaI -= 7;
+            if (diaI < 1) {
+                diaI += 7;
+                JOptionPane.showMessageDialog(
+                    this,
+                    "No puedes retroceder más",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE
+                );
+            } else {
+                actualizarSemana();
+            }
+        });
 
-	        case 2: // Miércoles
-	            trabajoDia.setText(
-	            		"Entrenamiento Espalda\n\n"+
-	            		"✓ Dominadas\n" +
-	            		"✓ Remo superior\n" +
-	    	            "✓ Remo en polea"
-	            );
-	            break;
+        botondespues.addActionListener(e -> {
+            diaI += 7;
+            if (diaI > 22) {
+                diaI -= 7;
+                JOptionPane.showMessageDialog(
+                    this,
+                    "No puedes avanzar más",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE
+                );
+            } else {
+                actualizarSemana();
+            }
+        });
 
-	        case 3: 
-	            trabajoDia.setText(
-	                "Entrenamiento Hombro\n\n"+
-	                	"✓ Press frances\n"+
-	                		"✓ Laterales\n"+
-	                	"✓ Mejor que el ultimo entrenamiento"
-	            );
-	            break;
+        botonactual.addActionListener(e -> {
+            diaI = 8;
+            actualizarSemana();
+        });
 
-	        case 4: 
-	            trabajoDia.setText(
-	                "Entrenamiento Brazos\n\n"+
-	                "Curl predicador\n"+
-	                		"Curl Martillo\n"+
-	                "Frances\n"+
-	                		"Extensiones en polea"
-	            );
-	            break;
+        JPanel panelsur2 = new JPanel();
+        panelsur2.setLayout(new GridLayout(1, 3, 20, 20));
+        panelsur2.add(botonantes);
+        panelsur2.add(botonactual);
+        panelsur2.add(botondespues);
+        panelnorth.add(panelsur2, BorderLayout.SOUTH);
 
-	        case 5: 
-	            trabajoDia.setText(
-	                "Cardio\n\n"+"✓Correr\n"+"✓Andar en cuesta"
-	            );
-	            break;
+        JPanel panelcentro = new JPanel();
+        panelcentro.setBackground(Color.white);
 
-	            
-	        case 6: 
-	            trabajoDia.setText(
-	                "Descanso"
-	            );
-	            break;
-	            
-	    }
-	}
+        trabajoDia.setEditable(false);
+        trabajoDia.setFont(new Font("Arial", Font.PLAIN, 16));
+        panelcentro.setLayout(new BorderLayout());
+        panelcentro.add(trabajoDia, BorderLayout.NORTH);
+        tablaCalendario.setRowSelectionAllowed(true);
+        tablaCalendario.setColumnSelectionAllowed(true);
+        tablaCalendario.setCellSelectionEnabled(true);
+
+        mostrarEntrenamiento(0);
+
+        tablaCalendario.getColumnModel()
+                       .getSelectionModel()
+                       .addListSelectionListener(e -> {
+            if (!e.getValueIsAdjusting()) {
+                int columna = tablaCalendario.getSelectedColumn();
+                if (columna != -1) {
+                    mostrarEntrenamiento(columna);
+                }
+            }
+        });
+
+        add(panelnorth, BorderLayout.NORTH);
+        add(panelcentro, BorderLayout.CENTER);
+        add(Recursos.crearPanelSur(this, "Historial"), BorderLayout.SOUTH);
+        Recursos.configurarAtajoCerrar(this);
+        setVisible(true);
+        
+    }
+
+    private void cargarEntrenamientos() {
+        Entrenamiento lunes = new Entrenamiento(LocalDate.of(2026, 11, 8), "Entrenamiento Pierna", GrupoMuscular.PIERNA, 65, false);
+        lunes.agregarEjercicio(new Ejercicio("Sentadillas", GrupoMuscular.PIERNA, false));
+        lunes.agregarEjercicio(new Ejercicio("Prensa", GrupoMuscular.PIERNA, false));
+        lunes.agregarEjercicio(new Ejercicio("Extensiones", GrupoMuscular.PIERNA, true));
+        listaEntrenamientos.add(lunes);
+
+        Entrenamiento martes = new Entrenamiento(LocalDate.of(2026, 11, 9), "Entrenamiento Pecho", GrupoMuscular.PECHO, 55, false);
+        martes.agregarEjercicio(new Ejercicio("Press banca", GrupoMuscular.PECHO, false));
+        martes.agregarEjercicio(new Ejercicio("Press inclinado", GrupoMuscular.PECHO, true));
+        martes.agregarEjercicio(new Ejercicio("Aperturas", GrupoMuscular.PECHO, true));
+        listaEntrenamientos.add(martes);
+
+        Entrenamiento miercoles = new Entrenamiento(LocalDate.of(2026, 11, 10), "Entrenamiento Espalda", GrupoMuscular.ESPALDA, 60, true);
+        miercoles.agregarEjercicio(new Ejercicio("Dominadas", GrupoMuscular.ESPALDA, true));
+        miercoles.agregarEjercicio(new Ejercicio("Remo superior", GrupoMuscular.ESPALDA, true));
+        miercoles.agregarEjercicio(new Ejercicio("Remo en polea", GrupoMuscular.ESPALDA, true));
+        listaEntrenamientos.add(miercoles);
+
+        Entrenamiento jueves = new Entrenamiento(LocalDate.of(2026, 11, 11), "Entrenamiento Hombro", GrupoMuscular.HOMBRO, 50, true);
+        jueves.agregarEjercicio(new Ejercicio("Press francés", GrupoMuscular.HOMBRO, true));
+        jueves.agregarEjercicio(new Ejercicio("Laterales", GrupoMuscular.HOMBRO, true));
+        listaEntrenamientos.add(jueves);
+
+        Entrenamiento viernes = new Entrenamiento(LocalDate.of(2026, 11, 12), "Entrenamiento Brazos", GrupoMuscular.BRAZOS, 45, false);
+        viernes.agregarEjercicio(new Ejercicio("Curl predicador", GrupoMuscular.BRAZOS, true));
+        viernes.agregarEjercicio(new Ejercicio("Curl Martillo", GrupoMuscular.BRAZOS, true));
+        viernes.agregarEjercicio(new Ejercicio("Francés", GrupoMuscular.BRAZOS, true));
+        viernes.agregarEjercicio(new Ejercicio("Extensiones en polea", GrupoMuscular.BRAZOS, true));
+        listaEntrenamientos.add(viernes);
+
+        Entrenamiento sabado = new Entrenamiento(LocalDate.of(2026, 11, 13), "Cardio", GrupoMuscular.CARDIO, 40, true);
+        sabado.agregarEjercicio(new Ejercicio("Correr", GrupoMuscular.CARDIO, true));
+        sabado.agregarEjercicio(new Ejercicio("Andar en cuesta", GrupoMuscular.CARDIO, true));
+        listaEntrenamientos.add(sabado);
+
+        Entrenamiento domingo = new Entrenamiento(LocalDate.of(2026, 11, 14), "Descanso", GrupoMuscular.DESCANSO, 0, true);
+        listaEntrenamientos.add(domingo);
+    }
+
+    private void actualizarSemana() {
+        for (int i = 0; i < 7; i++) {
+            modeloTabla.setValueAt(
+                String.valueOf(diaI + i),
+                0,
+                i
+            );
+        }
+        int columna = tablaCalendario.getSelectedColumn();
+        mostrarEntrenamiento(columna != -1 ? columna : 0);
+    }
+
+    private void mostrarEntrenamiento(int columna) {
+        int diaSeleccionado = diaI + columna;
+        Entrenamiento encontrado = null;
+
+        for (Entrenamiento e : listaEntrenamientos) {
+            if (e.getFecha().getDayOfMonth() == diaSeleccionado) {
+                encontrado = e;
+                break;
+            }
+        }
+
+        if (encontrado != null) {
+            trabajoDia.setText(encontrado.generarResumen());
+        } else {
+            trabajoDia.setText("Día " + diaSeleccionado + "\n\nSin entrenamiento registrado.");
+        }
+    }
 }
