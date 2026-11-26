@@ -18,6 +18,8 @@ import domain.Recursos;
 
 public class VentanaPrincipal extends JFrame {
 	
+	public static final long serialVersionUID = 1L;
+	
 	private JButton progreso = new JButton("Progreso");
 	private JButton rutinas = new JButton("Mis rutinas");
 	private JButton historial = new JButton("Historial");
@@ -37,7 +39,7 @@ public class VentanaPrincipal extends JFrame {
 		JPanel panelPrincipal = new JPanel();
 		panelPrincipal.setLayout(new GridLayout(5,1,5,5));
 		//Mis rutinas, Progreso, Perfil
-		panelPrincipal.setBackground(Color.ORANGE);
+		panelPrincipal.setBackground(Color.BLACK);
 		add(panelPrincipal, BorderLayout.CENTER);
 		
 		JPanel panelNorte = new JPanel();
@@ -49,7 +51,7 @@ public class VentanaPrincipal extends JFrame {
 		texto.setHorizontalAlignment(SwingConstants.CENTER);
 		texto.setVerticalAlignment(SwingConstants.CENTER);
 		texto.setFont(new Font("Arial", Font.BOLD, 50));
-		texto.setForeground(Color.WHITE);
+		texto.setForeground(Color.decode("#F4F2ED"));
 		add(panelNorte, BorderLayout.NORTH);
 		
 		//Botones
@@ -97,10 +99,12 @@ public class VentanaPrincipal extends JFrame {
 	}
 	
 	public void formatoBoton(JButton boton) {
+		//Color dorado = Color.decode("#D4AF70");
 		boton.setFont(new Font("Arial", Font.BOLD, 30));
-		boton.setBackground(Color.CYAN);
-//		boton.setOpaque(true);
-//	    boton.setContentAreaFilled(true);
+		boton.setBackground(Color.decode("#DEAF70"));
+		boton.setForeground(Color.decode("#F4F2ED"));
+		boton.setOpaque(true);
+	    boton.setContentAreaFilled(true);
 	    boton.setFocusPainted(false);
 	}
 }
