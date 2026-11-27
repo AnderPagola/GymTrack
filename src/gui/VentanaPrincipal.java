@@ -1,11 +1,8 @@
-package principal;
+package gui;
 
 import java.awt.BorderLayout;
-import misEntrenamiento.MisEntrenamientos;
-import objetivos.VentanaObjetivos;
-import progreso.VentanaSeguimiento;
-import rutinas.VentanaRutinas;
-
+import java.awt.BorderLayout;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -17,9 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import estadisticas.VentanaEstadisticas;
-import misEntrenamiento.MisEntrenamientos;
-//import rutinas.VentanaRutinas;
+import domain.Recursos;
 
 public class VentanaPrincipal extends JFrame {
 	
@@ -28,6 +23,7 @@ public class VentanaPrincipal extends JFrame {
 	private JButton historial = new JButton("Historial");
 	private JButton stats = new JButton("Estadísticas");
 	private JButton objetivos = new JButton("Objetivos");
+	
 	
 	
 	public VentanaPrincipal() {
@@ -76,12 +72,13 @@ public class VentanaPrincipal extends JFrame {
 			v2.setVisible(true);
 		});
 		rutinas.addActionListener(e-> {
-			VentanaRutinas v2=new VentanaRutinas();
+			Rutina v2=new Rutina();
 			this.dispose();
 			v2.setVisible(true);
 		});
 		historial.addActionListener(e-> {
-			MisEntrenamientos v2=new MisEntrenamientos();
+			Historial v2=new Historial();
+
 			this.dispose();
 			v2.setVisible(true);
 		});
@@ -95,6 +92,8 @@ public class VentanaPrincipal extends JFrame {
 			this.dispose();
 			v2.setVisible(true);
 		});
+		
+        Recursos.configurarAtajoCerrar(this);
 	}
 	
 	public void formatoBoton(JButton boton) {
