@@ -118,6 +118,12 @@ public class Rutina extends JFrame {
         contenido.add(panelEjercicios);
 
         panelPrincipal.add(contenido, BorderLayout.CENTER);
+        
+        //hilos
+        contenido.add(Box.createVerticalStrut(10));
+        contenido.add(crearPanelDescanso());
+        
+        panelPrincipal.add(contenido, BorderLayout.CENTER);
     }
 
     // PANEL DE RUTINAS
@@ -248,5 +254,78 @@ public class Rutina extends JFrame {
             seleccionado.setNombre(nombreNuevo.trim());
             actualizarEjercicios();
         }
+    }
+    
+    //=========================================================
+    // IMPLEMENTACIÓN DE HILOS
+    private JPanel crearPanelDescanso() {
+        JPanel panel = new JPanel(new FlowLayout());
+
+        JButton iniciar = new JButton("Iniciar");
+        JButton parar = new JButton("Parar");
+        JButton reiniciar = new JButton("Reiniciar");
+
+        lblTiempo.setFont(new Font("Arial", Font.BOLD, 24));
+
+        panel.add(new JLabel("Descanso:"));
+        panel.add(lblTiempo);
+        panel.add(iniciar);
+        panel.add(parar);
+        panel.add(reiniciar);
+
+        iniciar.addActionListener(e -> iniciarDescanso());
+
+        parar.addActionListener(e -> pararDescanso());
+
+        reiniciar.addActionListener(e -> {
+            pararDescanso();
+            lblTiempo.setText("01:00");
+        });
+
+        return panel;
+    }
+
+    private void iniciarDescanso() {
+
+        if (hiloDescanso != null && hiloDescanso.isAlive()) {
+            return;
+        }
+
+        hiloDescanso = new Thread(() -> {
+
+            Thread actual = Thread.currentThread();
+
+            for (int i = 60; i >= 0; i--) {
+
+                int segundos = i;
+
+                SwingUtilities.invokeLater(() -> {
+                    if (hiloDescanso == actual) {
+                        lblTiempo.setText(String.format("%02d:%02d",
+                                segundos / 60, segundos % 60));
+                    }
+                });
+                if (i > 0) {
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        return;
+                    }
+                }
+            }
+        });
+        hiloDescanso.start();
+    }
+    private void pararDescanso() {
+        if (hiloDescanso != null) {
+            hiloDescanso.interrupt();
+            hiloDescanso = null;
+        }
+    }
+
+    @Override
+    public void dispose() {
+        pararDescanso();
+        super.dispose();
     }
 }
