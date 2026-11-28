@@ -312,32 +312,50 @@ public class VentanaEstadisticas extends JFrame {
 	private void SeriesReps() {
 		JPanel panel = new JPanel();
 		panel.setLayout(new GridLayout(3, 1));
+		panel.setBackground(Colores.NEGRO_CARBON.getColor());
 
 		//1
 		JLabel titulo = new JLabel("SERIES Y REPETICIONES");
 		titulo.setFont(new Font("Arial", Font.BOLD, 20));
 		titulo.setHorizontalAlignment(SwingConstants.CENTER);
-		titulo.setVerticalAlignment(SwingConstants.TOP);
+		titulo.setVerticalAlignment(SwingConstants.CENTER);
+		titulo.setForeground(Colores.BLANCO_CALIDO.getColor());
 		
 		//2
 		JPanel panelSeries = new JPanel();
 		panelSeries.setLayout(new GridLayout(1,2));
-		panelSeries.setBorder(BorderFactory.createTitledBorder("Series"));
+		panelSeries.setBackground(Colores.NEGRO_CARBON.getColor());
+		
+		JLabel lblSeries = new JLabel("Series");
+		TitledBorder bordeSeries = BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Colores.DORADO.getColor(), 2), lblSeries.getText());
+		bordeSeries.setTitleColor(Colores.BLANCO_CALIDO.getColor());
+		panelSeries.setBorder(bordeSeries);
+		
 		JLabel series = new JLabel("Series realizadas: ");
 		series.setHorizontalAlignment(SwingConstants.LEFT);
+		series.setForeground(Colores.BLANCO_CALIDO.getColor());
 		JLabel cantSeries = new JLabel("45");
 		cantSeries.setFont(new Font("Arial", Font.BOLD, 25));
+		cantSeries.setForeground(Colores.DORADO.getColor());
 		panelSeries.add(series);
 		panelSeries.add(cantSeries);
 
 		//3
 		JPanel panelReps = new JPanel();
 		panelReps.setLayout(new GridLayout(1,2));
-		panelReps.setBorder(BorderFactory.createTitledBorder("Repeticiones"));
+		panelReps.setBackground(Colores.NEGRO_CARBON.getColor());
+		
+		JLabel lblReps = new JLabel("Repeticiones");
+		TitledBorder bordeReps = BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Colores.DORADO.getColor(), 2), lblReps.getText());
+		bordeReps.setTitleColor(Colores.BLANCO_CALIDO.getColor());
+		panelReps.setBorder(bordeReps);
+		
 		JLabel reps = new JLabel("Repeticiones realizadas: ");
 		reps.setHorizontalAlignment(SwingConstants.LEFT);
+		reps.setForeground(Colores.BLANCO_CALIDO.getColor());
 		JLabel repsCant = new JLabel("320");
 		repsCant.setFont(new Font("Arial", Font.BOLD, 25));
+		repsCant.setForeground(Colores.DORADO.getColor());
 		panelReps.add(reps);
 		panelReps.add(repsCant);
 				 
