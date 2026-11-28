@@ -50,8 +50,15 @@ public class Rutina extends JFrame {
     private PlanRutina rutinaSeleccionada;
     
     //Hilos y temporizador
-    private JLabel lblTiempo = new JLabel("01:00");
-    private Thread hiloDescanso;
+    private JLabel lblTiempo = new JLabel("02:30");
+    private static Thread hiloDescanso;
+    private static int segundos = 150;
+    private static Rutina ventanaActual;
+    private static boolean iniciado = false;
+    
+    private JButton iniciar = new JButton("Iniciar");
+    private JButton parar = new JButton("Pausar");
+    private JButton reiniciar = new JButton("Reiniciar");
 
     public Rutina() {
         setTitle("GYMTRACK - Gestión de rutinas");
@@ -258,74 +265,130 @@ public class Rutina extends JFrame {
     
     //=========================================================
     // IMPLEMENTACIÓN DE HILOS
-    private JPanel crearPanelDescanso() {
-        JPanel panel = new JPanel(new FlowLayout());
+    // Crear panel de descanso
+	 private JPanel crearPanelDescanso() {
+	     JPanel panel = new JPanel(new FlowLayout());
+	
+	     ventanaActual = this;
+	
+	     lblTiempo.setFont(new Font("Arial", Font.BOLD, 24));
+	
+	     panel.add(new JLabel("Descanso:"));
+	     panel.add(lblTiempo);
+	     panel.add(iniciar);
+	     panel.add(parar);
+	     panel.add(reiniciar);
+	
+	     iniciar.addActionListener(e -> {
+	         iniciado = true;
+	         iniciarDescanso();
+	         actualizarTiempo();
+	     });
+	
+	     parar.addActionListener(e -> {
+	         if (hiloDescanso != null) {
+	             pararDescanso();
+	         } else {
+	             iniciarDescanso();
+	         }
+	
+	         actualizarTiempo();
+	     });
+	
+	     reiniciar.addActionListener(e -> {
+	         pararDescanso();
+	         segundos = 150;
+	         iniciado = false;
+	         actualizarTiempo();
+	     });
+	
+	     actualizarTiempo();
+	
+	     return panel;
+	 }
+	
+	// Parte de función corregida con IA(chatGPT)
+	// Iniciar descanso
+	private void iniciarDescanso() {
+	
+	  if (hiloDescanso != null) {
+	      return;
+	  }
+	
+	  if (segundos == 0) {
+	      segundos = 60;
+	      actualizarTiempo();
+	  }
+	
+	  hiloDescanso = new Thread(() -> {
+	
+	      Thread actual = Thread.currentThread();
+	
+	      while (!actual.isInterrupted()) {
+	
+	          try {
+	              Thread.sleep(1000);
+	          } catch (InterruptedException e) {
+	              return;
+	          }
+	
+	          SwingUtilities.invokeLater(() -> {
+	
+	              if (hiloDescanso == actual) {
+	
+	                  segundos--;
+	
+	                  if (segundos == 0){
+	                	  pararDescanso();
+	                      iniciado = false;
+	                  }
+	
+	                  if (ventanaActual != null) {
+	                      ventanaActual.actualizarTiempo();
+	                  }
+	              }
+	          });
+	      }
+	  });
+	
+	  hiloDescanso.setDaemon(true);
+	  hiloDescanso.start();
+	}
+	
+	// Pausar el temporizador
+	private static void pararDescanso() {
+	    if (hiloDescanso != null) {
+	        hiloDescanso.interrupt();
+	        hiloDescanso = null;
+	    }
+	}
+	// Función hecha con IA(chatGPT)
+	// Actualizar los minutos y segundos del JLabel
+	private void actualizarTiempo() {
+	    lblTiempo.setText(String.format("%02d:%02d",
+	            segundos / 60, segundos % 60));
 
-        JButton iniciar = new JButton("Iniciar");
-        JButton parar = new JButton("Parar");
-        JButton reiniciar = new JButton("Reiniciar");
+	    iniciar.setEnabled(!iniciado);
+	    parar.setEnabled(iniciado);
 
-        lblTiempo.setFont(new Font("Arial", Font.BOLD, 24));
+	    if (hiloDescanso != null) {
+	        parar.setText("Pausar");
+	    } else {
+	        parar.setText("Continuar");
+	    }
 
-        panel.add(new JLabel("Descanso:"));
-        panel.add(lblTiempo);
-        panel.add(iniciar);
-        panel.add(parar);
-        panel.add(reiniciar);
-
-        iniciar.addActionListener(e -> iniciarDescanso());
-
-        parar.addActionListener(e -> pararDescanso());
-
-        reiniciar.addActionListener(e -> {
-            pararDescanso();
-            lblTiempo.setText("01:00");
-        });
-
-        return panel;
-    }
-
-    private void iniciarDescanso() {
-
-        if (hiloDescanso != null && hiloDescanso.isAlive()) {
-            return;
-        }
-
-        hiloDescanso = new Thread(() -> {
-
-            Thread actual = Thread.currentThread();
-
-            for (int i = 60; i >= 0; i--) {
-
-                int segundos = i;
-
-                SwingUtilities.invokeLater(() -> {
-                    if (hiloDescanso == actual) {
-                        lblTiempo.setText(String.format("%02d:%02d",
-                                segundos / 60, segundos % 60));
-                    }
-                });
-                if (i > 0) {
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        return;
-                    }
-                }
-            }
-        });
-        hiloDescanso.start();
-    }
-    private void pararDescanso() {
-        if (hiloDescanso != null) {
-            hiloDescanso.interrupt();
-            hiloDescanso = null;
-        }
-    }
-
-    @Override
-    public void dispose() {
-        pararDescanso();
-        super.dispose();
-    }
-}
+	    if (!iniciado) {
+	        parar.setText("Pausar");
+	    }
+	}
+	
+	// Cerrar la ventana sin detener el temporizador
+	@Override
+	public void dispose() {
+	    if (ventanaActual == this) {
+	        ventanaActual = null;
+	    }
+	
+	    super.dispose();
+	  }
+	}
