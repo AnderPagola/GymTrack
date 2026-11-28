@@ -20,6 +20,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
+import javax.swing.SwingUtilities;
 
 import domain.Ejercicio;
 import domain.GrupoMuscular;
@@ -47,6 +48,10 @@ public class Rutina extends JFrame {
     private PlanRutina rutinaPierna;
     private PlanRutina rutinaTorso;
     private PlanRutina rutinaSeleccionada;
+    
+    //Hilos y temporizador
+    private JLabel lblTiempo = new JLabel("01:00");
+    private Thread hiloDescanso;
 
     public Rutina() {
         setTitle("GYMTRACK - Gestión de rutinas");
