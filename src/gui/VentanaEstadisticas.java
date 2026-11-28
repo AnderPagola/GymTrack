@@ -19,6 +19,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
 import domain.Colores;
@@ -66,7 +67,7 @@ public class VentanaEstadisticas extends JFrame {
 		add(panelGeneral, BorderLayout.CENTER);
 		
 		panelContenido.setLayout(new BorderLayout());
-		panelContenido.setBackground(Colores.GRIS_PLATA.getColor());
+		panelContenido.setBackground(Colores.NEGRO_CARBON.getColor());
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		panelContenido.add(label, BorderLayout.NORTH);
 		panelGeneral.add(panelContenido, BorderLayout.CENTER);
@@ -116,46 +117,67 @@ public class VentanaEstadisticas extends JFrame {
 	}
 	
 	//Contenido de cada elección
+///Volumen semana
 	private void VolumenSemana() {
 		JPanel panel = new JPanel();
 		panel.setLayout(new GridLayout(3,1,5,5));
+		panel.setBackground(Colores.NEGRO_CARBON.getColor());
 		
 		//1
 		JLabel titulo = new JLabel("VOLUMEN DE LA SEMANA");
 		titulo.setHorizontalAlignment(SwingConstants.CENTER);
-		titulo.setVerticalAlignment(SwingConstants.TOP);
+		titulo.setVerticalAlignment(SwingConstants.CENTER);
 		titulo.setFont(new Font("Arial", Font.BOLD, 20));
+		titulo.setForeground(Colores.BLANCO_CALIDO.getColor());
 		
 		//2
 		JPanel panelVolumen = new JPanel();
-		panelVolumen.setBorder(BorderFactory.createTitledBorder("Volumen"));
+		JLabel lblVolumen = new JLabel("Volumen");
+
+//		panelVolumen.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Colores.DORADO.getColor(), 2), lblVolumen.getText()));
+		TitledBorder bordeVolumen = BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Colores.DORADO.getColor(), 2), lblVolumen.getText());
+		bordeVolumen.setTitleColor(Colores.BLANCO_CALIDO.getColor());
+		panelVolumen.setBorder(bordeVolumen);
+		
 		panelVolumen.setLayout(new GridLayout(1,2));
+		panelVolumen.setBackground(Colores.NEGRO_CARBON.getColor());
 		
 		JLabel volumen = new JLabel("Volumen total:");
+		volumen.setForeground(Colores.BLANCO_CALIDO.getColor());
 		volumen.setHorizontalAlignment(SwingConstants.LEFT);
 		volumen.setVerticalAlignment(SwingConstants.CENTER);
 		panelVolumen.add(volumen);
 		
 		JLabel cant = new JLabel("12.500kg");
 		cant.setFont(new Font("Arial", Font.BOLD, 20));
+		cant.setForeground(Colores.DORADO.getColor());
 		panelVolumen.add(cant);
 		
 		//3
 		JPanel panelCant = new JPanel();
+		panelCant.setBackground(Colores.NEGRO_CARBON.getColor());
 		panelCant.setLayout(new GridLayout(1,3,5,5));
-		panelCant.setBorder(BorderFactory.createTitledBorder("Progreso"));
+		
+		JLabel lblCant = new JLabel("Progreso");
+		TitledBorder bordeCant = BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Colores.DORADO.getColor(), 2), lblCant.getText());
+		bordeCant.setTitleColor(Colores.BLANCO_CALIDO.getColor());
+		
+		panelCant.setBorder(bordeCant);
 		
 		JLabel comparacion = new JLabel("Aumento de esta semana: ");
 		comparacion.setHorizontalAlignment(SwingConstants.LEFT);
 		comparacion.setVerticalAlignment(SwingConstants.CENTER);
+		comparacion.setForeground(Colores.BLANCO_CALIDO.getColor());
 		panelCant.add(comparacion);
 		
 		JLabel cantMas = new JLabel("500kg");
 		cantMas.setFont(new Font("Arial", Font.BOLD, 20));
+		cantMas.setForeground(Colores.DORADO.getColor());
 		panelCant.add(cantMas);
 		
 		JLabel cantPor = new JLabel("+4%");
 		cantPor.setFont(new Font("Arial", Font.BOLD, 20));
+		cantPor.setForeground(Colores.DORADO.getColor());
 		panelCant.add(cantPor);
 		
 		panel.add(titulo);
@@ -165,6 +187,7 @@ public class VentanaEstadisticas extends JFrame {
 		panelContenido.add(panel);
 	}
 	
+///Tiempo entrenamientos
 	private void TiempoEntrenamiento() {
 		JPanel panel = new JPanel();
 		panel.setLayout(new GridLayout(6,1,5,10));
@@ -285,6 +308,7 @@ public class VentanaEstadisticas extends JFrame {
 		panelContenido.add(scroll, BorderLayout.CENTER);
 	}
 	
+///Series y reps
 	private void SeriesReps() {
 		JPanel panel = new JPanel();
 		panel.setLayout(new GridLayout(3, 1));
@@ -324,6 +348,7 @@ public class VentanaEstadisticas extends JFrame {
 		panelContenido.add(panel, BorderLayout.CENTER);
 	}
 	
+///Pesos
 	private void Pesos() {
 		JPanel panel = new JPanel();
 		panel.setLayout(new BorderLayout());
@@ -429,6 +454,7 @@ public class VentanaEstadisticas extends JFrame {
 		panelContenido.add(panel);
 	}
 	
+///Records
 	private void Records() {
 		JPanel panel = new JPanel(new GridLayout(4, 1));
 
@@ -471,6 +497,7 @@ public class VentanaEstadisticas extends JFrame {
 		panelContenido.add(panel, BorderLayout.CENTER);
 	}
 	
+///Progreso por músculo
 	private void ProgresoMusculo() {
 		JPanel panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
