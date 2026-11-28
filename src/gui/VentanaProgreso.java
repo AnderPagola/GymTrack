@@ -39,7 +39,7 @@ public class VentanaProgreso extends JFrame {
     private JLabel etiquetaMejora;
     private GraficaProgreso grafica;
 
-    // Estructura auxiliar para vincular la fecha del Entrenamiento con el peso del Ejercicio
+    // Estructura auxiliar para vincular la fecha del Entrenamiento con el peso del Ejercicio, Hecho con IA
     private static class DatoGrafica {
         final LocalDate fecha;
         final double peso;
