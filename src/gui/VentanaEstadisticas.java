@@ -545,13 +545,15 @@ public class VentanaEstadisticas extends JFrame {
 ///Progreso por músculo
 	private void ProgresoMusculo() {
 		JPanel panel = new JPanel();
+		panel.setBackground(Colores.NEGRO_CARBON.getColor());
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
 	    JLabel titulo = new JLabel("PROGRESO POR MÚSCULO");
 	    titulo.setFont(new Font("Arial", Font.BOLD, 20));
+	    titulo.setForeground(Colores.BLANCO_CALIDO.getColor());
 	    titulo.setAlignmentX(Component.CENTER_ALIGNMENT); //Esto lo he hecho con la IA
 	    titulo.setHorizontalAlignment(SwingConstants.CENTER);
-	    titulo.setVerticalAlignment(SwingConstants.NORTH);
+	    titulo.setVerticalAlignment(SwingConstants.CENTER);
 	    panel.add(titulo);
 	    
 	    JPanel panelDatos = new JPanel();
@@ -561,11 +563,19 @@ public class VentanaEstadisticas extends JFrame {
 	    //1,1
 	    JPanel datosPecho = new JPanel();
 	    datosPecho.setLayout(new GridLayout(1,2));
-	    datosPecho.setBorder(BorderFactory.createTitledBorder("Pecho"));
+	    datosPecho.setBackground(Colores.NEGRO_CARBON.getColor());
+	    
+	    JLabel lblPecho = new JLabel("Pecho");
+	    TitledBorder bordePecho = BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Colores.DORADO.getColor(), 2), lblPecho.getText());
+		bordePecho.setTitleColor(Colores.BLANCO_CALIDO.getColor());
+		datosPecho.setBorder(bordePecho);
+		
 	    JLabel pesoPecho = new JLabel("+8kg");
 	    JLabel porPecho = new JLabel("+4,25%");
 	    pesoPecho.setFont(new Font("Arial", Font.BOLD, 25));
 	    porPecho.setFont(new Font("Arial", Font.BOLD, 25));
+	    pesoPecho.setForeground(Colores.DORADO.getColor());
+	    porPecho.setForeground(Colores.DORADO.getColor());
 	    pesoPecho.setHorizontalAlignment(SwingConstants.CENTER);
 	    pesoPecho.setVerticalAlignment(SwingConstants.CENTER);
 	    porPecho.setHorizontalAlignment(SwingConstants.CENTER);
@@ -577,11 +587,19 @@ public class VentanaEstadisticas extends JFrame {
 	    //1,2
 	    JPanel datosEspalda = new JPanel();
 	    datosEspalda.setLayout(new GridLayout(1,2));
-	    datosEspalda.setBorder(BorderFactory.createTitledBorder("Espalda"));
+	    datosEspalda.setBackground(Colores.NEGRO_CARBON.getColor());
+	    
+	    JLabel lblEspalda = new JLabel("Espalda");
+	    TitledBorder bordeEspalda = BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Colores.DORADO.getColor(), 2), lblEspalda.getText());
+		bordeEspalda.setTitleColor(Colores.BLANCO_CALIDO.getColor());
+		datosEspalda.setBorder(bordeEspalda);
+		
 	    JLabel pesoEspalda = new JLabel("+10kg");
 	    JLabel porEspalda = new JLabel("+5,1%");
 	    pesoEspalda.setFont(new Font("Arial", Font.BOLD, 25));
 	    porEspalda.setFont(new Font("Arial", Font.BOLD, 25));
+	    pesoEspalda.setForeground(Colores.DORADO.getColor());
+	    porEspalda.setForeground(Colores.DORADO.getColor());
 	    pesoEspalda.setHorizontalAlignment(SwingConstants.CENTER);
 	    pesoEspalda.setVerticalAlignment(SwingConstants.CENTER);
 	    porEspalda.setHorizontalAlignment(SwingConstants.CENTER);
@@ -593,11 +611,19 @@ public class VentanaEstadisticas extends JFrame {
 	    //2,1
 	    JPanel datosPiernas = new JPanel();
 	    datosPiernas.setLayout(new GridLayout(1,2));
-	    datosPiernas.setBorder(BorderFactory.createTitledBorder("Piernas"));
+	    datosPiernas.setBackground(Colores.NEGRO_CARBON.getColor());
+	    
+	    JLabel lblPiernas = new JLabel("Piernas");
+	    TitledBorder bordePiernas = BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Colores.DORADO.getColor(), 2), lblPiernas.getText());
+		bordePiernas.setTitleColor(Colores.BLANCO_CALIDO.getColor());
+		datosPiernas.setBorder(bordePiernas);
+		
 	    JLabel pesoPiernas = new JLabel("+15kg");
 	    JLabel porPiernas = new JLabel("+3,75%");
 	    pesoPiernas.setFont(new Font("Arial", Font.BOLD, 25));
 	    porPiernas.setFont(new Font("Arial", Font.BOLD, 25));
+	    pesoPiernas.setForeground(Colores.DORADO.getColor());
+	    porPiernas.setForeground(Colores.DORADO.getColor());
 	    pesoPiernas.setHorizontalAlignment(SwingConstants.CENTER);
 	    pesoPiernas.setVerticalAlignment(SwingConstants.CENTER);
 	    porPiernas.setHorizontalAlignment(SwingConstants.CENTER);
@@ -609,11 +635,19 @@ public class VentanaEstadisticas extends JFrame {
 	    //2,2
 	    JPanel datosBrazos = new JPanel();
 	    datosBrazos.setLayout(new GridLayout(1,2));
-	    datosBrazos.setBorder(BorderFactory.createTitledBorder("Brazos"));
+	    datosBrazos.setBackground(Colores.NEGRO_CARBON.getColor());
+	    
+	    JLabel lblBrazos = new JLabel("Brazos");
+	    TitledBorder bordeBrazos = BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Colores.DORADO.getColor(), 2), lblBrazos.getText());
+		bordeBrazos.setTitleColor(Colores.BLANCO_CALIDO.getColor());
+		datosBrazos.setBorder(bordeBrazos);
+		
 	    JLabel pesoBrazos = new JLabel("+4kg");
 	    JLabel porBrazos = new JLabel("+4,5%");
 	    pesoBrazos.setFont(new Font("Arial", Font.BOLD, 25));
 	    porBrazos.setFont(new Font("Arial", Font.BOLD, 25));
+	    pesoBrazos.setForeground(Colores.DORADO.getColor());
+	    porBrazos.setForeground(Colores.DORADO.getColor());
 	    pesoBrazos.setHorizontalAlignment(SwingConstants.CENTER);
 	    pesoBrazos.setVerticalAlignment(SwingConstants.CENTER);
 	    porBrazos.setHorizontalAlignment(SwingConstants.CENTER);
