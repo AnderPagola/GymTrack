@@ -7,7 +7,9 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Image;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -27,14 +29,11 @@ public class VentanaPrincipal extends JFrame {
 	private JButton stats = new JButton("Estadísticas");
 	private JButton objetivos = new JButton("Objetivos");
 	
-	
-	
 	public VentanaPrincipal() {
 		setSize(400,600);
 		setTitle("GymTrack");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
-		setVisible(true);
 		setLayout(new BorderLayout());
 		
 		JPanel panelPrincipal = new JPanel();
@@ -54,13 +53,13 @@ public class VentanaPrincipal extends JFrame {
 		texto.setFont(new Font("Arial", Font.BOLD, 50));
 		texto.setForeground(Colores.BLANCO_CALIDO.getColor());
 		add(panelNorte, BorderLayout.NORTH);
-		
+				
 		//Botones
-		formatoBoton(progreso);
-		formatoBoton(rutinas);
-		formatoBoton(historial);
-		formatoBoton(stats);
-		formatoBoton(objetivos);
+		formatoBoton(progreso, "resources/icono_progreso.png", 40, 40);
+		formatoBoton(rutinas, "resources/icono_rutinas.png", 40, 40);
+		formatoBoton(historial, "resources/icono_historial.png", 40, 40);
+		formatoBoton(stats, "resources/icono_stats.png", 40, 40);
+		formatoBoton(objetivos, "resources/icono_objetivos.png", 40, 40);
 
 
 		panelPrincipal.add(progreso);
@@ -97,13 +96,24 @@ public class VentanaPrincipal extends JFrame {
 		});
 		
         Recursos.configurarAtajoCerrar(this);
+        
+		setVisible(true);
 	}
 	
-	public void formatoBoton(JButton boton) {
+	public void formatoBoton(JButton boton, String ruta, int ancho, int alto) {
 		//Color dorado = Color.decode("#D4AF70");
 		boton.setFont(new Font("Arial", Font.BOLD, 30));
 		boton.setBackground(Colores.DORADO.getColor());
 		boton.setForeground(Colores.BLANCO_CALIDO.getColor());
+		
+		ImageIcon icono = new ImageIcon(ruta);
+		Image imagen = icono.getImage().getScaledInstance(ancho, alto, Image.SCALE_SMOOTH);
+		boton.setIcon(new ImageIcon(imagen));
+
+		boton.setHorizontalTextPosition(SwingConstants.LEFT);
+		boton.setVerticalTextPosition(SwingConstants.CENTER);
+	    boton.setIconTextGap(20);
+	    
 		boton.setOpaque(true);
 	    boton.setContentAreaFilled(true);
 	    boton.setFocusPainted(false);
