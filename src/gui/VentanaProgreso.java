@@ -3,6 +3,7 @@ package gui;
 // 1. Importaciones necesarias
 import javax.swing.*;
 
+import domain.Colores;
 import domain.Recursos;
 
 import java.awt.*;
@@ -31,6 +32,12 @@ public class VentanaProgreso extends JFrame {
         setSize(750, 600);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
+        
+        ///Adri, este es color del fondo
+        JPanel panelTodo = new JPanel();
+        panelTodo.setLayout(new BorderLayout());
+        panelTodo.setBackground(Colores.NEGRO_CARBON.getColor());
+        add(panelTodo, BorderLayout.CENTER);
 
         // 5. Panel principal
         JPanel panelPrincipal = new JPanel(new BorderLayout(10, 15));
