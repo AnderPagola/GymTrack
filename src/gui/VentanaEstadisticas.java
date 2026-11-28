@@ -78,7 +78,7 @@ public class VentanaEstadisticas extends JFrame {
 			"Tiempo entrenamiento",
 			"Series y repeticiones",
 			"Pesos",
-			"Records",
+			"Récords",
 			"Progreso por músculo",
 		};
 		JComboBox<String> box = new JComboBox<>(stats);
@@ -102,7 +102,7 @@ public class VentanaEstadisticas extends JFrame {
 			} else if(seleccion.equals("Pesos")) {
 				Pesos();
 //				label.setText("PESOS");
-			} else if(seleccion.equals("Records")) {
+			} else if(seleccion.equals("Récords")) {
 				Records();
 //				label.setText("RECORDS");
 			} else if(seleccion.equals("Progreso por músculo")) {
@@ -371,8 +371,11 @@ public class VentanaEstadisticas extends JFrame {
 		JPanel panel = new JPanel();
 		panel.setLayout(new BorderLayout());
 		JLabel titulo = new JLabel("PESOS");
+		titulo.setHorizontalAlignment(SwingConstants.CENTER);
+		titulo.setVerticalAlignment(SwingConstants.CENTER);
 		titulo.setFont(new Font("Arial", Font.BOLD, 20));
 		panel.add(titulo, BorderLayout.NORTH);
+		
 		
 		JPanel panelBox = new JPanel();
 		panelBox.setLayout(new BorderLayout());
@@ -475,38 +478,62 @@ public class VentanaEstadisticas extends JFrame {
 ///Records
 	private void Records() {
 		JPanel panel = new JPanel(new GridLayout(4, 1));
+		panel.setBackground(Colores.NEGRO_CARBON.getColor());
 
 		JLabel titulo = new JLabel("RÉCORDS PERSONALES");
 		titulo.setFont(new Font("Arial", Font.BOLD, 20));
-		titulo.setVerticalAlignment(SwingConstants.NORTH);
+		titulo.setForeground(Colores.BLANCO_CALIDO.getColor());
+		titulo.setVerticalAlignment(SwingConstants.CENTER);
 		titulo.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(titulo);
 		
+		//Press de banca
 		JPanel press = new JPanel();
-		press.setBorder(BorderFactory.createTitledBorder("Press de banca"));
+		press.setBackground(Colores.NEGRO_CARBON.getColor());
+		JLabel lblPress = new JLabel("Press de banca");
+		TitledBorder bordePress = BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Colores.DORADO.getColor(), 2), lblPress.getText());
+		bordePress.setTitleColor(Colores.BLANCO_CALIDO.getColor());
+		press.setBorder(bordePress);
+		
 		press.setLayout(new GridLayout(1,1));
 		JLabel labelpress = new JLabel("80kg");
 		labelpress.setFont(new Font("Arial", Font.BOLD, 25));
+		labelpress.setForeground(Colores.DORADO.getColor());
 		labelpress.setHorizontalAlignment(SwingConstants.CENTER);
 		labelpress.setVerticalAlignment(SwingConstants.CENTER);
 		press.add(labelpress);
 		panel.add(press);
 		
+		//Peso muerto
 		JPanel pesomuerto = new JPanel();
-		pesomuerto.setBorder(BorderFactory.createTitledBorder("Peso muerto"));
+		pesomuerto.setBackground(Colores.NEGRO_CARBON.getColor());
+		
+		JLabel lblPM = new JLabel("Peso muerto");
+		TitledBorder bordePM = BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Colores.DORADO.getColor(), 2), lblPM.getText());
+		bordePM.setTitleColor(Colores.BLANCO_CALIDO.getColor());
+		pesomuerto.setBorder(bordePM);
+		
 		pesomuerto.setLayout(new GridLayout(1,1));
 		JLabel labelpesomuerto = new JLabel("120kg");
 		labelpesomuerto.setFont(new Font("Arial", Font.BOLD, 25));
+		labelpesomuerto.setForeground(Colores.DORADO.getColor());
 		labelpesomuerto.setHorizontalAlignment(SwingConstants.CENTER);
 		labelpesomuerto.setVerticalAlignment(SwingConstants.CENTER);
 		pesomuerto.add(labelpesomuerto);
 		panel.add(pesomuerto);
 		
+		//Sentadilla
 		JPanel sentadilla = new JPanel();
-		sentadilla.setBorder(BorderFactory.createTitledBorder("Sentadilla"));
+		sentadilla.setBackground(Colores.NEGRO_CARBON.getColor());
+		
+		JLabel lblSentadilla = new JLabel("Sentadilla");
+		TitledBorder bordeSentadilla = BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Colores.DORADO.getColor(), 2), lblSentadilla.getText());
+		bordeSentadilla.setTitleColor(Colores.BLANCO_CALIDO.getColor());
+		sentadilla.setBorder(bordeSentadilla);
 		sentadilla.setLayout(new GridLayout(1,1));
 		JLabel labelsentadilla = new JLabel("90kg");
 		labelsentadilla.setFont(new Font("Arial", Font.BOLD, 25));
+		labelsentadilla.setForeground(Colores.DORADO.getColor());
 		labelsentadilla.setHorizontalAlignment(SwingConstants.CENTER);
 		labelsentadilla.setVerticalAlignment(SwingConstants.CENTER);
 		sentadilla.add(labelsentadilla);
