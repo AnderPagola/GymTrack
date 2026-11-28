@@ -21,6 +21,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import domain.Colores;
 import domain.Recursos;
 
 public class VentanaEstadisticas extends JFrame {
@@ -43,10 +44,9 @@ public class VentanaEstadisticas extends JFrame {
 		setVisible(true);
 		setLayout(new BorderLayout());
 		
-		
 		//Panel norte
 		JPanel panelNorte = new JPanel();
-		panelNorte.setBackground(Color.BLACK);
+		panelNorte.setBackground(Colores.NEGRO_CARBON.getColor());
 		panelNorte.setLayout(new GridLayout(1,1));
 		panelNorte.setPreferredSize(new Dimension(400,100));
 		JLabel texto = new JLabel("Estadísticas");
@@ -54,7 +54,7 @@ public class VentanaEstadisticas extends JFrame {
 		texto.setHorizontalAlignment(SwingConstants.CENTER);
 		texto.setVerticalAlignment(SwingConstants.CENTER);
 		texto.setFont(new Font("Arial", Font.BOLD, 50));
-		texto.setForeground(Color.WHITE);
+		texto.setForeground(Colores.BLANCO_CALIDO.getColor());
 		add(panelNorte, BorderLayout.NORTH);
 		
 		add(Recursos.crearPanelSur(this, "Estadísticas"), BorderLayout.SOUTH);
@@ -62,9 +62,11 @@ public class VentanaEstadisticas extends JFrame {
 		//Panel contenido
 		JPanel panelGeneral = new JPanel();
 		panelGeneral.setLayout(new BorderLayout());
+		panelGeneral.setBackground(Colores.NEGRO_CARBON.getColor());
 		add(panelGeneral, BorderLayout.CENTER);
 		
 		panelContenido.setLayout(new BorderLayout());
+		panelContenido.setBackground(Colores.GRIS_PLATA.getColor());
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		panelContenido.add(label, BorderLayout.NORTH);
 		panelGeneral.add(panelContenido, BorderLayout.CENTER);
